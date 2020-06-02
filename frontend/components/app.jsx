@@ -1,20 +1,27 @@
 import React from 'react';
 import SplashContainer from './splash/splash_container';
-import { Route } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import ModalContainer from './modal/modal_container';
 
 const App = () => {
   return (
     <>
+      <ModalContainer />
       <header>
-        <h1>VaporWave</h1>
+        <Link to="/">
+          <h1>VaporWave</h1>
+        </Link>
+        
         <SplashContainer />
       </header>
-        
-      <AuthRoute path="/login" component={LoginFormContainer} />
-      <AuthRoute path="/signup" component={SignupFormContainer} />
+      
+      {/* <Switch>
+        <AuthRoute path="/login" component={LoginFormContainer} />
+        <AuthRoute path="/signup" component={SignupFormContainer} />
+      </Switch> */}
     </>
   );
 };

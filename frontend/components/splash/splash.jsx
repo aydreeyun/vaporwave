@@ -17,9 +17,9 @@ class Splash extends React.Component {
     } else {
       return (
         <>
-          <Link to="/login">Sign In</Link>
+          <button onClick={() => this.props.openModal("login")}>Sign In</button>
           <br/>
-          <Link to="/signup">Create account</Link>
+          <button onClick={() => this.props.openModal("signup")}>Create account</button>
         </>
       );
     }
