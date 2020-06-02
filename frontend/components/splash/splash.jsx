@@ -43,8 +43,8 @@ class Splash extends React.Component {
 
           <div className="splash-search">
             <input className="splash-search-input" type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
-            <button><i class="fas fa-search"></i></button>
-            or
+            <button><i className="fas fa-search"></i></button>
+            <p>or</p>
             <button className="splash-button-orange">Upload your own</button>
           </div>
 
