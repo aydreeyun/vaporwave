@@ -6,9 +6,15 @@ html {
 
 .splash {
   background: white;
-  width: 67.5%;
+  width: 67.36%;
   height: 100%;
   margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+  max-width: 1240px;
+}
+
+.splash button {
+  cursor: pointer;
 }
 
 .splash-top-line {
@@ -21,6 +27,10 @@ html {
   justify-content: space-between;
 }
 
+.splash-banner-left {
+  line-height: 2;
+}
+
 .splash-banner-right {
   display: flex;
 }
@@ -31,17 +41,16 @@ html {
   text-decoration: none;
   height: 50%;
   text-align: center;
-  line-height: 2;
+  line-height: 2.3;
   font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .splash-banner {
   background-image: url(https://media.giphy.com/media/xTiQyka2vyWF5EqPok/giphy.gif);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  height: 450px;
-  padding-top: 17px;
+  height: 430px;
+  padding-top: 19px;
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -49,24 +58,34 @@ html {
 .splash-banner-center {
   margin: 0 auto;
   text-align: center;
-  width: 600px;
+  width: 70%;
   margin-top: 100px;
 }
 
 .splash-banner-center h2 {
   font-size: 35px;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 20px;
-  color: white;
+  margin-bottom: 15px;
+  color: black;
+  font-weight: 500;
+}
+
+.splash-banner-center p {
+  width: 63%;
+  height: 50px;
+  margin: 0 auto;
+  font-size: 17px;
+  margin-bottom: 25px;
+  line-height: 1.5;
 }
 
 .splash-banner-right button {
-  padding: 1px;
-  border-radius: 3px;
+  padding: 3px;
+  border-radius: 4px;
   margin-right: 9px;
   padding-left: 15px;
   padding-right: 15px;
-  height: 30px;
+  height: 31px;
+  font-size: 14px;
 }
 
 .splash-login {
@@ -74,10 +93,59 @@ html {
   background: transparent;
   border: 1px solid black;
   border-radius: 5px;
+  color: black;
 }
 
 .splash-signup {
   background: rgb(0, 207, 207);
   color: white;
   border: 1px solid rgb(0, 207, 207);
+}
+
+.large-button-transparent {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 3px;
+  padding: 11px;
+  margin-right: 24px;
+  font-size: 17.7px;
+  font-weight: 350;
+  padding-right: 35px;
+  padding-left: 35px;
+}
+
+.large-button-orange {
+  background: rgb(0, 207, 207);
+  color: white;
+  border: 1px solid rgb(0, 207, 207);
+  border-radius: 3px;
+  padding: 11px;
+  margin-right: 22px;
+  font-size: 17.7px;
+  font-weight: 350;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.splash-search {
+  display: flex;
+  justify-content: center;
+  line-height: 1.7;
+}
+
+.splash-tracks {
+  text-align: center;
+}
+
+.splash-tracks h3 {
+  font-size: 23px;
+}
+
+.tracks {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.splash-mobile {
 }

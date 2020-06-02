@@ -34,8 +34,8 @@ class Splash extends React.Component {
 
             <div className="splash-banner-center">
               <h2 className="splash-header">Discover more with VaporWave Go+</h2>
-              <p className="splash-header-p">VaporWave Go+ lets you listen offline, ad-free, with over 150 million tracks - and growing.</p>
-              <button className="large-button-transparent">Learn More</button>
+              <p className="splash-header-p">VaporWave Go+ lets you listen offline, ad-free, with over 150 million tracks ‒ and growing.</p>
+              <button className="large-button-transparent">Learn more</button>
               <button className="large-button-orange">Try it free for 30 days</button>
             </div>
             
@@ -50,6 +50,7 @@ class Splash extends React.Component {
 
           <div className="splash-tracks">
             <h3>Hear what's trending for free in the VaporWave community</h3>
+            <div className="tracks"></div>
             <button className="splash-button-orange">Explore trending playlists</button>
           </div>
 
@@ -59,8 +60,11 @@ class Splash extends React.Component {
           </div>
 
           <div className="splash-creators">
-            <h1 className="splash-header">Calling all creators</h1>
-            <h3>Get on SoundCloud to connect with fans, share your sounds, and grow your audience. What are you waiting for?</h3>
+            <div className="mobile-img"></div>
+            <div className="mobile-text">
+              <h1 className="splash-header">Calling all creators</h1>
+              <h3>Get on SoundCloud to connect with fans, share your sounds, and grow your audience. What are you waiting for?</h3>
+            </div>
             <button>Find out more</button>
           </div>
 
