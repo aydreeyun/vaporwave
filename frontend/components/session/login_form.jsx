@@ -17,7 +17,7 @@ class LoginForm extends React.Component {
     this.prevStep = this.prevStep.bind(this)
   }
 
-  componentWillUnmount() {
+  componentDidUnmount() {
     this.setState({ email: "" });
   }
 
@@ -57,7 +57,6 @@ class LoginForm extends React.Component {
 
     return (
       <>
-        <h2>{this.props.formType}</h2>
         <ul>
           {errors}
         </ul>
@@ -70,7 +69,6 @@ class LoginForm extends React.Component {
           <PasswordForm 
             currentStep={this.state.currentStep}
             update={this.update}
-            email={this.state.email}
             prevButton={prevButton}
           />
         </form>

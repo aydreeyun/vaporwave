@@ -1,9 +1,14 @@
 import React from 'react';
+import EmailForm from './email_form';
+import SignupPasswordForm from './signup_password_form';
+import AgeGenderForm from './age_gender_form';
+import DisplayNameForm from './display_name_form';
 
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentStep: 1,
       email: "",
       password: "",
       age: "",
@@ -12,6 +17,9 @@ class SignupForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
+    this.nextStep = this.nextStep.bind(this);
+    this.prevStep = this.prevStep.bind(this)
   }
 
   update(field) {
@@ -25,66 +33,62 @@ class SignupForm extends React.Component {
     this.props.processForm(user);
   }
 
+  nextStep() {
+    let currentStep = this.state.currentStep;
+
+    currentStep = currentStep >= 3 ? 4 : currentStep + 1;
+    this.setState({ currentStep });
+  }
+
+  prevStep() {
+    let currentStep = this.state.currentStep;
+
+    currentStep = currentStep <= 1 ? 1 : currentStep - 1;
+    this.setState({ currentStep });
+  }
+
   render() {
-    const genders = ["Male", "Female", "NA"];
-    const customGender = !genders.includes(this.state.gender) ? 
-      <input type="text" placeholder="Custom gender" onChange={this.update("gender")} /> : "";
     const errors = this.props.errors.map(error => {
       return <li>{error}</li>
     })
     
+    const prevButton = this.state.currentStep !== 1 ? <button onClick={this.prevStep}>{this.state.email}</button> : "";
+    const nextButton = this.state.currentStep < 4 ? <button onClick={this.nextStep}>Continue</button> : "";
+    const acceptButton = this.state.currentStep !== 1 ? <button onClick={this.nextStep}>Accept & continue</button> : "";
+    const getStartedButton = this.state.currentStep !== 1 ? <button onClick={this.nextStep}>Get started</button> : "";
+    
     return (
       <>
-        <h2>{this.props.formType}</h2>
-
         <ul>
           {errors}
         </ul>
 
         <form onSubmit={this.handleSubmit}>
-          <label>
-            <input type="text" onChange={this.update("email")} placeholder="Your email address or profile URL" />
-          </label>
+          <EmailForm 
+            currentStep={this.state.currentStep}
+            update={this.update}
+            nextButton={nextButton}
+          />
 
-          <br/>
+          <SignupPasswordForm 
+            currentStep={this.state.currentStep}
+            update={this.update}
+            prevButton={prevButton}
+            acceptButton={acceptButton}
+          />
 
-          <label>Choose a password
-            <br/>
-            <input type="password" onChange={this.update("password")}/>
-          </label>
+          <AgeGenderForm 
+            currentStep={this.state.currentStep}
+            update={this.update}
+            gender={this.state.gender}
+            nextButton={nextButton}
+          />
 
-          <br/>
-
-          <label>Tell us your age
-            <br/>
-            <input type="number" onChange={this.update("age")}/>
-          </label>
-
-          <br/>
-
-          <label>
-            <select onChange={this.update("gender")}>
-              <option value="NA">Indicate your gender</option>
-              <option value="Female">Female</option>
-              <option value="Male">Male</option>
-              <option value="Custom">Custom</option>
-              <option value="NA">Prefer Not to Say</option>
-            </select>
-            <br/>
-
-            {customGender}
-          </label>
-
-          <br/>
-
-          <label>Choose your display name
-            <br/>
-            <input type="input" onChange={this.update("display_name")}/>
-          </label>
-        
-          <br/>
-
-          <button>Create Account</button>
+          <DisplayNameForm 
+            currentStep={this.state.currentStep}
+            update={this.update}
+            getStartedButton={getStartedButton}
+          />
         </form>
       </>
     );

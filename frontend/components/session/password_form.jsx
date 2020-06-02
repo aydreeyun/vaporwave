@@ -14,7 +14,7 @@ class PasswordForm extends React.Component {
           <br/>
 
           <label>
-            <input type="text" onChange={this.props.update("password")} placeholder="Your password"/>
+            <input type="password" onChange={this.props.update("password")} placeholder="Your password"/>
           </label>
           <button>Sign In</button>
         </>
