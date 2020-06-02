@@ -10,9 +10,7 @@ const App = () => {
   return (
     <>
       <ModalContainer />
-      <header>
-        <SplashContainer />
-      </header>
+      <SplashContainer />
       
       {/* <Switch>
         <AuthRoute path="/login" component={LoginFormContainer} />
