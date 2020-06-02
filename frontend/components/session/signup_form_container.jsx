@@ -5,7 +5,6 @@ import { signup } from '../../actions/session_actions';
 const mSTP = state => {
   return {
     errors: state.errors.session,
-    formType: "Sign Up"
   };
 };
 
