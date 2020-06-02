@@ -55,16 +55,16 @@ class Splash extends React.Component {
           </div>
 
           <div className="splash-mobile">
-            <h1>Never stop listening</h1>
-            <h3>VaporWave is available on Web, iOS, Android, Sonos, Chromecast, and Xbox One.</h3>
+            <div className="mobile-img"></div>
+            <div className="mobile-text">
+              <h1>Never stop listening</h1>
+              <h3>VaporWave is available on Web, iOS, Android, Sonos, Chromecast, and Xbox One.</h3>
+            </div>
           </div>
 
           <div className="splash-creators">
-            <div className="mobile-img"></div>
-            <div className="mobile-text">
-              <h1 className="splash-header">Calling all creators</h1>
-              <h3>Get on SoundCloud to connect with fans, share your sounds, and grow your audience. What are you waiting for?</h3>
-            </div>
+            <h1 className="splash-header">Calling all creators</h1>
+            <h3>Get on SoundCloud to connect with fans, share your sounds, and grow your audience. What are you waiting for?</h3>
             <button>Find out more</button>
           </div>
 

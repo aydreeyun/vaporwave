@@ -11,6 +11,7 @@ html {
   margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
   max-width: 1240px;
+  position: relative;
 }
 
 .splash button {
@@ -74,7 +75,7 @@ html {
   height: 50px;
   margin: 0 auto;
   font-size: 17px;
-  margin-bottom: 25px;
+  margin-bottom: 28px;
   line-height: 1.5;
 }
 
@@ -108,8 +109,8 @@ html {
   color: white;
   border-radius: 3px;
   padding: 11px;
-  margin-right: 24px;
-  font-size: 17.7px;
+  margin-right: 25px;
+  font-size: 17.3px;
   font-weight: 350;
   padding-right: 35px;
   padding-left: 35px;
@@ -124,8 +125,8 @@ html {
   margin-right: 22px;
   font-size: 17.7px;
   font-weight: 350;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 19px;
+  padding-left: 19px;
 }
 
 .splash-search {
@@ -148,4 +149,18 @@ html {
 }
 
 .splash-mobile {
+  display: flex;
+  height: 300px;
+}
+
+.mobile-img {
+  height: 100%;
+  width: 70%;
+}
+
+.mobile-text {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 30%;
 }

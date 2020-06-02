@@ -8,6 +8,8 @@
   height: 100%;
   background: rgba(235, 235, 235, 0.9);
   z-index: 10;
+  animation-name: modal-fadein;
+  animation-duration: 0.3s;
 }
 
 .modal-child {
@@ -18,4 +20,26 @@
   margin: 0 auto;
   top: 8%;
   padding: 25px;
+  animation-name: scrolldown;
+  animation-duration: 0.5s;
+}
+
+@keyframes modal-fadein {
+  from {
+    background: transparent;
+  }
+  to {
+    background: rgba(235, 235, 235, 0.9);
+  }
+}
+
+@keyframes scrolldown {
+  from {
+    top: -100%;
+    bottom: -100%;
+  }
+  to {
+    top: 8%;
+    bottom: 0%;
+  }
 }
