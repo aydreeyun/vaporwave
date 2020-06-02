@@ -11,10 +11,6 @@ const App = () => {
     <>
       <ModalContainer />
       <header>
-        <Link to="/">
-          <h1>VaporWave</h1>
-        </Link>
-        
         <SplashContainer />
       </header>
       

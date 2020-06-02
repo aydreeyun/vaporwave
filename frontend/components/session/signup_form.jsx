@@ -30,7 +30,7 @@ class SignupForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     this.setState({ email: "", password: "" });
-    this.props.processForm(user);
+    this.props.signup(user).then(() => this.props.closeModal());
   }
 
   nextStep() {
@@ -68,6 +68,8 @@ class SignupForm extends React.Component {
             currentStep={this.state.currentStep}
             update={this.update}
             nextButton={nextButton}
+            errors={this.props.errors}
+            receiveErrors={this.props.receiveErrors}
           />
 
           <SignupPasswordForm 

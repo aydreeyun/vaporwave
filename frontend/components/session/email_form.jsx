@@ -6,12 +6,19 @@ class EmailForm extends React.Component {
   }
 
   render() {
+    const errors = this.props.errors.map(error => {
+      return <li>{error}</li>
+    })
+
     if (this.props.currentStep === 1) {
       return (
         <>
           <label>
             <input type="text" onChange={this.props.update("email")} placeholder="Your email address or profile URL" />
           </label>
+          <ul>
+          {errors}
+          </ul>
           <br/>
           {this.props.nextButton}
           <br/>

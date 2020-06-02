@@ -17,8 +17,8 @@ class LoginForm extends React.Component {
     this.prevStep = this.prevStep.bind(this)
   }
 
-  componentDidUnmount() {
-    this.setState({ email: "" });
+  componentDidMount() {
+    this.props.receiveErrors([]);
   }
 
   update(field) {
@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     this.setState({ email: "", password: "" });
-    this.props.login(user);
+    this.props.login(user).then(() => this.props.closeModal());
   }
 
   nextStep() {
@@ -46,25 +46,42 @@ class LoginForm extends React.Component {
     this.setState({ currentStep });
   }
 
+  validEmail(email) {
+    const indexAt = email.split("").indexOf("@");
+    const indexDot = email.split("").indexOf(".");
+
+    if (indexAt === -1 || indexDot === -1) {
+      return false;
+    }
+
+    if (indexAt < indexDot) {
+      return true
+    } else {
+      return false;
+    }
+  }
+
+  validPassword(password) {
+    if (password.length < 6) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   render() {
-    const errors = this.props.errors.map(error => {
-      return <li>{error}</li>
-    })
-
     const prevButton = this.state.currentStep !== 1 ? <button onClick={this.prevStep}>{this.state.email}</button> : "";
     const nextButton = this.state.currentStep < 2 ? <button onClick={this.nextStep}>Continue</button> : "";
 
     return (
       <>
-        <ul>
-          {errors}
-        </ul>
         <form onSubmit={this.handleSubmit}>
           <EmailForm 
             currentStep={this.state.currentStep}
             update={this.update}
             nextButton={nextButton}
+            errors={this.props.errors}
+            receiveErrors={this.props.receiveErrors}
           />
           <PasswordForm 
             currentStep={this.state.currentStep}
