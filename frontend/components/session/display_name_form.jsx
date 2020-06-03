@@ -6,8 +6,8 @@ class DisplayNameForm extends React.Component {
   }
 
   render() {
-    const errors = this.props.errors.map((error, i) => {
-      return <li className="error-msg" key={i} >{error}</li>
+    const errors = this.props.errors.map(error => {
+      return <p className="error-msg">{error}</p>
     });
 
     if (this.props.currentStep === 4) {
@@ -17,9 +17,7 @@ class DisplayNameForm extends React.Component {
             <br/>
             <input type="input" onChange={this.props.update("display_name")}/>
           </label>
-          <ul>
           {errors}
-          </ul>
           {this.props.getStartedButton}
         </>
       );

@@ -9,10 +9,9 @@ class AgeGenderForm extends React.Component {
     const genders = ["Male", "Female", "NA", "Null"];
     const customGender = !genders.includes(this.props.gender) ? 
       <input type="text" placeholder="Custom gender" onChange={this.props.update("gender")} /> : "";
-    const errors = this.props.errors.map((error, i) => {
-      return <li className="error-msg" key={i} >{error}</li>
-    });
-
+      const errors = this.props.errors.map(error => {
+        return <p className="error-msg">{error}</p>
+      });
 
     if (this.props.currentStep === 3) {
       return (
@@ -21,12 +20,7 @@ class AgeGenderForm extends React.Component {
             <br/>
             <input type="number" onChange={this.props.update("age")}/>
           </label>
-          <ul>
           {errors.shift()}
-          </ul>
-
-          <br/>
-
           <label>
             <select onChange={this.props.update("gender")}>
               <option value="Null">Indicate your gender</option>
@@ -39,9 +33,7 @@ class AgeGenderForm extends React.Component {
 
             {customGender}
           </label>
-          <ul>
           {errors.shift()}
-          </ul>
           {this.props.nextButton}
         </>
       );

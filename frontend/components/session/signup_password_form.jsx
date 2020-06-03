@@ -6,8 +6,8 @@ class SignupPasswordForm extends React.Component {
   }
 
   render() {
-    const errors = this.props.errors.map((error, i) => {
-      return <li className="error-msg" key={i} >{error}</li>
+    const errors = this.props.errors.map(error => {
+      return <p className="error-msg">{error}</p>
     });
 
     if (this.props.currentStep === 2) {
@@ -19,9 +19,7 @@ class SignupPasswordForm extends React.Component {
             <br/>
             <input type="password" onChange={this.props.update("password")}/>
           </label>
-          <ul>
             {errors}
-          </ul>
           {this.props.acceptButton}
         </>
       );
