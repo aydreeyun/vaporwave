@@ -14,7 +14,8 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.nextStep = this.nextStep.bind(this);
-    this.prevStep = this.prevStep.bind(this)
+    this.prevStep = this.prevStep.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   componentDidMount() {
@@ -69,12 +70,19 @@ class LoginForm extends React.Component {
     }
   }
 
+  demoLogin(e) {
+    e.preventDefault();
+    const user = { email: "demo@demo.com", password: "password" }
+    this.props.login(user).then(() => this.props.closeModal());
+  }
+
   render() {
     const prevButton = this.state.currentStep !== 1 ? <button onClick={this.prevStep}>{this.state.email}</button> : "";
     const nextButton = this.state.currentStep < 2 ? <button onClick={this.nextStep}>Continue</button> : "";
 
     return (
       <>
+        <button onClick={this.demoLogin}>Demo login</button>
         <form onSubmit={this.handleSubmit}>
           <EmailForm 
             currentStep={this.state.currentStep}

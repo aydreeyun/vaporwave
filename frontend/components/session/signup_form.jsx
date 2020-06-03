@@ -19,7 +19,8 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.nextStep = this.nextStep.bind(this);
-    this.prevStep = this.prevStep.bind(this)
+    this.prevStep = this.prevStep.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   update(field) {
@@ -47,6 +48,12 @@ class SignupForm extends React.Component {
     this.setState({ currentStep });
   }
 
+  demoLogin(e) {
+    e.preventDefault();
+    const user = { email: "demo@demo.com", password: "password" }
+    this.props.login(user).then(() => this.props.closeModal());
+  }
+
   render() {
     const errors = this.props.errors.map(error => {
       return <li>{error}</li>
@@ -59,10 +66,7 @@ class SignupForm extends React.Component {
     
     return (
       <>
-        <ul>
-          {errors}
-        </ul>
-
+        <button onClick={this.demoLogin}>Demo login</button>
         <form onSubmit={this.handleSubmit}>
           <EmailForm 
             currentStep={this.state.currentStep}
