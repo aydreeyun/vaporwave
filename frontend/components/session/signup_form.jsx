@@ -36,7 +36,10 @@ class SignupForm extends React.Component {
   }
 
   update(field) {
-    return e => this.setState({ [field]: e.target.value });
+    return e => {
+      this.props.clearErrors();
+      this.setState({ [field]: e.target.value })
+    };
   }
 
   handleSubmit(e) {
@@ -168,7 +171,6 @@ class SignupForm extends React.Component {
             nextButton={nextButton}
             errors={this.props.errors}
           />
-
           <SignupPasswordForm 
             currentStep={this.state.currentStep}
             update={this.update}
@@ -176,7 +178,6 @@ class SignupForm extends React.Component {
             acceptButton={acceptButton}
             errors={this.props.errors}
           />
-
           <AgeGenderForm 
             currentStep={this.state.currentStep}
             update={this.update}
@@ -184,7 +185,6 @@ class SignupForm extends React.Component {
             nextButton={nextButtonAG}
             errors={this.props.errors}
           />
-
           <DisplayNameForm 
             currentStep={this.state.currentStep}
             update={this.update}

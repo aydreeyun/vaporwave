@@ -19,7 +19,6 @@ class EmailForm extends React.Component {
             <p>or</p>
             <div className="or-line"></div>
           </div>
-
           <label>
             <input class="auth-input"type="text" onChange={this.props.update("email")} placeholder="Your email address or profile URL" />
           </label>

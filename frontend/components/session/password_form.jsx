@@ -6,13 +6,12 @@ class PasswordForm extends React.Component {
   }
 
   render() {
-    const errors = this.props.errors.map(error => {
-      return <p className="error-msg">{error}</p>
+    const errors = this.props.errors.map((error, i) => {
+      return <p key={i} className="error-msg">{error}</p>
     });
-
     if (this.props.currentStep !== 1) {
       return (
-        <>
+        <div class="password-form">
           {this.props.prevButton}
 
           <br/>
@@ -21,9 +20,9 @@ class PasswordForm extends React.Component {
             <input type="password" onChange={this.props.update("password")} placeholder="Your password"/>
           </label>
           {errors}
-          <button>Sign In</button>
-          <a href="#">Don't know your password?</a>
-        </>
+          <button className="auth-form-button">Sign In</button>
+          <a className="forgot-password" href="#">Don't know your password?</a>
+        </div>
       );
     } else {
       return null;
