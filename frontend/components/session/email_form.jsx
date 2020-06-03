@@ -7,14 +7,14 @@ class EmailForm extends React.Component {
 
   render() {
     const errors = this.props.errors.map((error, i) => {
-      return <li key={i} >{error}</li>
+      return <li className="error-msg" key={i} >{error}</li>
     });
 
     if (this.props.currentStep === 1) {
       return (
         <>
           <label>
-            <input type="text" onChange={this.props.update("email")} placeholder="Your email address or profile URL" />
+            <input class="auth-input"type="text" onChange={this.props.update("email")} placeholder="Your email address or profile URL" />
           </label>
           <ul>
           {errors}

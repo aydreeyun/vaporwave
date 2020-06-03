@@ -12,13 +12,15 @@ class SignupForm extends React.Component {
       email: "",
       password: "",
       age: "",
-      gender: "NA",
+      gender: "Null",
       displayName: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.nextStep = this.nextStep.bind(this);
+    this.nextStepEmail = this.nextStepEmail.bind(this);
+    this.nextStepPassword = this.nextStepPassword.bind(this);
+    this.nextStepAgeGender = this.nextStepAgeGender.bind(this);
     this.prevStep = this.prevStep.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
 
@@ -41,7 +43,6 @@ class SignupForm extends React.Component {
     e.preventDefault();
     this.props.clearErrors();
     const user = this.state;
-    this.setState({ email: "", password: "" });
     this.props.signup(user).then(() => this.props.closeModal());
   }
 
@@ -58,18 +59,36 @@ class SignupForm extends React.Component {
     }
   }
 
-  nextStepPassword() {
+  nextStepPassword(e) {
+    e.preventDefault();
+    this.props.clearErrors();
     let currentStep = this.state.currentStep;
 
-    currentStep = currentStep >= 3 ? 4 : currentStep + 1;
-    this.setState({ currentStep });
+    if (this.validPassword(this.state.password)) {
+      currentStep = currentStep >= 3 ? 4 : currentStep + 1;
+      this.setState({ currentStep });
+    } else {
+      this.props.receiveError(this.passwordError);
+    }
   }
 
-  nextStepAgeGender() {
+  nextStepAgeGender(e) {
+    e.preventDefault();
+    this.props.clearErrors();
     let currentStep = this.state.currentStep;
+    debugger
+    if (!this.validAge(this.state.age)) {
+      this.props.receiveError(this.ageError);
+    }
 
-    currentStep = currentStep >= 3 ? 4 : currentStep + 1;
-    this.setState({ currentStep });
+    if (!this.validGender(this.state.gender)) {
+      this.props.receiveError(this.genderError);
+    }
+
+    if (this.validAge(this.state.age) && this.validGender(this.state.gender)) {
+      currentStep = currentStep >= 3 ? 4 : currentStep + 1;
+      this.setState({ currentStep });
+    } 
   }
 
   prevStep() {
@@ -102,6 +121,31 @@ class SignupForm extends React.Component {
     }
   }
 
+  validAge(age) {
+    if (!age || age < 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validGender(gender) {
+    debugger
+    if (gender === "Null") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validDisplayName(name) {
+    if (name.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   demoLogin(e) {
     e.preventDefault();
     const user = { email: "demo@demo.com", password: "password" }
@@ -109,14 +153,11 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    const errors = this.props.errors.map(error => {
-      return <li>{error}</li>
-    })
-    
     const prevButton = this.state.currentStep !== 1 ? <button onClick={this.prevStep}>{this.state.email}</button> : "";
-    const nextButton = this.state.currentStep < 4 ? <button onClick={this.nextStep}>Continue</button> : "";
-    const acceptButton = this.state.currentStep !== 1 ? <button onClick={this.nextStep}>Accept & continue</button> : "";
-    const getStartedButton = this.state.currentStep !== 1 ? <button onClick={this.nextStep}>Get started</button> : "";
+    const nextButton = this.state.currentStep < 4 ? <button onClick={this.nextStepEmail}>Continue</button> : "";
+    const acceptButton = this.state.currentStep !== 1 ? <button onClick={this.nextStepPassword}>Accept & continue</button> : "";
+    const nextButtonAG = this.state.currentStep < 4 ? <button onClick={this.nextStepAgeGender}>Continue</button> : "";
+    const getStartedButton = this.state.currentStep !== 1 ? <button onClick={this.handleSubmit}>Get started</button> : "";
     
     return (
       <>
@@ -127,7 +168,6 @@ class SignupForm extends React.Component {
             update={this.update}
             nextButton={nextButton}
             errors={this.props.errors}
-            receiveErrors={this.props.receiveErrors}
           />
 
           <SignupPasswordForm 
@@ -135,19 +175,22 @@ class SignupForm extends React.Component {
             update={this.update}
             prevButton={prevButton}
             acceptButton={acceptButton}
+            errors={this.props.errors}
           />
 
           <AgeGenderForm 
             currentStep={this.state.currentStep}
             update={this.update}
             gender={this.state.gender}
-            nextButton={nextButton}
+            nextButton={nextButtonAG}
+            errors={this.props.errors}
           />
 
           <DisplayNameForm 
             currentStep={this.state.currentStep}
             update={this.update}
             getStartedButton={getStartedButton}
+            errors={this.props.errors}
           />
         </form>
       </>

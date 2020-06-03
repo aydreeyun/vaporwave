@@ -7,7 +7,7 @@ class PasswordForm extends React.Component {
 
   render() {
     const errors = this.props.errors.map((error, i) => {
-      return <li key={i} >{error}</li>
+      return <li className="error-msg" key={i} >{error}</li>
     });
 
     if (this.props.currentStep !== 1) {
