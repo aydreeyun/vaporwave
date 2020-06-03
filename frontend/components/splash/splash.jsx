@@ -21,7 +21,7 @@ class Splash extends React.Component {
           <div className="splash-banner">
             <div className="splash-banner-navbar">
               <div className="splash-banner-left">
-                <h1>VaporWave</h1>
+                <img src={window.logo} alt="VaporWave"/>
               </div>
 
               <div className="splash-banner-right">
@@ -45,7 +45,7 @@ class Splash extends React.Component {
             <input className="splash-search-input" type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
             <button><i className="fas fa-search"></i></button>
             <p>or</p>
-            <button className="splash-button-orange">Upload your own</button>
+            <button className="splash-search-button">Upload your own</button>
           </div>
 
           <div className="splash-tracks">
@@ -58,21 +58,25 @@ class Splash extends React.Component {
             <div className="mobile-img"></div>
             <div className="mobile-text">
               <h1>Never stop listening</h1>
+              <div className="mobile-border"></div>
               <h3>VaporWave is available on Web, iOS, Android, Sonos, Chromecast, and Xbox One.</h3>
             </div>
           </div>
 
           <div className="splash-creators">
-            <h1 className="splash-header">Calling all creators</h1>
-            <h3>Get on SoundCloud to connect with fans, share your sounds, and grow your audience. What are you waiting for?</h3>
-            <button>Find out more</button>
+            <div className="splash-creators-text">
+              <h1 className="splash-header">Calling all creators</h1>
+              <h3>Get on VaporWave to connect with fans, share your sounds, and grow your audience. What are you waiting for?</h3>
+              <button>Find out more</button>
+            </div>
           </div>
 
           <div className="splash-footer">
             <h1>Thanks for listening. Now join in.</h1>
             <h3>Save tracks, follow artists and build playlists. All for free</h3>
             <button className="splash-signup" onClick={() => this.props.openModal("signup")}>Create account</button>
-            Already have an account? <button className="splash-login" onClick={() => this.props.openModal("login")}>Sign In</button>
+            <p>Already have an account?</p>
+            <button className="splash-login" onClick={() => this.props.openModal("login")}>Sign In</button>
           </div>
         </div>
       );
