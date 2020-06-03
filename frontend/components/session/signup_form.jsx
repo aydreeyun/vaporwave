@@ -169,6 +169,7 @@ class SignupForm extends React.Component {
             currentStep={this.state.currentStep}
             update={this.update}
             nextButton={nextButton}
+            demoLogin={this.demoLogin}
             errors={this.props.errors}
           />
           <SignupPasswordForm 

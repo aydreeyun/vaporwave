@@ -13,7 +13,7 @@ class EmailForm extends React.Component {
     if (this.props.currentStep === 1) {
       return (
         <>
-          <a className="auth-form-link" onClick={this.demoLogin}>Demo login</a>
+          <a className="auth-form-link" onClick={this.props.demoLogin}>Demo login</a>
           <div className="email-or">
             <div className="or-line"></div>
             <p>or</p>
