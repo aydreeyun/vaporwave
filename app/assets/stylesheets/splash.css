@@ -321,7 +321,7 @@ html {
   margin-top: 20px;
 }
 
-.splash-signup {
+.splash-endpage > button {
   margin-top: 25px;
   border-radius: 3px;
   padding: 11.5px 40px;
