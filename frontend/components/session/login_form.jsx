@@ -61,7 +61,7 @@ class LoginForm extends React.Component {
     let currentStep = this.state.currentStep;
 
     currentStep = currentStep <= 1 ? 1 : currentStep - 1;
-    this.setState({ currentStep });
+    this.setState({ currentStep, email: "" });
   }
 
   validEmail(email) {
