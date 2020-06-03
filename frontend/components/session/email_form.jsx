@@ -6,9 +6,9 @@ class EmailForm extends React.Component {
   }
 
   render() {
-    const errors = this.props.errors.map(error => {
-      return <li>{error}</li>
-    })
+    const errors = this.props.errors.map((error, i) => {
+      return <li key={i} >{error}</li>
+    });
 
     if (this.props.currentStep === 1) {
       return (
@@ -23,7 +23,7 @@ class EmailForm extends React.Component {
           {this.props.nextButton}
           <br/>
           <div>
-            <a href="#">Need help?</a>
+            <a href="#" className="need-help">Need help?</a>
             <p>We may use your email and devices for updates and tips on VaporWave's products and services, and for activities notifications. You can unsubscribe for free at any time in your notification settings.</p>
             <p>We may use information you provide us in order to show you targeted ads as described in our <a href="#">Privacy Policy</a>.</p>
           </div>

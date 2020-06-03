@@ -21,6 +21,16 @@ class SignupForm extends React.Component {
     this.nextStep = this.nextStep.bind(this);
     this.prevStep = this.prevStep.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+
+    this.emailError = "Enter a valid email address or profile url."
+    this.passwordError = "Use at least 6 characters."
+    this.ageError = "Enter your age."
+    this.genderError = "Please indicate your gender."
+    this.displayNameError = "Enter your display name. You can change it later."
+  }
+
+  componentDidMount() {
+    this.props.receiveErrors([]);
   }
 
   update(field) {
@@ -29,12 +39,33 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.clearErrors();
     const user = this.state;
     this.setState({ email: "", password: "" });
     this.props.signup(user).then(() => this.props.closeModal());
   }
 
-  nextStep() {
+  nextStepEmail(e) {
+    e.preventDefault();
+    this.props.clearErrors();
+    let currentStep = this.state.currentStep;
+
+    if (this.validEmail(this.state.email)) {
+      currentStep = currentStep >= 3 ? 4 : currentStep + 1;
+      this.setState({ currentStep });
+    } else {
+      this.props.receiveError(this.emailError);
+    }
+  }
+
+  nextStepPassword() {
+    let currentStep = this.state.currentStep;
+
+    currentStep = currentStep >= 3 ? 4 : currentStep + 1;
+    this.setState({ currentStep });
+  }
+
+  nextStepAgeGender() {
     let currentStep = this.state.currentStep;
 
     currentStep = currentStep >= 3 ? 4 : currentStep + 1;
@@ -46,6 +77,29 @@ class SignupForm extends React.Component {
 
     currentStep = currentStep <= 1 ? 1 : currentStep - 1;
     this.setState({ currentStep });
+  }
+
+  validEmail(email) {
+    const indexAt = email.split("").indexOf("@");
+    const indexDot = email.split("").indexOf(".");
+
+    if (indexAt === -1 || indexDot === -1) {
+      return false;
+    }
+
+    if (indexAt < indexDot) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  validPassword(password) {
+    if (password.length < 6) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   demoLogin(e) {
@@ -66,8 +120,8 @@ class SignupForm extends React.Component {
     
     return (
       <>
-        <button onClick={this.demoLogin}>Demo login</button>
-        <form onSubmit={this.handleSubmit}>
+        <button className="auth-form-button" onClick={this.demoLogin}>Demo login</button>
+        <form className="auth-form" onSubmit={this.handleSubmit}>
           <EmailForm 
             currentStep={this.state.currentStep}
             update={this.update}

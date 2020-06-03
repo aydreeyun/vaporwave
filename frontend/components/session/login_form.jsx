@@ -16,6 +16,9 @@ class LoginForm extends React.Component {
     this.nextStep = this.nextStep.bind(this);
     this.prevStep = this.prevStep.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+
+    this.emailError = "Enter a valid email address or profile url."
+    this.passwordError = "Enter a valid password."
   }
 
   componentDidMount() {
@@ -28,16 +31,27 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.clearErrors();
     const user = this.state;
-    this.setState({ email: "", password: "" });
-    this.props.login(user).then(() => this.props.closeModal());
+
+    if (this.validPassword(this.state.password)) {
+      this.props.login(user).then(() => this.props.closeModal());
+    } else {
+      this.props.receiveError(this.passwordError);
+    }
   }
 
-  nextStep() {
+  nextStep(e) {
+    e.preventDefault();
+    this.props.clearErrors();
     let currentStep = this.state.currentStep;
 
-    currentStep = currentStep >= 1 ? 2 : currentStep + 1;
-    this.setState({ currentStep });
+    if (this.validEmail(this.state.email)) {
+      currentStep = currentStep >= 1 ? 2 : currentStep + 1;
+      this.setState({ currentStep });
+    } else {
+      this.props.receiveError(this.emailError);
+    }
   }
 
   prevStep() {
@@ -56,14 +70,14 @@ class LoginForm extends React.Component {
     }
 
     if (indexAt < indexDot) {
-      return true
+      return true;
     } else {
       return false;
     }
   }
 
   validPassword(password) {
-    if (password.length < 6) {
+    if (password.length === 0) {
       return false;
     } else {
       return true;
@@ -77,23 +91,23 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const prevButton = this.state.currentStep !== 1 ? <button onClick={this.prevStep}>{this.state.email}</button> : "";
+    const prevButton = this.state.currentStep !== 1 ? <button onClick={this.prevStep}><i class="fas fa-caret-left"></i> {this.state.email}</button> : "";
     const nextButton = this.state.currentStep < 2 ? <button onClick={this.nextStep}>Continue</button> : "";
 
     return (
       <>
-        <button onClick={this.demoLogin}>Demo login</button>
-        <form onSubmit={this.handleSubmit}>
+        <button className="auth-form-button" onClick={this.demoLogin}>Demo login</button>
+        <form className="auth-form" onSubmit={this.handleSubmit}>
           <EmailForm 
             currentStep={this.state.currentStep}
             update={this.update}
             nextButton={nextButton}
             errors={this.props.errors}
-            receiveErrors={this.props.receiveErrors}
           />
           <PasswordForm 
             currentStep={this.state.currentStep}
             update={this.update}
+            errors={this.props.errors}
             prevButton={prevButton}
           />
         </form>
