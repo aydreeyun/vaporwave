@@ -13,8 +13,11 @@ class Navbar extends React.Component {
         <Link className="navbar-right-link" to="/discover">Home</Link>
         <a className="navbar-right-link" href="#">Stream</a>
         <a className="navbar-right-link" href="#">Library</a>
-        <input className="navbar-search" type="text" placeholder="Search"/>
-        <button className="navbar-search-button"><i className="fas fa-search"></i></button>
+        <div className="navbar-search">
+          <input className="navbar-search-input" type="text" placeholder="Search"/>
+          <button className="navbar-search-button"><i className="fas fa-search"></i></button>
+        </div>
+        
         <a className="navbar-left-link" href="#">Upgrade</a>
         <Link className="navbar-left-link" to="/upload">Upload</Link>
         <Link to={`/${this.props.user.display_name}`}>{this.props.user.display_name} <i className="fas fa-angle-down"></i></Link>

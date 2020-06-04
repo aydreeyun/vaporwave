@@ -20,6 +20,11 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   attr_reader :password
 
+  has_many :songs,
+    foreign_key: :artist_id,
+    class_name: :Song,
+    dependent: :destroy
+
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)
 

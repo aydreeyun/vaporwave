@@ -5,7 +5,7 @@
   background-color: #333;
   height: 45px;
   width: 100%;
-  line-height: 2.5;
+  line-height: 3;
   font-size: 14px;
   display: flex;
   justify-content: center;
@@ -19,16 +19,16 @@
 }
 
 .navbar button:hover {
-  color: rgb(255, 147, 165);
+  color: rgb(0, 255, 255);
 }
-
+// rgb(255, 147, 165)
 .navbar a {
   text-decoration: none;
   color: rgb(0, 207, 207);
 }
 
 .navbar a:hover {
-  color: rgb(255, 147, 165);
+  color: rgb(0, 255, 255);
 }
 
 .navbar a:nth-child(2) {
@@ -36,8 +36,58 @@
   background: black;
 }
 
+.navbar-right-link {
+  width: 100px;
+  text-align: center;
+  border-right: 1px solid black;
+}
+
+.navbar-search {
+  margin-left: 10px;
+}
+
+.navbar-search-input {
+  height: 26px;
+  margin-top: 8px;
+  width: 400px;
+  background: lightgray;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.navbar-search-input:focus {
+  animation-name: fade-in;
+  animation-duration: 0.5s;
+  background: white;
+}
+
+.navbar-search-input:not(:focus) {
+  animation-name: fade-out;
+  animation-duration: 0.5s;
+  background: lightgray;
+}
 
 .discover {
   margin-top: 45px;
   height: 5000px;
+}
+
+@keyframes fade-in {
+  from {
+    background: lightgray;
+  }
+  to {
+    background: white;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    background: white;
+  }
+  to {
+    background: lightgray;
+  }
 }
