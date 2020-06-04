@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import NavbarContainer from '../navbar/navbar_container';
+import DiscoverContainer from '../discover/discover_container';
 
 class Splash extends React.Component {
   constructor(props) {
@@ -10,8 +12,8 @@ class Splash extends React.Component {
     if (this.props.user) {
       return (
         <>
-          <p>Welcome {this.props.user.display_name}</p>
-          <button onClick={this.props.logout}>Log Out</button>
+          <NavbarContainer />
+          <DiscoverContainer />
         </>
       );
     } else {

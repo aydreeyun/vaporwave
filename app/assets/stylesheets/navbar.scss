@@ -1,0 +1,43 @@
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  background-color: #333;
+  height: 45px;
+  width: 100%;
+  line-height: 2.5;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar button {
+  outline: none;
+  border: none;
+  background: transparent;
+  color: rgb(0, 207, 207);
+}
+
+.navbar button:hover {
+  color: rgb(255, 147, 165);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: rgb(0, 207, 207);
+}
+
+.navbar a:hover {
+  color: rgb(255, 147, 165);
+}
+
+.navbar a:nth-child(2) {
+  color: rgb(0, 255, 255);
+  background: black;
+}
+
+
+.discover {
+  margin-top: 45px;
+  height: 5000px;
+}
