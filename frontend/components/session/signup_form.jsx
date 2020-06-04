@@ -79,7 +79,6 @@ class SignupForm extends React.Component {
     e.preventDefault();
     this.props.clearErrors();
     let currentStep = this.state.currentStep;
-    debugger
     if (!this.validAge(this.state.age)) {
       this.props.receiveError(this.ageError);
     }
@@ -133,7 +132,6 @@ class SignupForm extends React.Component {
   }
 
   validGender(gender) {
-    debugger
     if (gender === "Null") {
       return false;
     } else {

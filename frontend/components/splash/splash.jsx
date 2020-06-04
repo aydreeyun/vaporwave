@@ -12,8 +12,8 @@ class Splash extends React.Component {
     if (this.props.user) {
       return (
         <>
-          <NavbarContainer />
-          <DiscoverContainer />
+          
+          {/* <DiscoverContainer /> */}
         </>
       );
     } else {

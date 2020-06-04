@@ -15,17 +15,14 @@ class Modal extends React.Component {
     let component;
     switch (this.props.modal) {
       case 'login':
-        debugger
         component = <LoginFormContainer />;
         break;
       case 'signup':
-        debugger
         component = <SignupFormContainer />;
         break;
       default:
         return null;
     }
-    debugger
     return (
       <div className="modal-background" onClick={this.props.closeModal}>
         <button className="modal-close-button" onClick={this.props.closeModal}>x</button>

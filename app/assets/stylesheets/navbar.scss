@@ -3,25 +3,33 @@
   position: fixed;
   top: 0;
   background-color: #333;
-  height: 45px;
+  height: 46px;
   width: 100%;
-  line-height: 3;
-  font-size: 14px;
+  line-height: 3.3;
+  font-size: 13.8px;
   display: flex;
   justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.navbar button {
+.navbar-logo {
+  background-image: url(logo2.png);
+  background-size: 100% 100%;
+  width: 70px;
+  height: 100%;
+}
+
+.navbar > button {
   outline: none;
   border: none;
   background: transparent;
   color: rgb(0, 207, 207);
 }
 
-.navbar button:hover {
+.navbar > button:hover {
   color: rgb(0, 255, 255);
 }
-// rgb(255, 147, 165)
+
 .navbar a {
   text-decoration: none;
   color: rgb(0, 207, 207);
@@ -36,25 +44,55 @@
   background: black;
 }
 
-.navbar-right-link {
-  width: 100px;
+.navbar-left-link {
+  width: 103px;
   text-align: center;
   border-right: 1px solid black;
 }
 
 .navbar-search {
   margin-left: 10px;
+  width: 450px;
+  display: flex;
+  position: relative;
 }
 
 .navbar-search-input {
   height: 26px;
-  margin-top: 8px;
-  width: 400px;
+  margin-top: 9px;
+  width: 418px;
   background: lightgray;
   outline: none;
   border: none;
-  border-radius: 5px;
-  padding-left: 10px;
+  border-radius: 4px;
+  padding-left: 8px;
+  font-size: 14px;
+}
+
+.navbar-search-button {
+  width: 15px;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  height: 15px;
+  border-radius: 0 5px 5px 0;
+  position: absolute;
+  overflow: visible;
+  cursor: pointer;
+  top: 14px;
+  right: 36px;
+}
+
+.upgrade {
+  color: rgb(255, 182, 222);
+}
+
+.upgrade:hover {
+  color: rgb(255, 133, 200);
+}
+
+.navbar-search-button i {
+  font-size: 15px;
 }
 
 .navbar-search-input:focus {
@@ -64,13 +102,40 @@
 }
 
 .navbar-search-input:not(:focus) {
+  background: lightgray;
   animation-name: fade-out;
   animation-duration: 0.5s;
-  background: lightgray;
+}
+
+.navbar-right-link {
+  width: 67px;
+  padding-right: 8px;
+}
+
+.navbar-user {
+  width: 100px;
+  padding: 0 5px 0 15px;
+}
+
+.navbar-user i {
+  font-size: 12px;
+  margin-left: 8px;
+  position: absolute;
+  top: 17px;
+}
+
+.navbar-icon-button {
+  width: 46px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.navbar-icon-button i {
+  font-size: 16px;
 }
 
 .discover {
-  margin-top: 45px;
+  margin-top: 46px;
   height: 5000px;
 }
 
