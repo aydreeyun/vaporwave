@@ -1,12 +1,12 @@
 class Api::SongsController < ApplicationController
   def index
-    @user = User.find_by(params[:user_id])
+    @user = User.find(params[:user_id])
     @songs = @user.songs
     render :index
   end
 
   def show
-    @song = Song.find_by(params[:id])
+    @song = Song.find(params[:id])
     render :show
   end
 
@@ -21,7 +21,7 @@ class Api::SongsController < ApplicationController
   end
 
   def destroy
-    @song = current_user.songs.find_by(params[:id])
+    @song = current_user.songs.find(params[:id])
 
     if @song
       @song.destroy
