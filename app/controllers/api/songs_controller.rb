@@ -1,6 +1,7 @@
 class Api::SongsController < ApplicationController
   def index
-    @songs = Song.all
+    @user = User.find_by(params[:user_id])
+    @songs = @user.songs
     render :index
   end
 
@@ -16,14 +17,6 @@ class Api::SongsController < ApplicationController
       render :show
     else
       render json: @song.errors.full_messages, status: 422
-    end
-  end
-
-  def update
-    @song = Song.find_by(params[:id])
-
-    if @song.artist_id === current_user.id && @song.update(song_params)
-      render :show
     end
   end
 

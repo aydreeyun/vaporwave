@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import { login, logout, signup } from './actions/session_actions';
+import { fetchSongs, fetchSong, createSong, deleteSong } from './actions/song_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // TESTS
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.login = login;
-  window.logout = logout;
-  window.signup = signup;
+  window.fetchSongs = fetchSongs;
+  window.fetchSong = fetchSong;
+  window.createSong = createSong;
+  window.deleteSong = deleteSong;
 });

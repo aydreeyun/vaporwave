@@ -9,8 +9,9 @@ import ModalContainer from './modal/modal_container';
 const App = () => {
   return (
     <>
-      <ModalContainer />
       <SplashContainer />
+      <ModalContainer />
+      
     </>
   );
 };
