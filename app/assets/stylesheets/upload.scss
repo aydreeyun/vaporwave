@@ -1,4 +1,4 @@
-.discover {
+.upload-page {
   width: 68%;
   height: 1080px;
   margin: 0 auto;
@@ -6,4 +6,13 @@
   font-family: 'Open Sans', sans-serif;
   min-width: 920px;
   background: white;
+}
+
+.upload-form button {
+  height: 100px;
+  width: 200px;
+}
+
+#file {
+  display: none;
 }

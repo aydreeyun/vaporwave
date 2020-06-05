@@ -14,19 +14,14 @@ class Discover extends React.Component {
 
   render() {
     return (
-      <div className="discover">
+      <>
         <NavbarContainer />
-        <p>Welcome {this.props.user.display_name}</p>
-        <button onClick={this.props.logout}>Log Out</button>
-        <br/>
-        <Link to="songs/2">2</Link>
-        <br/>
-        <Link to="songs/3">3</Link>
-        <br/>
-        <Link to="songs/4">4</Link>
-        <br/>
-        <Link to="songs/5">5</Link>
-      </div>
+        <div className="discover">
+          <p>Welcome {this.props.user.display_name}</p>
+          <button onClick={this.props.logout}>Log Out</button>
+        </div>
+      </>
+
     )
   }
 }

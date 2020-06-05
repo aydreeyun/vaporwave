@@ -10,6 +10,7 @@ const mSTP = (state, ownProps) => {
   return {
     song: song,
     artist: artist,
+    currentUser: state.entities.users[state.session.id],
   };
 };
 
