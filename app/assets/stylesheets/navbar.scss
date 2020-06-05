@@ -67,6 +67,7 @@
   border-radius: 4px;
   padding-left: 8px;
   font-size: 14px;
+  transition: background 0.5s;
 }
 
 .navbar-search-button {
@@ -96,15 +97,11 @@
 }
 
 .navbar-search-input:focus {
-  animation-name: fade-in;
-  animation-duration: 0.5s;
   background: white;
 }
 
 .navbar-search-input:not(:focus) {
   background: lightgray;
-  animation-name: fade-out;
-  animation-duration: 0.5s;
 }
 
 .navbar-right-link {
@@ -132,27 +129,4 @@
 
 .navbar-icon-button i {
   font-size: 16px;
-}
-
-.discover {
-  margin-top: 46px;
-  height: 5000px;
-}
-
-@keyframes fade-in {
-  from {
-    background: lightgray;
-  }
-  to {
-    background: white;
-  }
-}
-
-@keyframes fade-out {
-  from {
-    background: white;
-  }
-  to {
-    background: lightgray;
-  }
 }

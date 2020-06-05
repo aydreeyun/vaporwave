@@ -1,7 +1,6 @@
 class Api::SongsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
-    @songs = @user.songs
+    @songs = Song.all
     render :index
   end
 

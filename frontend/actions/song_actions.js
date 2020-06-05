@@ -25,9 +25,10 @@ const removeSong = songId => {
   };
 };
 
-export const fetchSongs = userId => dispatch => {
-  return SongAPIUtil.fetchSongs(userId)
-    .then(songs => dispatch(receiveSongs(songs)));
+export const fetchSongs = () => dispatch => {
+  return SongAPIUtil.fetchSongs()
+    .then(songs => dispatch(receiveSongs(songs)))
+      .then(res => window.localStorage.setItem('songs', JSON.stringify(res.songs)));
 };
 
 export const fetchSong = songId => dispatch => {
