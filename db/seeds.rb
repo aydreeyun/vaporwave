@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 demo_user = User.create(email: "demo@demo.com", password: "password", age: "22", gender: "NA", display_name: "DemoUser")
+
+# song_1 = Song.create(artist_id: )
