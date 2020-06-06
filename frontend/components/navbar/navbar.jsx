@@ -50,6 +50,7 @@ class Navbar extends React.Component {
     const userDrop = this.state.userDropdown ? 
     <div className="user-dropdown">
       <Link to={`${user.display_name}`}>
+       <i className="fas fa-user"></i>
         Profile
       </Link>
     </div>
@@ -62,11 +63,12 @@ class Navbar extends React.Component {
 
     const focused = this.props.url === "/discover" ? "focused" : ""
 
+    // onBlur={this.handleUserBlur}
     return (
       <div className="navbar">
         <Link className="navbar-logo" to="/discover"></Link>
         <Link className={`navbar-left-link ${focused}`} to="/discover">Home</Link>
-        <a href="https://github.com/aydreeyun" className="navbar-left-link">GitHub</a>
+        <a href="https://github.com/aydreeyun/vaporwave" className="navbar-left-link">GitHub</a>
         <a href="https://www.linkedin.com/in/adriantaehyunkim/" className="navbar-left-link">LinkedIn</a>
         <div className="navbar-search">
           <input className="navbar-search-input" type="text" placeholder="Search"/>
@@ -74,7 +76,7 @@ class Navbar extends React.Component {
         </div>
         <a className="navbar-right-link upgrade">Upgrade</a>
         <Link className="navbar-right-link" to="/upload">Upload</Link>
-        <a tabIndex="0" className="navbar-user" onClick={this.handleUserDropdown} onBlur={this.handleUserBlur}>
+        <a tabIndex="0" className="navbar-user" onClick={this.handleUserDropdown} >
           {user.display_name}
           <i className="fas fa-angle-down"></i>
         </a>

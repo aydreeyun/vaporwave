@@ -5,7 +5,11 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mSTP = (state, ownProps) => {
   const song = state.entities.songs[ownProps.match.params.songId];
-  const artist = state.entities.users[song.artist_id];
+  let artist;
+
+  if (song) {
+    artist = state.entities.users[song.artist_id];
+  }
 
   return {
     song: song,
