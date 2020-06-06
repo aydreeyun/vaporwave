@@ -1,5 +1,5 @@
 .navbar {
-  overflow: hidden;
+  // overflow: hidden;
   position: fixed;
   top: 0;
   background-color: #333;
@@ -31,7 +31,6 @@
 }
 
 .navbar a {
-  text-decoration: none;
   color: rgb(0, 207, 207);
 }
 
@@ -39,7 +38,7 @@
   color: rgb(0, 255, 255);
 }
 
-.navbar a:nth-child(2) {
+.focused {
   color: rgb(0, 255, 255);
   background: black;
 }
@@ -112,6 +111,11 @@
 .navbar-user {
   width: 100px;
   padding: 0 5px 0 15px;
+  position: relative;
+}
+
+.navbar-user:focus {
+  outline: none;
 }
 
 .navbar-user i {
@@ -125,8 +129,34 @@
   width: 46px;
   padding-right: 20px;
   cursor: pointer;
+  position: relative;
 }
 
 .navbar-icon-button i {
   font-size: 16px;
+}
+
+.user-dropdown {
+  position: relative;
+  // z-index: 10;
+}
+
+.user-dropdown a {
+  position: absolute;
+  top: 46px;
+  background: cyan;
+  color: black;
+  right: 50px;
+  z-index: 10;
+}
+
+.option-dropdown {
+  position: relative;
+
+}
+
+.option-dropdown button {
+  position: absolute;
+  top: 46px;
+  width: 100px;
 }

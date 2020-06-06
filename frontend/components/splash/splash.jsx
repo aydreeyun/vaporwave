@@ -20,7 +20,7 @@ class Splash extends React.Component {
             <button className="splash-login" onClick={() => this.props.openModal("login")}>Sign in</button>
             <br/>
             <button className="splash-signup" onClick={() => this.props.openModal("signup")}>Create account</button>
-            <a href="#">For Creators</a>
+            <a>For Creators</a>
             </div>
           </div>
 

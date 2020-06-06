@@ -26,11 +26,11 @@ class EmailForm extends React.Component {
           {this.props.nextButton}
           <br/>
           <div className="disclaimer">
-            <a href="#" className="need-help">Need help?</a>
+            <a className="need-help">Need help?</a>
             <br/>
             <div className="disclaimer-text">
               <p>We may use your email and devices for updates and tips on VaporWave's products and services, and for activities notifications. You can unsubscribe for free at any time in your notification settings.</p>
-              <p>We may use information you provide us in order to show you targeted ads as described in our <a href="#">Privacy Policy</a>.</p>
+              <p>We may use information you provide us in order to show you targeted ads as described in our <a>Privacy Policy</a>.</p>
             </div>
           </div>
         </>

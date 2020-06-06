@@ -15,10 +15,11 @@ class Discover extends React.Component {
   render() {
     return (
       <>
-        <NavbarContainer />
+        <NavbarContainer 
+          url={this.props.history.location.pathname}
+        />
         <div className="discover">
-          <p>Welcome {this.props.user.display_name}</p>
-          <button onClick={this.props.logout}>Log Out</button>
+          
         </div>
       </>
 
