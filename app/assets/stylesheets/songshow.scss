@@ -15,12 +15,12 @@
 .song-banner {
   width: 100%;
   height: 380px;
-  background: cyan;
+  background: linear-gradient(to top right, cyan, rgb(255, 133, 200));
 }
 
 .song-banner-info {
-  width: 60%;
-  margin-left: 105px;
+  width: 750px;
+  margin-left: 100px;
 }
 
 .song-banner-top {
@@ -29,25 +29,26 @@
 }
 
 .song-banner a {
-  color: cyan;
+  color: rgb(0, 207, 207);
 }
 
 .song-banner a:hover {
-  color: white;
+  color: cyan;
 }
 
 .song-banner-artist {
   display: inline-block;
   background: black;
-  font-size: 15.8px;
+  font-size: 15.4px;
   margin-top: 28px;
-  padding: 5px 6px;
+  padding: 4px 6px 5px 6px;
 }
 
 .song-banner-created-at {
   margin-top: 30px;
-  line-height: 1.5;
-  // color: white;
+  font-size: 15.5px;
+  line-height: 1.2;
+  color: #333;
 }
 
 .song-banner-bottom {
@@ -60,99 +61,188 @@
 .song-banner-title {
   display: inline-block;
   background: black;
-  font-size: 24px;
-  padding: 6px 7px;
+  font-size: 22.8px;
+  padding: 8px 7px;
   color: cyan;
 }
 
 .song-banner-genre {
-  display: inline-block;
-  background: gray;
+  display: block;
+  background: rgb(255, 133, 200);
   border-radius: 10px;
-  color: white;
+  font-size: 15.5px;
+  color: #333;
   height: fit-content;
-  padding: 3px 7px;
+  padding: 3px 8px;
   cursor: pointer;
+  position: relative;
+  top: 4px;
 }
 
 .song-banner-genre:hover {
-  background: black;
+  background: rgb(255, 182, 222);
 }
 
 .song-comments {
   min-height: 550px;
   background: white;
-  padding: 20px 0 0 40px;
+  padding: 20px 0 0 30px;
 }
 
 .song-comments-container {
-  width: 67.5%;
+  width: 815px;
 }
 
 .song-comments-form {
-  background: lightgray;
-  height: 40px;
+  background: #f2f2f2;
+  height: 38px;
   display: flex;
   align-items: center;
-  padding-left: 40px;
+  padding-left: 45px;
+  width: 770px;
+  border: 1px solid #e5e5e5;
+  transition: background 0.3s, border 0.3s;
 }
 
 .song-comments-form input {
   width: 100%;
   box-sizing: border-box;
-  border: 0.5px solid gray;
-  border-radius: 3px;
-  height: 65%;
-  font-size: 14px;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  height: 27px;
+  font-size: 14.5px;
   padding-left: 10px;
   margin-right: 6px;
+  cursor: pointer;
+  transition: border 0.3s;
 }
 
-.song-comments-form:active {
-  background: gray;
+.song-comments-form input::placeholder {
+  color: rgb(150, 150, 150);
+}
+
+.song-comments-form:focus-within {
+  background: cyan;
+  border: 1px solid rgb(0, 207, 207);
 }
 
 .song-comments-form input:focus {
   outline: none;
+  border: 1px solid rgb(0, 207, 207);
 }
 
 .song-comments-stats {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
+  margin-top: 15px;
   font-size: 14px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid lightgray;
 }
 
 .song-stats-buttons button {
   background: white;
   outline: none;
   border: 1px solid lightgray;
+  border-radius: 3px;
   margin-right: 5px;
   cursor: pointer;
+  padding: 3px 10px;
+  font-size: 14px;
+  height: 26px;
+}
+
+.song-stats-buttons button:not(:first-of-type) {
+  padding: 3px 9px;
+}
+
+.song-stats-buttons button:hover {
+  border: 1px solid gray;
+}
+
+.song-stats-buttons button:focus {
+  color: rgb(255, 133, 200);
+}
+
+.song-stats-buttons button:focus:hover {
+  border: 1px solid rgb(255, 133, 200);
+}
+
+.song-stats-buttons button:nth-last-of-type(2) {
+  position: relative;
+}
+
+.song-delete {
+  position: absolute;
+  right: 991px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+}
+
+.song-delete button {
+  margin: 0;
+  border-radius: 0;
+  width: 126px;
+  height: 37px;
+  font-size: 13px;
+  text-align: left;
+}
+
+.song-delete button:hover {
+  background: lightgray;
+  border: 1px solid lightgray;
+}
+
+.song-stats-buttons button i {
+  margin-right: 8px;
+}
+
+.song-stats-buttons button:first-of-type i {
+  font-size: 12px;
 }
 
 .song-stats {
   display: flex;
   color: gray;
-  font-size: 13px;
+  font-size: 12px;
+  margin-top: 3px;
 }
 
 .song-stats p {
   margin-right: 15px;
-  margin-left: 7px;
 }
 
-.song-stats i:first-of-type {
+.song-stats div {
+  display: flex;
+}
+
+.song-stats div i {
+  margin-right: 6px;
+}
+
+.song-stats div:not(:last-of-type) {
+  margin-right: 15px;
+
+}
+
+.song-stats div:not(:first-of-type) {
+  cursor: pointer;
+}
+
+.song-stats div:not(:first-of-type):hover {
+  color: rgb(255, 133, 200);
+}
+
+.song-stats div:first-of-type i {
   font-size: 9px;
   line-height: 1.5;
 }
 
-.song-stats i:nth-of-type(2) {
+.song-stats div:nth-of-type(2) i {
   font-size: 12px;
   line-height: 1.2;
 }
 
-.song-stats i:nth-of-type(3) {
+.song-stats div:nth-of-type(3) i {
   font-size: 14px;
 }
 
@@ -160,3 +250,6 @@
   margin-right: 0;
 }
 
+.song-comments-index {
+  display: flex;
+}

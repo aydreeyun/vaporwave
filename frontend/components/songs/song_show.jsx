@@ -1,10 +1,32 @@
 import React from 'react';
 import NavbarContainer from '../navbar/navbar_container';
 import { Link, Redirect } from 'react-router-dom';
+import { formatUploadTime } from '../../util/time_util';
 
 class SongShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      dropdown: false,
+    };
+
+    this.handleDropdown = this.handleDropdown.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+  }
+
+  handleDropdown() {
+    if (this.state.dropdown) {
+      this.setState({ dropdown: false });
+    } else {
+      this.setState({ dropdown: true });
+    }
+  }
+
+  handleBlur() {
+    if (this.state.dropdown) {
+      this.setState({ dropdown: false });
+    }
   }
 
   render() {
@@ -20,10 +42,16 @@ class SongShow extends React.Component {
         {song.description}
       </p>
       : null;
-      const deleteButton = currentUser === artist ?
-      <button onClick={() => deleteSong(match.params.songId)}>
-        Delete
-      </button>
+
+      const deleteButton = currentUser === artist && this.state.dropdown ?
+      <div className="song-delete">
+        <button onMouseDown={e => e.preventDefault()}
+          onClick={() => deleteSong(match.params.songId)}
+        >
+          <i className="fas fa-trash"></i>
+          Delete song
+        </button>
+      </div>
       : null;
 
       return (
@@ -39,7 +67,7 @@ class SongShow extends React.Component {
                     </Link> 
                   </h2>
                   <h3 className="song-banner-created-at">
-                    {song.created_at}
+                    {formatUploadTime(song.created_at)}
                   </h3>
                 </div>
 
@@ -62,37 +90,57 @@ class SongShow extends React.Component {
                 <div className="song-comments-stats">
                   <div className="song-stats-buttons">
                     <button className="song-show-button">
-                      <i className="fas fa-heart"></i>Like</button>
-                    {/* <button>
-                      <i className="fas fa-retweet"></i>Repost
+                      <i className="fas fa-heart"></i>
+                      Like
                     </button>
                     <button>
-                      <i className="fas fa-share-square"></i>Share
+                      <i className="fas fa-retweet"></i>
+                      Repost
                     </button>
                     <button>
-                      <i className="fas fa-bars"></i>Add to Next up
-                    </button> */}
-                    <button><i className="fas fa-ellipsis-h"></i>More</button>
+                      <i className="fas fa-share-square"></i>
+                      Share
+                    </button>
+                    <button>
+                      <i className="fas fa-bars"></i>
+                      Add to Next up
+                    </button>
+                    <button onClick={this.handleDropdown} 
+                      onBlur={this.handleBlur}
+                    >
+                      <i className="fas fa-ellipsis-h"></i>
+                      More
+                    </button>
                     {deleteButton}
                   </div>
 
                   <div className="song-stats">
-                    <i className="fas fa-play"></i>
-                    <p>281</p>
-                    <i className="fas fa-heart"></i>
-                    <p>330</p>
-                    <i className="fas fa-retweet"></i>
-                    <p>8,004</p>
+                    <div>
+                      <i className="fas fa-play"></i>
+                      <p>281</p>
+                    </div>
+                    <div>
+                      <i className="fas fa-heart"></i>
+                      <p>330</p>
+                    </div>
+                    <div>
+                      <i className="fas fa-retweet"></i>
+                      <p>8,004</p>
+                    </div>
                   </div>
                 </div>
 
                 {/* artist profile link */}
-                <Link to={`/${artist.display_name}`}>{artist.display_name}</Link>
-                <p><i className="fas fa-user-friends"></i>110</p>
-                <p><i className="fas fa-music"></i>101</p>
-                {/* <button>Follow</button> */}
+                <div className="song-comments-index">
+                  <div className="song-comments-artist">
+                    <Link to={`/${artist.display_name}`}>{artist.display_name}</Link>
+                    <p><i className="fas fa-user-friends"></i>110</p>
+                    <p><i className="fas fa-music"></i>101</p>
+                    {/* <button>Follow</button> */}
+                  </div>
 
-                {description}
+                  {description}
+                </div>
 
                 {/* comments go here */}
               </div>

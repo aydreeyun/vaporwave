@@ -16,10 +16,6 @@ class Navbar extends React.Component {
     this.handleOptionBlur = this.handleOptionBlur.bind(this);
   }
 
-  stopPropagation() {
-    return e => e.stopPropagation();
-  }
-
   handleUserDropdown() {
     if (this.state.userDropdown) {
       this.setState({ userDropdown: false });
@@ -36,13 +32,13 @@ class Navbar extends React.Component {
     }
   }
 
-  handleUserBlur(e) {
+  handleUserBlur() {
     if (this.state.userDropdown) {
       this.setState({ userDropdown: false });
     }
   }
 
-  handleOptionBlur(e) {
+  handleOptionBlur() {
     if (this.state.optionDropdown) {
       this.setState({ optionDropdown: false });
     }
@@ -100,8 +96,7 @@ class Navbar extends React.Component {
         </div>
         <a className="navbar-right-link upgrade">Try Pro</a>
         <Link className="navbar-right-link" to="/upload">Upload</Link>
-        <a tabIndex="0" 
-          className="navbar-user" 
+        <a className="navbar-user" 
           onClick={this.handleUserDropdown}
           onBlur={this.handleUserBlur}
         >
