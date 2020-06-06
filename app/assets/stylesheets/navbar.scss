@@ -5,8 +5,8 @@
   background-color: #333;
   height: 46px;
   width: 100%;
-  min-width: 1250px;
-  line-height: 3.3;
+  min-width: 1240px;
+  line-height: 3.2;
   font-size: 13.7px;
   display: flex;
   justify-content: center;
@@ -118,13 +118,14 @@
 .navbar-user:focus {
   outline: none;
   background: black;
+  color: cyan;
 }
 
 .navbar-user i {
   font-size: 12px;
   margin-left: 8px;
   position: absolute;
-  top: 17px;
+  top: 18px;
 }
 
 .navbar-icon-button {
@@ -132,31 +133,39 @@
   padding: 0;
   cursor: pointer;
   position: relative;
+  font-size: 16px;
 }
 
-.navbar-icon-button i {
-  font-size: 16px;
+.navbar-icon-button:nth-of-type(2) {
+  font-size: 18px;
+}
+
+.navbar-icon-button:nth-of-type(3) {
+  font-size: 22px;
 }
 
 .user-dropdown {
   position: relative;
+  display: flex;
+
 }
 
 .user-dropdown i {
-  
+  margin: 0 5px;
 }
 
 .user-dropdown a {
   position: absolute;
   top: 46px;
   background: black;
-  right: 50px;
-  z-index: 10;
+  right: 0;
   font-size: 12px;
   font-weight: 900;
   display: flex;
   align-items: center;
   height: 30px;
+  width: 140px;
+  margin-top: 30px;
 }
 
 .user-dropdown a:hover {
@@ -167,8 +176,28 @@
   position: relative;
 }
 
+.navbar button:last-of-type:focus {
+  background: black;
+  color: cyan;
+}
+
 .option-dropdown button {
   position: absolute;
   top: 46px;
-  width: 100px;
+  right: 0;
+  outline: none;
+  border: none;
+  background: black;
+  height: 30px;
+  width: 170px;
+  color: rgb(0, 207, 207);
+  font-size: 12px;
+  font-weight: 900;
+  text-align: left;
+  padding-left: 10px;
+
+}
+
+.option-dropdown button:hover {
+  background: #333;
 }

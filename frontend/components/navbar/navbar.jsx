@@ -53,37 +53,59 @@ class Navbar extends React.Component {
        <i className="fas fa-user"></i>
         Profile
       </Link>
+      <div className="navbar-credentials">
+        <a href="https://github.com/aydreeyun/vaporwave">
+          <i className="fab fa-github"></i>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/adriantaehyunkim/">
+          <i className="fab fa-linkedin"></i>
+          Linkedin
+        </a>
+      </div>
     </div>
     : null
     const optionDrop = this.state.optionDropdown ? 
     <div className="option-dropdown">
-      <button onClick={logout}>Log Out</button>
+      <button onClick={logout}>Sign out</button>
     </div>
     : null;
 
     const focused = this.props.url === "/discover" ? "focused" : ""
 
     // onBlur={this.handleUserBlur}
+    // 
     return (
       <div className="navbar">
         <Link className="navbar-logo" to="/discover"></Link>
         <Link className={`navbar-left-link ${focused}`} to="/discover">Home</Link>
         <a href="https://github.com/aydreeyun/vaporwave" className="navbar-left-link">GitHub</a>
-        <a href="https://www.linkedin.com/in/adriantaehyunkim/" className="navbar-left-link">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/adriantaehyunkim/" className="navbar-left-link">Linkedin</a>
         <div className="navbar-search">
           <input className="navbar-search-input" type="text" placeholder="Search"/>
           <button className="navbar-search-button"><i className="fas fa-search"></i></button>
         </div>
-        <a className="navbar-right-link upgrade">Upgrade</a>
+        <a className="navbar-right-link upgrade">Try Pro</a>
         <Link className="navbar-right-link" to="/upload">Upload</Link>
-        <a tabIndex="0" className="navbar-user" onClick={this.handleUserDropdown} >
+        <a tabIndex="0" 
+          className="navbar-user" 
+          onClick={this.handleUserDropdown}
+          
+        >
           {user.display_name}
           <i className="fas fa-angle-down"></i>
         </a>
         {userDrop}
         <button className="navbar-icon-button"><i className="fas fa-bell"></i></button>
-        <button className="navbar-icon-button"><i className="fas fa-envelope"></i></button>
-        <button className="navbar-icon-button" onClick={this.handleOptionDropdown} onBlur={this.handleOptionBlur}><i className="fas fa-ellipsis-h"></i></button>
+        <button className="navbar-icon-button">
+          <i className="fas fa-envelope"></i>
+        </button>
+        <button className="navbar-icon-button" 
+          onClick={this.handleOptionDropdown} 
+          onBlur={this.handleOptionBlur}
+        >
+          <i className="fas fa-ellipsis-h"></i>
+        </button>
         {optionDrop}
       </div>
     );

@@ -10,9 +10,21 @@ class SongShow extends React.Component {
   render() {
     const { song, artist, currentUser, deleteSong, match } = this.props;
     if (song) {
-      const genre = song.genre ? <h3 className="song-banner-genre"># {song.genre}</h3> : null;
-      const description = song.description ? <p className="song-desc">{song.description}</p> : null;
-      const deleteButton = currentUser === artist ? <button onClick={() => deleteSong(match.params.songId)}>Delete</button> : null;
+      const genre = song.genre ?
+      <h3 className="song-banner-genre">
+        # {song.genre}
+      </h3>
+      : null;
+      const description = song.description ?
+      <p className="song-desc">
+        {song.description}
+      </p>
+      : null;
+      const deleteButton = currentUser === artist ?
+      <button onClick={() => deleteSong(match.params.songId)}>
+        Delete
+      </button>
+      : null;
 
       return (
         <>
