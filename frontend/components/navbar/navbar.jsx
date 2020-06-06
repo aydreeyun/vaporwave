@@ -16,7 +16,11 @@ class Navbar extends React.Component {
     this.handleOptionBlur = this.handleOptionBlur.bind(this);
   }
 
-  handleUserDropdown(e) {
+  stopPropagation() {
+    return e => e.stopPropagation();
+  }
+
+  handleUserDropdown() {
     if (this.state.userDropdown) {
       this.setState({ userDropdown: false });
     } else {
@@ -32,13 +36,13 @@ class Navbar extends React.Component {
     }
   }
 
-  handleUserBlur() {
+  handleUserBlur(e) {
     if (this.state.userDropdown) {
       this.setState({ userDropdown: false });
     }
   }
 
-  handleOptionBlur() {
+  handleOptionBlur(e) {
     if (this.state.optionDropdown) {
       this.setState({ optionDropdown: false });
     }
@@ -46,19 +50,25 @@ class Navbar extends React.Component {
 
   render() {
     const { user, logout } = this.props;
-    window.navState = this.state;
+
     const userDrop = this.state.userDropdown ? 
     <div className="user-dropdown">
-      <Link to={`${user.display_name}`}>
+      <Link to={`${user.display_name}`}
+        onMouseDown={e => e.preventDefault()}
+      >
        <i className="fas fa-user"></i>
         Profile
       </Link>
       <div className="navbar-credentials">
-        <a href="https://github.com/aydreeyun/vaporwave">
+        <a href="https://github.com/aydreeyun/vaporwave"
+          onMouseDown={e => e.preventDefault()}
+        >
           <i className="fab fa-github"></i>
           GitHub
         </a>
-        <a href="https://www.linkedin.com/in/adriantaehyunkim/">
+        <a href="https://www.linkedin.com/in/adriantaehyunkim/"
+          onMouseDown={e => e.preventDefault()}
+        >
           <i className="fab fa-linkedin"></i>
           Linkedin
         </a>
@@ -67,16 +77,19 @@ class Navbar extends React.Component {
     : null
     const optionDrop = this.state.optionDropdown ? 
     <div className="option-dropdown">
-      <button onClick={logout}>Sign out</button>
+      <button onMouseDown={e => e.preventDefault()}
+        onClick={logout}
+      >
+        Sign out
+      </button>
     </div>
     : null;
 
     const focused = this.props.url === "/discover" ? "focused" : ""
 
-    // onBlur={this.handleUserBlur}
-    // 
+
     return (
-      <div className="navbar">
+      <div className="navbar" ref={this.ref}>
         <Link className="navbar-logo" to="/discover"></Link>
         <Link className={`navbar-left-link ${focused}`} to="/discover">Home</Link>
         <a href="https://github.com/aydreeyun/vaporwave" className="navbar-left-link">GitHub</a>
@@ -90,7 +103,7 @@ class Navbar extends React.Component {
         <a tabIndex="0" 
           className="navbar-user" 
           onClick={this.handleUserDropdown}
-          
+          onBlur={this.handleUserBlur}
         >
           {user.display_name}
           <i className="fas fa-angle-down"></i>
@@ -101,7 +114,7 @@ class Navbar extends React.Component {
           <i className="fas fa-envelope"></i>
         </button>
         <button className="navbar-icon-button" 
-          onClick={this.handleOptionDropdown} 
+          onClick={this.handleOptionDropdown}
           onBlur={this.handleOptionBlur}
         >
           <i className="fas fa-ellipsis-h"></i>

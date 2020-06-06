@@ -20,7 +20,7 @@ class EmailForm extends React.Component {
             <div className="or-line"></div>
           </div>
           <label>
-            <input class="auth-input"type="text" onChange={this.props.update("email")} placeholder="Your email address or profile URL" />
+            <input className="auth-input"type="text" onChange={this.props.update("email")} placeholder="Your email address or profile URL" />
           </label>
           {errors}
           {this.props.nextButton}
