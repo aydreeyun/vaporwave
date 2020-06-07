@@ -1,6 +1,7 @@
 import React from 'react';
 import EmailForm from './email_form';
 import PasswordForm from './password_form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -97,7 +98,7 @@ class LoginForm extends React.Component {
     const prevButton = this.state.currentStep !== 1 ?
     <a className="auth-prev-button" 
       onClick={this.prevStep}>
-        <i className="fas fa-caret-left"></i> 
+        <FontAwesomeIcon icon="caret-left" />
         {this.state.email}
     </a>
     : "";

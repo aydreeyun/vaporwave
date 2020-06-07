@@ -3,6 +3,7 @@ import NavbarContainer from '../navbar/navbar_container';
 import UploadFile from './upload_file';
 import UploadDetails from './upload_details';
 import UploadSuccess from './upload_success';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -20,10 +21,12 @@ class Upload extends React.Component {
     }
 
     this.handleFileClick = this.handleFileClick.bind(this);
-    this.handleFile = this.handleFile.bind(this);
+    this.handleSongFile = this.handleSongFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.cancel = this.cancel.bind(this);
+
+    this.titleError = "Enter a title."
   }
 
   componentDidMount() {
@@ -34,13 +37,13 @@ class Upload extends React.Component {
     document.getElementById("file").click();
   }
 
-  handleFile(e) {
+  handleSongFile(e) {
     const file = e.target.files[0];
 
     if (file) {
       this.setState({
         currentStep: 2,
-        title: file.name,
+        title: file.name.split(".")[0],
         songFile: file,
       });
     }
@@ -94,13 +97,13 @@ class Upload extends React.Component {
               <a>Pulse</a>
             </div>
             <a>
-              <i className="fas fa-external-link-alt"></i>
+            <FontAwesomeIcon icon="external-link-alt" />
               Creators on VaporWave
             </a>
           </div>
           <UploadFile 
             currentStep={this.state.currentStep}
-            handleFile={this.handleFile}
+            handleSongFile={this.handleSongFile}
             handleFileClick={this.handleFileClick}
           />
           <UploadDetails 

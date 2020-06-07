@@ -27,7 +27,7 @@
   color: rgb(0, 207, 207);
 }
 
-.navbar button:hover {
+.navbar > button:hover {
   color: rgb(0, 255, 255);
 }
 
@@ -85,6 +85,11 @@
   color: gray;
 }
 
+.navbar-search-button:focus {
+  background: transparent;
+  color: gray;
+}
+
 .upgrade {
   color: rgb(255, 182, 222);
 }
@@ -93,7 +98,7 @@
   color: rgb(255, 133, 200);
 }
 
-.navbar-search-button i {
+.navbar-search-button svg {
   font-size: 15px;
 }
 
@@ -126,11 +131,11 @@
   color: cyan;
 }
 
-.navbar-user i {
+.navbar-user svg {
   font-size: 12px;
   margin-left: 8px;
   position: absolute;
-  top: 18px;
+  top: 17px;
 }
 
 .navbar-icon-button {
@@ -156,8 +161,13 @@
   width: 0;
 }
 
-.user-dropdown i {
+.navbar-user-icon, .navbar-linkedin-icon {
   margin: 0 10px;
+  font-size: 14px;
+}
+
+.navbar-github-icon {
+  margin: 0 9px;
   font-size: 14px;
 }
 
@@ -182,7 +192,7 @@
   position: relative;
 }
 
-.navbar button:last-of-type:focus {
+.navbar > button:last-of-type:focus {
   background: black;
   color: cyan;
 }

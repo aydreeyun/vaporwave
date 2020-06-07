@@ -2,8 +2,54 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { 
+  faUser,
+  faSearch,
+  faAngleDown,
+  faBell,
+  faEnvelope,
+  faEllipsisH,
+  faCaretLeft,
+  faUserCheck,
+  faUserPlus,
+  faTrash,
+  faHeart,
+  faRetweet,
+  faShareSquare,
+  faBars,
+  faPlay,
+  faUserFriends,
+  faMusic,
+  faCommentAlt,
+  faCamera,
+  faExternalLinkAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
-import { fetchSongs, fetchSong, createSong, deleteSong } from './actions/song_actions';
+library.add(
+  fab,
+  faUser,
+  faSearch,
+  faAngleDown,
+  faBell,
+  faEnvelope,
+  faEllipsisH,
+  faCaretLeft,
+  faUserCheck,
+  faUserPlus,
+  faTrash,
+  faHeart,
+  faRetweet,
+  faShareSquare,
+  faBars,
+  faPlay,
+  faUserFriends,
+  faMusic,
+  faCommentAlt,
+  faCamera,
+  faExternalLinkAlt
+  );
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -35,17 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
-  
-
   ReactDOM.render(<Root store={store} />, root);
 
   // TESTS
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchSongs = fetchSongs;
-  window.fetchSong = fetchSong;
-  window.createSong = createSong;
-  window.deleteSong = deleteSong;
-  window.songs = songs;
-  window.users = users;
 });

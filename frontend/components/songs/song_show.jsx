@@ -1,7 +1,8 @@
 import React from 'react';
 import NavbarContainer from '../navbar/navbar_container';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { formatUploadTime } from '../../util/time_util';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SongShow extends React.Component {
   constructor(props) {
@@ -80,16 +81,16 @@ class SongShow extends React.Component {
     const followed = this.state.followed === "Following" ?
     "followed" : "";
     const followedIcon = this.state.followed === "Following" ?
-    <i className="fas fa-user-check"></i> 
-    : <i className="fas fa-user-plus"></i>;
+    <FontAwesomeIcon icon="user-check" />
+    : <FontAwesomeIcon icon="user-plus" />;
 
     // CONDITIONAL BUTTONS
     const deleteButton = currentUser === artist && this.state.dropdown ?
     <div className="song-delete">
       <button onMouseDown={e => e.preventDefault()}
         onClick={this.handleDelete}>
-        <i className="fas fa-trash"></i>
-        Delete song
+        <FontAwesomeIcon icon="trash" />
+        Delete track
       </button>
     </div>
     : null;
@@ -139,25 +140,25 @@ class SongShow extends React.Component {
                 <div className="song-stats-buttons">
                   <button className={`song-show-button ${liked}`}
                     onClick={this.handleLike}>
-                    <i className="fas fa-heart"></i>
+                    <FontAwesomeIcon icon="heart" />
                     {this.state.liked}
                   </button>
                   <button>
-                    <i className="fas fa-retweet"></i>
+                    <FontAwesomeIcon icon="retweet" />
                     Repost
                   </button>
                   <button>
-                    <i className="fas fa-share-square"></i>
+                    <FontAwesomeIcon icon="share-square" />
                     Share
                   </button>
                   <button>
-                    <i className="fas fa-bars"></i>
+                    <FontAwesomeIcon icon="bars" />
                     Add to Next up
                   </button>
                   <div className="more-dropdown">
                     <button onClick={this.handleDropdown} 
                       onBlur={this.handleBlur}>
-                      <i className="fas fa-ellipsis-h"></i>
+                      <FontAwesomeIcon icon="ellipsis-h" />
                       More
                     </button>
                     {deleteButton}
@@ -166,15 +167,15 @@ class SongShow extends React.Component {
 
                 <div className="song-stats">
                   <div>
-                    <i className="fas fa-play"></i>
+                    <FontAwesomeIcon icon="play" />
                     <p>281</p>
                   </div>
                   <div>
-                    <i className="fas fa-heart"></i>
+                    <FontAwesomeIcon icon="heart" />
                     <p>330</p>
                   </div>
                   <div>
-                    <i className="fas fa-retweet"></i>
+                    <FontAwesomeIcon icon="retweet" />
                     <p>8,004</p>
                   </div>
                 </div>
@@ -193,11 +194,11 @@ class SongShow extends React.Component {
                   </Link>
                   <div className="artist-stats">
                     <p>
-                      <i className="fas fa-user-friends"></i>
+                      <FontAwesomeIcon icon="user-friends" />
                       101
                     </p>
                     <p>
-                      <i className="fas fa-music"></i>
+                      <FontAwesomeIcon icon="music" />
                       11
                     </p>
                   </div>
@@ -210,7 +211,7 @@ class SongShow extends React.Component {
                   <div className="comments-section">
                     <div className="comments-header">
                       {/* REPLACE COMMENT # AFTER CREATED */}
-                      <i className="fas fa-comment-alt"></i>
+                      <FontAwesomeIcon icon="comment-alt" />
                       1 comment
                     </div>
                     {/* comments go here */}

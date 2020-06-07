@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -51,18 +52,21 @@ class Navbar extends React.Component {
     <div className="user-dropdown">
       <Link to={`/${user.display_name}`}
         onMouseDown={e => e.preventDefault()}>
-       <i className="fas fa-user"></i>
+        <FontAwesomeIcon className="navbar-user-icon"
+          icon="user" />
         Profile
       </Link>
       <div className="navbar-credentials">
         <a href="https://github.com/aydreeyun/vaporwave"
           onMouseDown={e => e.preventDefault()}>
-          <i className="fab fa-github"></i>
+          <FontAwesomeIcon className="navbar-github-icon"
+            icon={['fab', 'github']} />
           GitHub
         </a>
         <a href="https://www.linkedin.com/in/adriantaehyunkim/"
           onMouseDown={e => e.preventDefault()}>
-          <i className="fab fa-linkedin"></i>
+          <FontAwesomeIcon className="navbar-linkedin-icon"
+            icon={['fab', 'linkedin']} />
           Linkedin
         </a>
       </div>
@@ -86,8 +90,12 @@ class Navbar extends React.Component {
         <a href="https://github.com/aydreeyun/vaporwave" className="navbar-left-link">GitHub</a>
         <a href="https://www.linkedin.com/in/adriantaehyunkim/" className="navbar-left-link">Linkedin</a>
         <div className="navbar-search">
-          <input className="navbar-search-input" type="text" placeholder="Search"/>
-          <button className="navbar-search-button"><i className="fas fa-search"></i></button>
+          <input className="navbar-search-input"
+            type="text"
+            placeholder="Search"/>
+          <button className="navbar-search-button">
+            <FontAwesomeIcon icon="search" />
+          </button>
         </div>
         <a className="navbar-right-link upgrade">Try Pro</a>
         <Link className="navbar-right-link" to="/upload">Upload</Link>
@@ -97,18 +105,23 @@ class Navbar extends React.Component {
           onBlur={this.handleUserBlur}
         >
           {user.display_name}
-          <i className="fas fa-angle-down"></i>
+          <FontAwesomeIcon icon="angle-down" />
         </a>
         {userDrop}
-        <button className="navbar-icon-button"><i className="fas fa-bell"></i></button>
         <button className="navbar-icon-button">
-          <i className="fas fa-envelope"></i>
+          <FontAwesomeIcon className="navbar-bell-icon"
+              icon="bell" />
+        </button>
+        <button className="navbar-icon-button">
+          <FontAwesomeIcon className="navbar-envelope-icon"
+            icon="envelope" />
         </button>
         <button className="navbar-icon-button" 
           onClick={this.handleOptionDropdown}
           onBlur={this.handleOptionBlur}
         >
-          <i className="fas fa-ellipsis-h"></i>
+          <FontAwesomeIcon className="navbar-ellipsis-icon"
+            icon="ellipsis-h" />
         </button>
         {optionDrop}
       </div>

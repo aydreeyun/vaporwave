@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class UploadDetails extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class UploadDetails extends React.Component {
             <div className="song-photo">
               {/* song photo upload - in progress */}
               <button onClick={handleFileClick}>
-                <i className="fas fa-camera"></i>
+              <FontAwesomeIcon icon="camera" />
                 Upload image
                 <input type="file" id="file" accept="image/*"/>
               </button>

@@ -6,7 +6,7 @@ class UploadFile extends React.Component {
   }
 
   render() {
-    const { currentStep, handleFile, handleFileClick } = this.props
+    const { currentStep, handleSongFile, handleFileClick } = this.props
     if (currentStep === 1) {
       return (
         <div className="upload-file-form">
@@ -17,7 +17,7 @@ class UploadFile extends React.Component {
                 or choose files to upload
                 <input type="file"
                   id="file"
-                  onChange={handleFile}
+                  onChange={handleSongFile}
                   accept="audio/mpeg"/>
               </button>
             </div>

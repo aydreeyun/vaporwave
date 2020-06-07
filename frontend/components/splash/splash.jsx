@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Splash extends React.Component {
   constructor(props) {
@@ -39,7 +39,9 @@ class Splash extends React.Component {
 
         <div className="splash-search">
           <input className="splash-search-input" type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
-          <button><i className="fas fa-search"></i></button>
+          <button>
+            <FontAwesomeIcon icon="search" />
+          </button>
           <p>or</p>
           <button className="splash-search-button">Upload your own</button>
         </div>
