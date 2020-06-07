@@ -13,13 +13,19 @@ class Discover extends React.Component {
   }
 
   render() {
+    const { songs } = this.props;
+    const songLinks = songs.map((song, i) => {
+    return <li key={i}><Link to={`/songs/${song.id}`}>Song {song.id}</Link></li>
+    })
     return (
       <>
         <NavbarContainer 
           url={this.props.history.location.pathname}
         />
         <div className="discover">
-          
+          <ul>
+            {songLinks}
+          </ul>
         </div>
       </>
 

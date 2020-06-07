@@ -9,10 +9,14 @@ class SongShow extends React.Component {
 
     this.state = {
       dropdown: false,
+      liked: "Like",
+      followed: "Follow"
     };
 
     this.handleDropdown = this.handleDropdown.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+    this.handleFollow = this.handleFollow.bind(this);
   }
 
   handleDropdown() {
@@ -29,9 +33,26 @@ class SongShow extends React.Component {
     }
   }
 
+  handleLike() {
+    if (this.state.liked === "Like") {
+      this.setState({ liked: "Liked" });
+    } else {
+      this.setState({ liked: "Like" });
+    }
+  }
+
+  handleFollow() {
+    if (this.state.followed === "Follow") {
+      this.setState({ followed: "Following" });
+    } else {
+      this.setState({ followed: "Follow" });
+    }
+  }
+
   render() {
     const { song, artist, currentUser, deleteSong, match } = this.props;
     if (song) {
+      //  CONDITIONAL SONG DATA
       const genre = song.genre ?
       <h3 className="song-banner-genre">
         # {song.genre}
@@ -43,15 +64,32 @@ class SongShow extends React.Component {
       </p>
       : null;
 
+      // CSS CLASS SWITCHES
+      const liked = this.state.liked === "Liked" ?
+      "liked" : "";
+      const followed = this.state.followed === "Following" ?
+      "followed" : "";
+      const followedIcon = this.state.followed === "Following" ?
+      <i className="fas fa-user-check"></i> 
+      : <i className="fas fa-user-plus"></i>;
+
+      // CONDITIONAL BUTTONS
       const deleteButton = currentUser === artist && this.state.dropdown ?
       <div className="song-delete">
         <button onMouseDown={e => e.preventDefault()}
-          onClick={() => deleteSong(match.params.songId)}
-        >
+          onClick={() => deleteSong(match.params.songId)}>
           <i className="fas fa-trash"></i>
           Delete song
         </button>
       </div>
+      : null;
+
+      const followButton = currentUser !== artist ?
+      <button className={`artist-follow ${followed}`}
+        onClick={this.handleFollow}>
+        {followedIcon}
+        {this.state.followed}
+      </button>
       : null;
 
       return (
@@ -89,9 +127,10 @@ class SongShow extends React.Component {
 
                 <div className="song-comments-stats">
                   <div className="song-stats-buttons">
-                    <button className="song-show-button">
+                    <button className={`song-show-button ${liked}`}
+                      onClick={this.handleLike}>
                       <i className="fas fa-heart"></i>
-                      Like
+                      {this.state.liked}
                     </button>
                     <button>
                       <i className="fas fa-retweet"></i>
@@ -105,13 +144,14 @@ class SongShow extends React.Component {
                       <i className="fas fa-bars"></i>
                       Add to Next up
                     </button>
-                    <button onClick={this.handleDropdown} 
-                      onBlur={this.handleBlur}
-                    >
-                      <i className="fas fa-ellipsis-h"></i>
-                      More
-                    </button>
-                    {deleteButton}
+                    <div className="more-dropdown">
+                      <button onClick={this.handleDropdown} 
+                        onBlur={this.handleBlur}>
+                        <i className="fas fa-ellipsis-h"></i>
+                        More
+                      </button>
+                      {deleteButton}
+                    </div>
                   </div>
 
                   <div className="song-stats">
@@ -133,16 +173,42 @@ class SongShow extends React.Component {
                 {/* artist profile link */}
                 <div className="song-comments-index">
                   <div className="song-comments-artist">
-                    <Link to={`/${artist.display_name}`}>{artist.display_name}</Link>
-                    <p><i className="fas fa-user-friends"></i>110</p>
-                    <p><i className="fas fa-music"></i>101</p>
-                    {/* <button>Follow</button> */}
+                    <Link to={`/${artist.display_name}`}>
+                      <div className="artist-photo">
+                        PROFILE PHOTO HERE
+                      </div>
+                      <p className="artist-profile">
+                        {artist.display_name}
+                      </p>
+                    </Link>
+                    <div className="artist-stats">
+                      <p>
+                        <i className="fas fa-user-friends"></i>
+                        101
+                      </p>
+                      <p>
+                        <i className="fas fa-music"></i>
+                        11
+                      </p>
+                    </div>
+                    {followButton}
                   </div>
 
-                  {description}
+                  <div className="song-desc-and-comments">
+                    {description}
+
+                    <div className="comments-section">
+                      <div className="comments-header">
+                        {/* REPLACE COMMENT # AFTER CREATED */}
+                        <i className="fas fa-comment-alt"></i>
+                        1 comment
+                      </div>
+                      {/* comments go here */}
+                    </div>
+                  </div>
+                  
                 </div>
 
-                {/* comments go here */}
               </div>
             </div>
           </div>
