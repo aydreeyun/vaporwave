@@ -10,6 +10,7 @@ class Discover extends React.Component {
   componentDidMount() {
     this.props.fetchUsers();
     this.props.fetchSongs();
+    scrollTo(0, 0);
   }
 
   render() {

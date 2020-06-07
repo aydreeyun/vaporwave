@@ -50,21 +50,18 @@ class Navbar extends React.Component {
     const userDrop = this.state.userDropdown ? 
     <div className="user-dropdown">
       <Link to={`${user.display_name}`}
-        onMouseDown={e => e.preventDefault()}
-      >
+        onMouseDown={e => e.preventDefault()}>
        <i className="fas fa-user"></i>
         Profile
       </Link>
       <div className="navbar-credentials">
         <a href="https://github.com/aydreeyun/vaporwave"
-          onMouseDown={e => e.preventDefault()}
-        >
+          onMouseDown={e => e.preventDefault()}>
           <i className="fab fa-github"></i>
           GitHub
         </a>
         <a href="https://www.linkedin.com/in/adriantaehyunkim/"
-          onMouseDown={e => e.preventDefault()}
-        >
+          onMouseDown={e => e.preventDefault()}>
           <i className="fab fa-linkedin"></i>
           Linkedin
         </a>
@@ -74,8 +71,7 @@ class Navbar extends React.Component {
     const optionDrop = this.state.optionDropdown ? 
     <div className="option-dropdown">
       <button onMouseDown={e => e.preventDefault()}
-        onClick={logout}
-      >
+        onClick={logout}>
         Sign out
       </button>
     </div>
@@ -96,7 +92,8 @@ class Navbar extends React.Component {
         </div>
         <a className="navbar-right-link upgrade">Try Pro</a>
         <Link className="navbar-right-link" to="/upload">Upload</Link>
-        <a className="navbar-user" 
+        <a className="navbar-user"
+          tabIndex="0"
           onClick={this.handleUserDropdown}
           onBlur={this.handleUserBlur}
         >

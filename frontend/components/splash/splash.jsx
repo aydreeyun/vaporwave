@@ -6,6 +6,10 @@ class Splash extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    scrollTo(0, 0);
+  }
+
   render() {
     return (
       <div className="splash">

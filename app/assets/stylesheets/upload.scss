@@ -1,7 +1,7 @@
 .upload-page {
   min-width: 1240px;
   width: 1240px;
-  height: 1080px;
+  height: 952px;
   margin: 0 auto;
   margin-top: 46px;
   font-family: 'Open Sans', sans-serif;
@@ -9,11 +9,87 @@
   background: white;
 }
 
+#file {
+  display: none;
+}
+
 .upload-form button {
   height: 100px;
   width: 200px;
 }
 
-#file {
-  display: none;
+.upload-file-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 48px;
+  border-bottom: 1px solid lightgray;
+  font-size: 14px;
+}
+
+.upload-file-header p {
+  height: 48px;
+  line-height: 3.5;
+  color: rgb(255, 133, 200);
+  border-bottom: 1px solid rgb(255, 133, 200);
+  margin-right: 22px;
+}
+
+.upload-file-header a {
+  height: 48px;
+  line-height: 3.5;
+}
+
+.upload-file-header i {
+  font-size: 9px;
+  margin-right: 8px;
+}
+
+.upload-file-header a:hover {
+  border-bottom: 1px solid black;
+}
+
+.upload-header-left {
+  display: flex;
+  justify-content: space-between;
+}
+
+.upload-header-left a {
+  margin-right: 22px;
+}
+
+.upload-main {
+  margin: 197px auto;
+  width: 800px;
+  text-align: center;
+  border: 1px solid lightgray;
+  height: 387px;
+  border-radius: 3px;
+  box-shadow: 0 2px 12px -5px rgba(0, 0, 0, 0.1);
+}
+
+.upload-main-content {
+  margin-top: 103px;
+
+}
+
+.upload-main-content h2 {
+  font-size: 21px;
+}
+
+.upload-main-content button {
+  width: 300px;
+  padding: 10px 15px;
+  border: 0;
+  background: rgb(255, 133, 200);
+  color: white;
+  font-size: 16px;
+  margin-top: 20px;
+  border: 1px solid rgb(255, 133, 200);
+  border-radius: 3px;
+}
+
+.upload-main-content button:focus {
+  outline: none;
 }

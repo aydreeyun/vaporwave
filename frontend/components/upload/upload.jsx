@@ -17,7 +17,6 @@ class Upload extends React.Component {
       genre: "",
       description: "",
       songFile: null,
-      songUrl: "",
     }
 
     this.handleFileClick = this.handleFileClick.bind(this);
@@ -27,24 +26,23 @@ class Upload extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
 
+  componentDidMount() {
+    scrollTo(0, 0);
+  }
+
   handleFileClick() {
     document.getElementById("file").click();
   }
 
   handleFile(e) {
     const file = e.target.files[0];
-    const fileReader = new FileReader();
 
     if (file) {
-      fileReader.readAsDataURL(file);
-      fileReader.onloadend = () => {
-        this.setState({
-          currentStep: 2,
-          title: file.name,
-          songFile: file,
-          songUrl: fileReader.result,
-        });
-      }
+      this.setState({
+        currentStep: 2,
+        title: file.name,
+        songFile: file,
+      });
     }
   }
 
@@ -60,9 +58,11 @@ class Upload extends React.Component {
     formData.append('song[song]', songFile);
 
     this.props.createSong(formData).then(song => { 
-      this.setState({ songId: song.song.id })
+      this.setState({ 
+        songId: song.song.id,
+        currentStep: 3
+      });
     });
-    this.setState({ currentStep: 3 });
   }
 
   update(field) {
