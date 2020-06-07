@@ -85,6 +85,19 @@ class Upload extends React.Component {
       <>
         <NavbarContainer />
         <div className="upload-page">
+          <div className="upload-file-header">
+            <div className="upload-header-left">
+              <p>Upload</p>
+              <a>Your tracks</a>
+              <a>Stats</a>
+              <a>Pro Plans</a>
+              <a>Pulse</a>
+            </div>
+            <a>
+              <i className="fas fa-external-link-alt"></i>
+              Creators on VaporWave
+            </a>
+          </div>
           <UploadFile 
             currentStep={this.state.currentStep}
             handleFile={this.handleFile}

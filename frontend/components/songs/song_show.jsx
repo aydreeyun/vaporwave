@@ -25,10 +25,6 @@ class SongShow extends React.Component {
     this.props.fetchSong(this.props.match.params.songId);
   }
 
-  componentWillUnmount() {
-    debugger
-  }
-
   handleDropdown() {
     if (this.state.dropdown) {
       this.setState({ dropdown: false });
@@ -77,7 +73,7 @@ class SongShow extends React.Component {
       {song.description}
     </p>
     : null;
-    debugger
+
     // CSS CLASS SWITCHES
     const liked = this.state.liked === "Liked" ?
     "liked" : "";

@@ -4,7 +4,9 @@ export const formatUploadTime = time => {
 
   let yearsAgo = currentTime.getFullYear() - uploadTime.getFullYear();
   let monthsAgo = currentTime.getMonth() - uploadTime.getMonth();
-  let weeksAgo = (currentTime.getDate() / 7) - (uploadTime.getDate() / 7);
+  let weeksAgo = (
+    Math.floor(currentTime.getDate() / 7)) - (Math.floor(uploadTime.getDate() / 7)
+  );
   let daysAgo = currentTime.getDate() - uploadTime.getDate();
   let hoursAgo = currentTime.getHours() - uploadTime.getHours();
   let minutesAgo = currentTime.getMinutes() - uploadTime.getMinutes();
