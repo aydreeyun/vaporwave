@@ -109,10 +109,14 @@ class Upload extends React.Component {
             update={this.update}
             cancel={this.cancel}
             handleSubmit={this.handleSubmit}
+            handleFileClick={this.handleFileClick}
           />
           <UploadSuccess
             currentStep={this.state.currentStep}
             songId={this.state.songId}
+            artist={this.props.currentUser.display_name}
+            title={this.state.title}
+            description={this.state.description}
           />
         </div>
       </>

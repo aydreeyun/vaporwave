@@ -233,3 +233,53 @@
   border: 1px solid rgb(255, 133, 200);
   border-radius: 4px;
 }
+
+.upload-success {
+  display: flex;
+  width: 748px;
+  padding: 25px;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  box-shadow: 0 2px 12px -5px rgba(0, 0, 0, 0.1);
+  margin: 145px auto;
+  font-size: 14px;
+}
+
+.success-song-photo {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(to top right, cyan, rgb(255, 133, 200));
+}
+
+.success-song-details {
+  margin-left: 15px;
+  margin-top: 2px;
+  color: rgb(160, 160, 160);
+}
+
+.success-song-details h3 {
+  font-size: 16px;
+  margin-top: 4px;
+  color: black;
+}
+
+.success-song-desc {
+  margin-top: 18px;
+  font-size: 13px;
+}
+
+.success-song-complete {
+  margin-top: 5px;
+  color: rgb(46, 46, 46);
+  font-size: 13.5px;
+}
+
+.success-song-link {
+  line-height: 2;
+  color: rgb(255, 133, 200);
+  font-weight: 700;
+}
+
+.success-song-link:hover {
+  color: black;
+}
