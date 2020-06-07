@@ -22,6 +22,11 @@ class SongShow extends React.Component {
 
   componentDidMount() {
     scrollTo(0, 0);
+    this.props.fetchSong(this.props.match.params.songId);
+  }
+
+  componentWillUnmount() {
+    debugger
   }
 
   handleDropdown() {
@@ -72,7 +77,7 @@ class SongShow extends React.Component {
       {song.description}
     </p>
     : null;
-
+    debugger
     // CSS CLASS SWITCHES
     const liked = this.state.liked === "Liked" ?
     "liked" : "";

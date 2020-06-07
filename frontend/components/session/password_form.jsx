@@ -11,13 +11,15 @@ class PasswordForm extends React.Component {
     });
     if (this.props.currentStep !== 1) {
       return (
-        <div class="password-form">
+        <div className="password-form">
           {this.props.prevButton}
 
           <br/>
 
           <label>
-            <input type="password" onChange={this.props.update("password")} placeholder="Your password"/>
+            <input type="password"
+              onChange={this.props.update("password")}
+              placeholder="Your password"/>
           </label>
           {errors}
           <button className="auth-form-button">Sign In</button>

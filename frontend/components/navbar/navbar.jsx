@@ -49,7 +49,7 @@ class Navbar extends React.Component {
 
     const userDrop = this.state.userDropdown ? 
     <div className="user-dropdown">
-      <Link to={`${user.display_name}`}
+      <Link to={`/${user.display_name}`}
         onMouseDown={e => e.preventDefault()}>
        <i className="fas fa-user"></i>
         Profile

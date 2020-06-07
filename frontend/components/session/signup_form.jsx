@@ -13,7 +13,7 @@ class SignupForm extends React.Component {
       password: "",
       age: "",
       gender: "Null",
-      displayName: "",
+      display_name: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,7 +38,7 @@ class SignupForm extends React.Component {
   update(field) {
     return e => {
       this.props.clearErrors();
-      this.setState({ [field]: e.target.value })
+      this.setState({ [field]: e.target.value });
     };
   }
 
@@ -154,11 +154,36 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    const prevButton = this.state.currentStep !== 1 ? <a className="auth-prev-button" onClick={this.prevStep}><i class="fas fa-caret-left"></i> {this.state.email}</a> : "";
-    const nextButton = this.state.currentStep < 4 ? <button className="auth-form-button" onClick={this.nextStepEmail}>Continue</button> : "";
-    const acceptButton = this.state.currentStep !== 1 ? <button className="auth-form-button" onClick={this.nextStepPassword}>Accept & continue</button> : "";
-    const nextButtonAG = this.state.currentStep < 4 ? <button className="auth-form-button" onClick={this.nextStepAgeGender}>Continue</button> : "";
-    const getStartedButton = this.state.currentStep !== 1 ? <button className="auth-form-button" onClick={this.handleSubmit}>Get started</button> : "";
+    const prevButton = this.state.currentStep !== 1 ?
+    <a className="auth-prev-button" onClick={this.prevStep}>
+      <i className="fas fa-caret-left"></i> 
+      {this.state.email}
+    </a> 
+    : "";
+    const nextButton = this.state.currentStep < 4 ?
+    <button className="auth-form-button" 
+      onClick={this.nextStepEmail}>
+        Continue
+    </button>
+    : "";
+    const acceptButton = this.state.currentStep !== 1 ?
+    <button className="auth-form-button"
+      onClick={this.nextStepPassword}>
+        Accept & continue
+    </button>
+    : "";
+    const nextButtonAG = this.state.currentStep < 4 ?
+    <button className="auth-form-button"
+      onClick={this.nextStepAgeGender}>
+        Continue
+    </button>
+    : "";
+    const getStartedButton = this.state.currentStep !== 1 ?
+    <button className="auth-form-button"
+      onClick={this.handleSubmit}>
+        Get started
+    </button>
+    : "";
     
     return (
       <>

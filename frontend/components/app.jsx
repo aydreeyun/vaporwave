@@ -6,6 +6,7 @@ import ModalContainer from './modal/modal_container';
 import DiscoverContainer from './discover/discover_container';
 import SongShowContainer from './songs/song_show_container';
 import UploadContainer from './upload/upload_container';
+import ProfilePageContainer from './users/profile_page_container';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <ProtectedRoute path="/discover" component={DiscoverContainer} />
         <ProtectedRoute path="/upload" component={UploadContainer} />
         <Route path="/songs/:songId" component={SongShowContainer}/>
+        <Route path="/:displayName" component={ProfilePageContainer} />
       </Switch>
     </>
   );
