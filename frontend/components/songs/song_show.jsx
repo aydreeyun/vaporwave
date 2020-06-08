@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { formatUploadTime } from '../../util/time_util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PlayButtonContainer from '../music_player/play_button_container';
-import MusicPlayerContainer from '../music_player/music_player_container';
 
 class SongShow extends React.Component {
   constructor(props) {
@@ -221,9 +220,6 @@ class SongShow extends React.Component {
                       1 comment
                     </div>
                     {/* comments go here */}
-                    
-                    {/* AUDIO WORKS */}
-                    <MusicPlayerContainer />
                   </div>
                 </div>
                 

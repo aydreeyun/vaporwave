@@ -3,8 +3,8 @@ import MusicPlayer from './music_player';
 import { receivePreviousSong, playSong, pauseSong, restartSong } from '../../actions/music_player_actions';
 
 const mSTP = state => {
-  const currentSong = state.entities.songs[state.ui.musicPlayer.currentSongId];
-  let artist;
+  const currentSong = state.entities.songs[state.ui.musicPlayer.currentSongId] ? state.entities.songs[state.ui.musicPlayer.currentSongId] : ""
+  let artist = ""
   if (currentSong) {
     artist = state.entities.users[currentSong.artist_id];
   }

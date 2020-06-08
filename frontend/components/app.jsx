@@ -7,6 +7,7 @@ import DiscoverContainer from './discover/discover_container';
 import SongShowContainer from './songs/song_show_container';
 import UploadContainer from './upload/upload_container';
 import ProfilePageContainer from './users/profile_page_container';
+import MusicPlayerContainer from './music_player/music_player_container';
 
 const App = () => {
   return (
@@ -20,6 +21,8 @@ const App = () => {
         <ProtectedRoute exact path="/songs/:songId" component={SongShowContainer}/>
         <ProtectedRoute exact path="/:displayName" component={ProfilePageContainer} />
       </Switch>
+
+      <MusicPlayerContainer />
     </>
   );
 };

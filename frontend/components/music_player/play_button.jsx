@@ -10,14 +10,14 @@ class PlayButton extends React.Component {
 
   handlePlay() {
     const musicPlayer = document.getElementById("audio");
-    musicPlayer.setAttribute("autoPlay", "");
 
-    if (this.props.playing) {
+    if (this.props.playing && this.props.currentSong.id === this.props.songId) {
       this.props.pauseSong();
       musicPlayer.pause();
     } else {
       this.props.receiveCurrentSong(this.props.songId);
       this.props.playSong();
+      musicPlayer.setAttribute("autoPlay", "");
       musicPlayer.play();
     }
   }
