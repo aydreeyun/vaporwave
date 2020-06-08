@@ -3,6 +3,8 @@ import NavbarContainer from '../navbar/navbar_container';
 import { Link } from 'react-router-dom';
 import { formatUploadTime } from '../../util/time_util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PlayButtonContainer from '../music_player/play_button_container';
+import MusicPlayerContainer from '../music_player/music_player_container';
 
 class SongShow extends React.Component {
   constructor(props) {
@@ -108,6 +110,10 @@ class SongShow extends React.Component {
         <NavbarContainer />
         <div className="song-show-page">
           <div className="song-banner">
+            <div className="song-show-play">
+              <PlayButtonContainer songId={song.id} />
+            </div>
+
             <div className="song-banner-info">
               <div className="song-banner-top">
                 <h2 className="song-banner-artist">
@@ -217,9 +223,7 @@ class SongShow extends React.Component {
                     {/* comments go here */}
                     
                     {/* AUDIO WORKS */}
-                    <audio controls>
-                      <source src={song.songUrl} type="audio/mpeg"/>
-                    </audio>
+                    <MusicPlayerContainer />
                   </div>
                 </div>
                 
@@ -228,6 +232,7 @@ class SongShow extends React.Component {
             </div>
           </div>
         </div>
+
       </>
     );
   }

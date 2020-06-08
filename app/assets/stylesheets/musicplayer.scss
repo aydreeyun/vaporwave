@@ -1,0 +1,21 @@
+// #audio {
+//   display: none;
+// }
+
+.play-button {
+  border-radius: 50%;
+  border: 1px solid rgb(255, 133, 200);
+  background: rgb(255, 133, 200);
+  height: 100%;
+  width: 100%;
+  font-size: 28px;
+  color: whitesmoke;
+}
+
+.play-icon {
+  margin-left: 5px;
+}
+
+.play-button:focus {
+  outline: none;
+}

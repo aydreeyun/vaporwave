@@ -1,6 +1,7 @@
 import React from 'react';
 import NavbarContainer from '../navbar/navbar_container';
 import { Link } from 'react-router-dom';
+import MusicPlayerContainer from '../music_player/music_player_container';
 
 class Discover extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class Discover extends React.Component {
             {songLinks}
           </ul>
         </div>
+        <MusicPlayerContainer />
       </>
 
     )

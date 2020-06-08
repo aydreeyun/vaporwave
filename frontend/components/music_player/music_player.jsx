@@ -5,26 +5,36 @@ class MusicPlayer extends React.Component {
     super(props);
 
     this.state = {
-      playing: props.playing,
+
     };
   }
 
   handlePlay() {
+    const musicPlayer = document.getElementById("audio");
     if (this.state.playing) {
       this.props.pauseSong();
-      this.setState({ playing: false });
+      musicPlayer.pause();
     } else {
       this.props.playSong();
-      this.setState({ playing: true });
+      this.musicPlayer.play();
     }
   }
 
   render() {
+    const { currentSong, artist, playing } = this.props;
+
+    let songUrl;
+    if (currentSong) {
+      songUrl = currentSong.songUrl;
+    }
+
     return (
       <div>
-        <audio>
-
-        </audio>
+        <audio id="audio" 
+          src={songUrl}
+          controls
+          controlsList="nodownload"
+        />
       </div>
     );
   }

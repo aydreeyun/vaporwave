@@ -6,11 +6,11 @@ const defaultState = {
   currentSongId: null,
 }
 
-const musicPlayerReducer = (state = defaultState, actions) => {
+const musicPlayerReducer = (state = defaultState, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
 
-  switch(actions.type) {
+  switch(action.type) {
     case RECEIVE_CURRENT_SONG:
       newState.currentSongId = action.songId;
       return newState;

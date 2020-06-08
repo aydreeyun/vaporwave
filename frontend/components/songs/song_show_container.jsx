@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SongShow from './song_show';
 import { deleteSong, fetchSong } from '../../actions/song_actions';
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { receiveCurrentSong } from '../../actions/music_player_actions';
 
 const mSTP = (state, ownProps) => {
   const song = state.entities.songs[ownProps.match.params.songId];
@@ -18,8 +18,7 @@ const mDTP = dispatch => {
   return {
     deleteSong: songId => dispatch(deleteSong(songId)),
     fetchSong: songId => dispatch(fetchSong(songId)),
-    openModal: modal => dispatch(openModal(modal)),
-    closeModal: () => dispatch(closeModal()),
+    receiveCurrentSong: songId => dispatch(receiveCurrentSong(songId)),
   };
 };
 

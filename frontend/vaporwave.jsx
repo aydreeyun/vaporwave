@@ -25,6 +25,14 @@ import {
   faCommentAlt,
   faCamera,
   faExternalLinkAlt,
+  faPause,
+  faStepBackward,
+  faStepForward,
+  faVolumeUp,
+  faVolumeDown,
+  faVolumeMute,
+  faRandom,
+  faRedoAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -48,8 +56,16 @@ library.add(
   faMusic,
   faCommentAlt,
   faCamera,
-  faExternalLinkAlt
-  );
+  faExternalLinkAlt,
+  faPause,
+  faStepBackward,
+  faStepForward,
+  faVolumeUp,
+  faVolumeDown,
+  faVolumeMute,
+  faRandom,
+  faRedoAlt,
+);
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
