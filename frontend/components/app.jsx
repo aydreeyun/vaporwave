@@ -1,13 +1,12 @@
 import React from 'react';
 import SplashContainer from './splash/splash_container';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import ModalContainer from './modal/modal_container';
 import DiscoverContainer from './discover/discover_container';
 import SongShowContainer from './songs/song_show_container';
 import UploadContainer from './upload/upload_container';
 import ProfilePageContainer from './users/profile_page_container';
-
 
 const App = () => {
   return (
