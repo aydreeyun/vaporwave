@@ -10,7 +10,7 @@ class UploadDetails extends React.Component {
     const { currentStep, title, update, cancel, handleSubmit, handleFileClick } = this.props;
     const newTitle = title.split(".")[0]
 
-    if (currentStep === 2) {
+    // if (currentStep === 2) {
       return (
         <div className="upload-details-main">
           <div className="upload-details-header">
@@ -21,7 +21,8 @@ class UploadDetails extends React.Component {
           <div className="details-form">
             <div className="song-photo">
               {/* song photo upload - in progress */}
-              <button onClick={handleFileClick}>
+              <button className="upload-photo"
+                onClick={handleFileClick}>
               <FontAwesomeIcon icon="camera" />
                 Upload image
                 <input type="file" id="file" accept="image/*"/>
@@ -88,9 +89,9 @@ class UploadDetails extends React.Component {
           </div>
         </div>
       );
-    } else {
-      return null;
-    }
+    // } else {
+    //   return null;
+    // }
   }
 };
 

@@ -66,42 +66,42 @@ class SongShow extends React.Component {
     const { song, artist, currentUser } = this.props;
     //  CONDITIONAL SONG DATA
     const genre = song.genre ?
-    <h3 className="song-banner-genre">
-      # {song.genre}
-    </h3>
+      <h3 className="song-banner-genre">
+        # {song.genre}
+      </h3>
     : null;
     const description = song.description ?
-    <p className="song-desc">
-      {song.description}
-    </p>
+      <p className="song-desc">
+        {song.description}
+      </p>
     : null;
 
     // CSS CLASS SWITCHES
     const liked = this.state.liked === "Liked" ?
-    "liked" : "";
+      "liked" : "";
     const followed = this.state.followed === "Following" ?
-    "followed" : "";
+      "followed" : "";
     const followedIcon = this.state.followed === "Following" ?
-    <FontAwesomeIcon icon="user-check" />
+      <FontAwesomeIcon icon="user-check" />
     : <FontAwesomeIcon icon="user-plus" />;
 
     // CONDITIONAL BUTTONS
     const deleteButton = currentUser === artist && this.state.dropdown ?
-    <div className="song-delete">
-      <button onMouseDown={e => e.preventDefault()}
-        onClick={this.handleDelete}>
-        <FontAwesomeIcon icon="trash" />
-        Delete track
-      </button>
-    </div>
+      <div className="song-delete">
+        <button onMouseDown={e => e.preventDefault()}
+          onClick={this.handleDelete}>
+          <FontAwesomeIcon icon="trash" />
+          Delete track
+        </button>
+      </div>
     : null;
 
     const followButton = currentUser !== artist ?
-    <button className={`artist-follow ${followed}`}
-      onClick={this.handleFollow}>
-      {followedIcon}
-      {this.state.followed}
-    </button>
+      <button className={`artist-follow ${followed}`}
+        onClick={this.handleFollow}>
+        {followedIcon}
+        {this.state.followed}
+      </button>
     : null;
 
     return (
@@ -131,6 +131,17 @@ class SongShow extends React.Component {
                 </h1>
                 {genre}
               </div>
+            </div>
+
+            <div className="song-banner-photo">
+              <button className="upload-photo">
+                <FontAwesomeIcon icon="camera" />
+                  Upload image
+                  <input type="file"
+                    id="file"
+                    accept="image/*"
+                    title="" />
+                </button>
             </div>
           </div>
 
@@ -191,7 +202,7 @@ class SongShow extends React.Component {
                 <div className="song-comments-artist">
                   <Link to={`/${artist.display_name}`}>
                     <div className="artist-photo">
-                      PROFILE PHOTO HERE
+                      {/* PROFILE PHOTO HERE */}
                     </div>
                     <p className="artist-profile">
                       {artist.display_name}

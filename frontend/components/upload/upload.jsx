@@ -102,11 +102,11 @@ class Upload extends React.Component {
               Creators on VaporWave
             </a>
           </div>
-          <UploadFile 
+          {/* <UploadFile 
             currentStep={this.state.currentStep}
             handleSongFile={this.handleSongFile}
             handleFileClick={this.handleFileClick}
-          />
+          /> */}
           <UploadDetails 
             currentStep={this.state.currentStep}
             title={this.state.title}

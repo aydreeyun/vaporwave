@@ -132,11 +132,26 @@
   color: cyan;
 }
 
+.navbar-profile-pic {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  background: linear-gradient(to top left, rgb(255, 133, 200), cyan);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.navbar-username {
+  margin-left: 20px;
+}
+
 .navbar-user svg {
   font-size: 12px;
   margin-left: 8px;
   position: absolute;
   top: 17px;
+  right: 10px;
 }
 
 .navbar-icon-button {

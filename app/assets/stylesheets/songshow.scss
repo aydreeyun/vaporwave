@@ -24,6 +24,22 @@
   margin-left: 40px;
 }
 
+.song-banner-photo {
+  height: 340px;
+  width: 340px;
+  box-sizing: border-box;
+  margin: 20px 0 20px 30px;
+  border: 1px solid gray;
+  background: linear-gradient(to top right, cyan, rgb(255, 133, 200));
+  position: relative;
+}
+
+.song-banner-photo button {
+  position: absolute;
+  bottom: 41px;
+  left: 105px;
+}
+
 .song-banner-top {
   display: flex;
   justify-content: space-between;
@@ -262,7 +278,7 @@
 
 .song-comments-index {
   display: flex;
-  margin-top: 22px;
+  margin-top: 20px;
   font-size: 13.6px;
 }
 
@@ -300,6 +316,8 @@
 .artist-photo {
   height: 120px;
   width: 120px;
+  border-radius: 50%;
+  background: linear-gradient(to top left, rgb(255, 133, 200), cyan);
 }
 
 .artist-profile {
@@ -307,7 +325,7 @@
   height: 18px;
   display: flex;
   align-items: center;
-  margin-top: 3px;
+  margin-top: 5px;
 }
 
 .artist-follow {

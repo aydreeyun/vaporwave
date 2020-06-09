@@ -23,6 +23,7 @@ class UploadFile extends React.Component {
                 or choose files to upload
                 <input type="file"
                   id="file"
+                  className="upload-file-button"
                   onClick={e => e.stopPropagation()}
                   onChange={handleSongFile}
                   accept="audio/mpeg"

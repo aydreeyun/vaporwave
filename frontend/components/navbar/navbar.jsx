@@ -104,7 +104,12 @@ class Navbar extends React.Component {
           onClick={this.handleUserDropdown}
           onBlur={this.handleUserBlur}
         >
-          {user.display_name}
+          <div className="navbar-profile-pic">
+            {/* USER PROFILE PICTURE */}
+          </div>
+          <p className="navbar-username">
+            {user.display_name}
+          </p>
           <FontAwesomeIcon icon="angle-down" />
         </a>
         {userDrop}
