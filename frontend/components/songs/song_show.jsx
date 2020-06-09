@@ -20,6 +20,7 @@ class SongShow extends React.Component {
     this.handleLike = this.handleLike.bind(this);
     this.handleFollow = this.handleFollow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleFileClick = this.handleFileClick.bind(this);
   }
 
   componentDidMount() {
@@ -60,6 +61,10 @@ class SongShow extends React.Component {
   handleDelete() {
     this.props.history.push("/discover");
     this.props.deleteSong(this.props.match.params.songId);
+  }
+
+  handleFileClick() {
+    document.getElementById("file").click();
   }
 
   render() {
@@ -134,7 +139,8 @@ class SongShow extends React.Component {
             </div>
 
             <div className="song-banner-photo">
-              <button className="upload-photo">
+              <button className="upload-photo"
+                onClick={this.handleFileClick}>
                 <FontAwesomeIcon icon="camera" />
                   Upload image
                   <input type="file"
