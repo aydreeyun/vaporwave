@@ -18,5 +18,5 @@ class Song < ApplicationRecord
     class_name: :User
 
   has_one_attached :photo
-  has_one_attached :song_file
+  has_one_attached :song
 end

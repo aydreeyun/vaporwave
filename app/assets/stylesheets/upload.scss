@@ -178,6 +178,7 @@ button input[type=file]::-webkit-file-upload-button {
   left: 0;
   height: 260px;
   width: 260px;
+  object-fit: cover;
 }
 
 .song-photo button {

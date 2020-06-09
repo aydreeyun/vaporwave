@@ -16,8 +16,8 @@ class Discover extends React.Component {
   }
 
   render() {
-    const { songs, users } = this.props;
-    const songLinks = songs.map((song, i) => {
+    const { songs, users, receiveCurrentSong } = this.props;
+    const weeklySongs = songs.map((song, i) => {
       return (
         <Link key={i} to={`/songs/${song.id}`}>
           <li className="weekly-songs">
@@ -33,7 +33,53 @@ class Discover extends React.Component {
             </div>
           </li>
         </Link>
-      )
+      );
+    });
+
+    const newSongs = songs.reverse().map((song, i) => {
+      const songPhoto = song.photoUrl ? <img src={song.photoUrl} /> : null;
+
+      return (
+        <div className="song-items" key={i}>
+          <li>
+            <Link to={`/songs/${song.id}`}>
+              <div className="new-song-photos">
+                {songPhoto}
+              </div>
+              <div className="song-item-title">
+                {song.title}
+              </div>
+            </Link>
+            <Link className="song-item-artist"
+              to={`/${users[song.artist_id].display_name}`}>
+              {users[song.artist_id].display_name}
+            </Link>
+          </li>
+        </div>
+      );
+    });
+
+    const stayHomeSongs = songs.reverse().map((song, i) => {
+      const songPhoto = song.photoUrl ? <img src={song.photoUrl} /> : null;
+
+      return (
+        <div className="song-items" key={i}>
+          <li>
+            <Link to={`/songs/${song.id}`}>
+              <div className="new-song-photos">
+                {songPhoto}
+              </div>
+              <div className="song-item-title">
+                {song.title}
+              </div>
+            </Link>
+            <Link className="song-item-artist"
+              to={`/${users[song.artist_id].display_name}`}>
+              {users[song.artist_id].display_name}
+            </Link>
+          </li>
+        </div>
+      );
     });
 
     return (
@@ -48,11 +94,10 @@ class Discover extends React.Component {
               <p>All of VaporWave. Just for you.</p>
               <div className="discover-weekly">
                 <div className="weekly-photo">
-
                 </div>
                 <div className="weekly-song-list">
                   <ul>
-                    {songLinks}
+                    {weeklySongs}
                   </ul>
                 </div>
               </div>
@@ -62,7 +107,9 @@ class Discover extends React.Component {
               <h1>New Music Now</h1>
               <p>The latest hits, updated all the time</p>
               <div className="discover-new">
-
+                <ul>
+                  {newSongs}
+                </ul>
               </div>
             </div>
 
@@ -70,7 +117,9 @@ class Discover extends React.Component {
               <h1>Stay Home</h1>
               <p>Tunes for isolation and self-care</p>
               <div className="discover-new">
-
+                <ul>
+                  {stayHomeSongs}
+                </ul>
               </div>
             </div>
           </div>

@@ -34,7 +34,7 @@
 }
 
 .discover-content > p {
-  margin-top: 5px;
+  margin-top: 3px;
   height: 19px;
   font-size: 14px;
   color: gray;
@@ -135,5 +135,37 @@
   width: 819px;
   overflow: auto;
   margin-top: 23px;
-  background: red;
+}
+
+.discover-new ul {
+  display: flex;
+}
+
+.new-song-photos {
+  height: 173px;
+  width: 173px;
+  background: linear-gradient(to top right, cyan, rgb(255, 133, 200));
+}
+
+.song-items {
+  margin-right: 20px;
+}
+
+.song-item-title {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.song-item-artist {
+  font-size: 12px;
+  color: gray;
+}
+
+.new-song-photos img {
+  height: 173px;
+  width: 173px;
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
 }
