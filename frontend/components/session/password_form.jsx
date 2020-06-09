@@ -23,7 +23,6 @@ class PasswordForm extends React.Component {
           </label>
           {errors}
           <button className="auth-form-button">Sign In</button>
-          <a className="forgot-password">Don't know your password?</a>
         </div>
       );
     } else {

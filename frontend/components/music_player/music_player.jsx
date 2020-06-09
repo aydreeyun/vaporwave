@@ -8,17 +8,20 @@ class MusicPlayer extends React.Component {
     super(props);
 
     this.state = {
+      playing: props.playing,
+      duration: "0:00",
+      timeElapsed: 0,
       volume: 0.5,
       volumeHover: false,
-      duration: "0:00",
     };
 
     this.handleMetadata = this.handleMetadata.bind(this);
+    this.handlePlay = this.handlePlay.bind(this);
   }
 
   componentDidMount() {
     const musicPlayer = document.getElementById("audio");
-    musicPlayer.volume = 0.5;
+    musicPlayer.volume = 0.1;
   }
 
   handleMetadata() {
@@ -28,12 +31,15 @@ class MusicPlayer extends React.Component {
 
   handlePlay() {
     const musicPlayer = document.getElementById("audio");
+    // PLAYING NOT FULLY FUNCTIONAL - 
     if (this.state.playing) {
+      this.setState({ playing: false });
       this.props.pauseSong();
       musicPlayer.pause();
     } else {
+      this.setState({ playing: true });
       this.props.playSong();
-      this.musicPlayer.play();
+      musicPlayer.play();
     }
   }
 
@@ -58,7 +64,8 @@ class MusicPlayer extends React.Component {
             <FontAwesomeIcon icon="step-backward"/>
             </button>
 
-            <button className="player-play-button">
+            <button className="player-play-button"
+              onClick={this.handlePlay}>
               {playing ? <FontAwesomeIcon icon="pause"/> : <FontAwesomeIcon icon="play" />}
             </button>
 
@@ -105,54 +112,7 @@ class MusicPlayer extends React.Component {
           controlsList="nodownload"
           onLoadedMetadata={this.handleMetadata}
         />
-
-<div className="music-player">
-  <div className="music-player-main">
-
-      <div className="music-player-buttons">
-        <button className="rewind-button">
-        <FontAwesomeIcon icon="step-backward"/>
-        </button>
-
-        <button className="player-play-button">
-          {playing ? <FontAwesomeIcon icon="pause"/> : <FontAwesomeIcon icon="play" />}
-        </button>
-
-        <button className="skip-button">
-        <FontAwesomeIcon icon="step-forward"/>
-        </button>
-
-        <button className="shuffle-button">
-        <FontAwesomeIcon icon="random"/>
-        </button>
-
-        <button className="loop-button">
-        <FontAwesomeIcon icon="redo-alt"/>
-        </button>
-
-        <p className="current-time">0:00</p>
-
-        <input className="scrollbar"
-          type="range"/>
-
-        <p className="song-length">{this.state.duration}</p>
-
-        <button className="volume">
-        <FontAwesomeIcon icon="volume-up"/>
-        </button>
-      </div>
-      <div className="player-song-data">
-        <Link className="player-song-image" to={`/songs/${currentSong.id}`}>
-
-        </Link>
-        <div className="player-song-links">
-          <Link to={`/${artist.display_name}`}>DemoUser</Link>
-          <Link to={`/songs/${currentSong.id}`}>poop</Link>
-        </div>
-      </div>
-  </div>
-    </div>
-        {/* {musicPlayer} */}
+        {musicPlayer}
       </>
     );
   }

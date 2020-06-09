@@ -38,9 +38,10 @@ class Upload extends React.Component {
   }
 
   handleSongFile(e) {
+    e.preventDefault();
     const file = e.target.files[0];
-
-    if (file) {
+    
+    if (file && file.type === "audio/mpeg") {
       this.setState({
         currentStep: 2,
         title: file.name.split(".")[0],

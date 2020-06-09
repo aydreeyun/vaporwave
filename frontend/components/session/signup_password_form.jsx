@@ -19,7 +19,7 @@ class SignupPasswordForm extends React.Component {
           <input type="password" onChange={this.props.update("password")}/>
           {errors}
           <div className="disclaimer-text">
-            <p>By signing up I accept the <a>Terms of Use</a>. I have read and understood the <a>Privacy Policy</a> and <a>Cookies Policy</a>.</p>
+            <p>By signing up I accept the Terms of Use. I have read and understood the Privacy Policy and Cookies Policy.</p>
           </div>
           {this.props.acceptButton}
         </div>

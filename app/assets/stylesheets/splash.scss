@@ -48,7 +48,7 @@ html {
   display: flex;
 }
 
-.splash-banner a {
+.for-creators {
   vertical-align: middle;
   color: rgb(36, 36, 36);
   text-decoration: none;
@@ -117,15 +117,14 @@ html {
 
 .large-button-transparent {
   background: transparent;
+  font-family: 'Open Sans', sans-serif;
   border: 1px solid white;
   color: white;
   border-radius: 3px;
-  padding: 11.5px;
+  padding: 11.5px 36px;
   margin-right: 25px;
-  font-size: 17.4px;
+  font-size: 18px;
   font-weight: 350;
-  padding-right: 36px;
-  padding-left: 36px;
 }
 
 .large-button-orange {
@@ -133,11 +132,10 @@ html {
   color: white;
   border: 1px solid rgb(0, 207, 207);
   border-radius: 3px;
-  padding: 11.5px;
+  padding: 13px 68px;
   font-size: 18px;
   font-weight: 350;
-  padding-right: 16px;
-  padding-left: 16px;
+  height: 47px;
 }
 
 .splash-search {
@@ -352,4 +350,27 @@ html {
 
 .splash-endpage-login button:hover {
   border: 1px solid rgb(150, 150, 150);
+}
+
+.splash-footer {
+  border-top: 1px solid #f2f2f2;
+  margin: auto 30px;
+  padding-top: 15px;
+  padding-bottom: 90px;
+  height: 47px;
+  font-size: 14px;
+  display: flex;
+  color: rgb(0, 207, 207);
+}
+
+.splash-footer p {
+  margin: 0 5px;
+}
+
+.splash-footer a {
+  color: rgb(0, 207, 207);
+}
+
+.splash-footer a:hover {
+  color: rgb(0, 150, 150);
 }

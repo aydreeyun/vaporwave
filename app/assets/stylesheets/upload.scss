@@ -67,11 +67,20 @@
   height: 387px;
   border-radius: 3px;
   box-shadow: 0 2px 12px -5px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .upload-main-content {
   margin-top: 103px;
+}
 
+.drag-file {
+  height: 389px;
+  width: 802px;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  opacity: 0;
 }
 
 .upload-main-content h2 {

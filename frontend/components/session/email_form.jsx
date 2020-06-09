@@ -25,13 +25,9 @@ class EmailForm extends React.Component {
           {errors}
           {this.props.nextButton}
           <br/>
-          <div className="disclaimer">
-            <a className="need-help">Need help?</a>
-            <br/>
-            <div className="disclaimer-text">
-              <p>We may use your email and devices for updates and tips on VaporWave's products and services, and for activities notifications. You can unsubscribe for free at any time in your notification settings.</p>
-              <p>We may use information you provide us in order to show you targeted ads as described in our <a>Privacy Policy</a>.</p>
-            </div>
+          <div className="disclaimer-text">
+            <p>We may use your email and devices for updates and tips on VaporWave's products and services, and for activities notifications. You can unsubscribe for free at any time in your notification settings.</p>
+            <p>We may use information you provide us in order to show you targeted ads. By clicking continue, you agree to these terms.</p>
           </div>
         </>
       );

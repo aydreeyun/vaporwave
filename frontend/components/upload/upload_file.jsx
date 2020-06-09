@@ -11,7 +11,12 @@ class UploadFile extends React.Component {
       return (
         <div className="upload-file-form">
           <div className="upload-main">
-            <div className="upload-main-content">              
+            <div className="upload-main-content">
+              <input type="file"
+                className="drag-file"
+                onClick={e => e.preventDefault()}
+                onChange={handleSongFile}
+                accept="audio/mpeg"/>
               <h2>Drag and drop your tracks & albums here</h2>
               <button onClick={handleFileClick}>
                 or choose files to upload
