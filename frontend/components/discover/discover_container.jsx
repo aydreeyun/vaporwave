@@ -6,7 +6,7 @@ import { fetchSongs } from '../../actions/song_actions';
 
 const mSTP = state => {
   return {
-    // user: state.entities.users[state.session.id],
+    users: state.entities.users,
     songs: Object.values(state.entities.songs),
   };
 };

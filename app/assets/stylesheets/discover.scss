@@ -29,11 +29,11 @@
 }
 
 .discover-content h1 {
-  font-size: 22px;
+  font-size: 21px;
   height: 29px;
 }
 
-.discover-content p {
+.discover-content > p {
   margin-top: 5px;
   height: 19px;
   font-size: 14px;
@@ -58,28 +58,83 @@
 .discover-weekly {
   width: 819px;
   height: 220px;
-  background: red;
   margin-top: 21px;
   display: flex;
+  background-image: url(cyberpunk.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .weekly-photo {
   height: 180px;
   width: 180px;
-  background: blue;
+  background-image: url(pixel_skyline2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 20px;
 }
 
 .weekly-song-list {
   margin: 20px 15px 20px 0;
   width: 593px;
-  overflow-y: scroll;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
+
+.weekly-songs {
+  background: rgba(0, 0, 0, 0.7);
+  width: 98.6%;
+  height: 40px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  justify-content: space-between;
+  border-bottom: 1px solid cyan;
+  color: cyan;
+}
+
+.weekly-songs:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.weekly-songs-left {
+  display: flex;
+}
+
+.weekly-songs-right {
+  display: flex;
+  font-size: 11px;
+}
+
+.weekly-songs-right svg {
+  font-size: 9px;
+  padding: 10px 9px;
+}
+
+.weekly-songs-right > p {
+  line-height: 2.5;
+  padding-right: 9px;
+}
+
+.weekly-artist {
+  color: rgb(0, 207, 207);
+  margin-right: 5px; 
 }
 
 .discover-new {
   height: 230px;
   width: 819px;
-  overflow-x: scroll;
+  overflow: auto;
   margin-top: 23px;
   background: red;
+  
 }

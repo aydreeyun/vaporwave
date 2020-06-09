@@ -2,6 +2,7 @@ import React from 'react';
 import NavbarContainer from '../navbar/navbar_container';
 import { Link } from 'react-router-dom';
 import MusicPlayerContainer from '../music_player/music_player_container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Discover extends React.Component {
   constructor(props) {
@@ -15,14 +16,23 @@ class Discover extends React.Component {
   }
 
   render() {
-    const { songs } = this.props;
+    const { songs, users } = this.props;
     const songLinks = songs.map((song, i) => {
       return (
-        <li key={i}>
-          <Link to={`/songs/${song.id}`}>
-            Song {song.id}
-          </Link>
-        </li>
+        <Link key={i} to={`/songs/${song.id}`}>
+          <li className="weekly-songs">
+            <div className="weekly-songs-left">
+              <div className="weekly-artist">
+                {users[song.artist_id].display_name} – 
+              </div>
+              {song.title}
+            </div>
+            <div className="weekly-songs-right">
+              <FontAwesomeIcon icon="play" />
+              <p>300</p>
+            </div>
+          </li>
+        </Link>
       )
     });
 
