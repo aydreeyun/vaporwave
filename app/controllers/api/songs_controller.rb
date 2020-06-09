@@ -19,6 +19,14 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def update
+    @song = Song.find(params[:id])
+
+    if @song.artist_id == current_user.id && @song.update(song_params)
+      render :show
+    end
+  end
+
   def destroy
     @song = current_user.songs.find(params[:id])
 
@@ -29,6 +37,6 @@ class Api::SongsController < ApplicationController
 
   private
   def song_params
-    params.require(:song).permit(:artist_id, :title, :genre, :description, :song)
+    params.require(:song).permit(:artist_id, :title, :genre, :description, :song_file, :photo)
   end
 end

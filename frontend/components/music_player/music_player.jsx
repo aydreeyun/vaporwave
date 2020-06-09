@@ -8,7 +8,6 @@ class MusicPlayer extends React.Component {
     super(props);
 
     this.state = {
-      playing: props.playing,
       duration: "0:00",
       timeElapsed: 0,
       volume: 0.5,
@@ -32,12 +31,10 @@ class MusicPlayer extends React.Component {
   handlePlay() {
     const musicPlayer = document.getElementById("audio");
     // PLAYING NOT FULLY FUNCTIONAL - 
-    if (this.state.playing) {
-      this.setState({ playing: false });
+    if (this.props.playing) {
       this.props.pauseSong();
       musicPlayer.pause();
     } else {
-      this.setState({ playing: true });
       this.props.playSong();
       musicPlayer.play();
     }

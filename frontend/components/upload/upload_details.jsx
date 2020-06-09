@@ -7,10 +7,33 @@ class UploadDetails extends React.Component {
   }
 
   render() {
-    const { currentStep, title, update, cancel, handleSubmit, handleFileClick } = this.props;
+    const { currentStep, title, update, cancel, handleSubmit, handleFileClick, handlePhotoFile, photoUrl } = this.props;
     const newTitle = title.split(".")[0]
+    const photoPreview = this.props.photoUrl ?
+      <img className="upload-photo-preview" src={photoUrl} /> : null;
+    const uploadPhotoButton = !this.props.photoUrl ?
+      <button className="upload-photo"
+        onClick={handleFileClick}>
+        <FontAwesomeIcon icon="camera" />
+        Upload image
+        <input type="file"
+          id="file"
+          accept="image/*"
+          onChange={handlePhotoFile} />
+      </button>
+    : <button className="upload-photo"
+        onClick={handleFileClick}>
+        <FontAwesomeIcon icon="camera" />
+        Update image
+        <input type="file"
+          id="file"
+          accept="image/*"
+          onChange={handlePhotoFile} 
+        />
+      </button>;
 
-    // if (currentStep === 2) {
+
+    if (currentStep === 2) {
       return (
         <div className="upload-details-main">
           <div className="upload-details-header">
@@ -20,18 +43,15 @@ class UploadDetails extends React.Component {
           </div>
           <div className="details-form">
             <div className="song-photo">
-              {/* song photo upload - in progress */}
-              <button className="upload-photo"
-                onClick={handleFileClick}>
-              <FontAwesomeIcon icon="camera" />
-                Upload image
-                <input type="file" id="file" accept="image/*"/>
-              </button>
-              {/* song photo upload - in progress */}
+              {photoPreview}
+              {uploadPhotoButton}
             </div>
             <div className="song-details">
               <p>Title <span className="required">*</span></p>
-              <input type="text" value={newTitle} onChange={update('title')} placeholder="Name your track" />
+              <input type="text" 
+                value={newTitle} 
+                onChange={update('title')} 
+                placeholder="Name your track" />
               <p>Genre</p>
               <div>
                 <select onChange={update('genre')}>
@@ -89,9 +109,9 @@ class UploadDetails extends React.Component {
           </div>
         </div>
       );
-    // } else {
-    //   return null;
-    // }
+    } else {
+      return null;
+    }
   }
 };
 

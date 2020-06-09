@@ -18,10 +18,13 @@ class Upload extends React.Component {
       genre: "",
       description: "",
       songFile: null,
+      photoFile: null,
+      photoUrl: "",
     }
 
     this.handleFileClick = this.handleFileClick.bind(this);
     this.handleSongFile = this.handleSongFile.bind(this);
+    this.handlePhotoFile = this.handlePhotoFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.cancel = this.cancel.bind(this);
@@ -50,9 +53,25 @@ class Upload extends React.Component {
     }
   }
 
+  handlePhotoFile(e) {
+    e.preventDefault();
+    const file = e.target.files[0];
+    
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onloadend = () => {
+        this.setState({
+          photoFile: file,
+          photoUrl: fileReader.result
+        });
+      }
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    const { artistId, title, genre, description, songFile } = this.state;
+    const { artistId, title, genre, description, songFile, photoFile } = this.state;
     const formData = new FormData();
 
     formData.append('song[artist_id]', artistId);
@@ -60,6 +79,9 @@ class Upload extends React.Component {
     formData.append('song[genre]', genre);
     formData.append('song[description]', description);
     formData.append('song[song]', songFile);
+    if (photoFile) {
+      formData.append('song[photo]', photoFile);
+    }
 
     this.props.createSong(formData).then(song => { 
       this.setState({ 
@@ -102,11 +124,11 @@ class Upload extends React.Component {
               Creators on VaporWave
             </a>
           </div>
-          {/* <UploadFile 
+          <UploadFile 
             currentStep={this.state.currentStep}
             handleSongFile={this.handleSongFile}
             handleFileClick={this.handleFileClick}
-          /> */}
+          />
           <UploadDetails 
             currentStep={this.state.currentStep}
             title={this.state.title}
@@ -114,6 +136,8 @@ class Upload extends React.Component {
             cancel={this.cancel}
             handleSubmit={this.handleSubmit}
             handleFileClick={this.handleFileClick}
+            handlePhotoFile={this.handlePhotoFile}
+            photoUrl={this.state.photoUrl}
           />
           <UploadSuccess
             currentStep={this.state.currentStep}

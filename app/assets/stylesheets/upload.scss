@@ -172,6 +172,14 @@ button input[type=file]::-webkit-file-upload-button {
   position: relative;
 }
 
+.upload-photo-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 260px;
+  width: 260px;
+}
+
 .song-photo button {
   position: absolute;
   bottom: 26px;
@@ -247,6 +255,10 @@ button input[type=file]::-webkit-file-upload-button {
   border: 1px solid gray;
   border-radius: 3px;
   color: #333;
+}
+
+.upload-photo:hover {
+  background: white;
 }
 
 .upload-photo:focus {

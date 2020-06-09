@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SongShow from './song_show';
-import { deleteSong, fetchSong } from '../../actions/song_actions';
+import { deleteSong, fetchSong, updateSong } from '../../actions/song_actions';
 import { receiveCurrentSong } from '../../actions/music_player_actions';
 
 const mSTP = (state, ownProps) => {
@@ -18,6 +18,7 @@ const mDTP = dispatch => {
   return {
     deleteSong: songId => dispatch(deleteSong(songId)),
     fetchSong: songId => dispatch(fetchSong(songId)),
+    updateSong: (song, id) => dispatch(updateSong(song, id)),
     receiveCurrentSong: songId => dispatch(receiveCurrentSong(songId)),
   };
 };

@@ -21,6 +21,7 @@ class SongShow extends React.Component {
     this.handleFollow = this.handleFollow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleFileClick = this.handleFileClick.bind(this);
+    this.handlePhotoFile = this.handlePhotoFile.bind(this);
   }
 
   componentDidMount() {
@@ -67,6 +68,19 @@ class SongShow extends React.Component {
     document.getElementById("file").click();
   }
 
+  handlePhotoFile(e) {
+    e.preventDefault();
+    const { song } = this.props;
+    const file = e.target.files[0];
+    
+    if (file) {
+      const formData = new FormData();
+      formData.append('song[photo]', file);
+
+      this.props.updateSong(formData, song.id)
+    }
+  }
+
   render() {
     const { song, artist, currentUser } = this.props;
     //  CONDITIONAL SONG DATA
@@ -79,6 +93,10 @@ class SongShow extends React.Component {
       <p className="song-desc">
         {song.description}
       </p>
+    : null;
+    const songPhoto = song.photoUrl ?
+      <img className="song-show-photo"
+        src={song.photoUrl} />
     : null;
 
     // CSS CLASS SWITCHES
@@ -108,6 +126,28 @@ class SongShow extends React.Component {
         {this.state.followed}
       </button>
     : null;
+
+    const uploadPhotoButton = !song.photoUrl && artist === currentUser ?
+      <button className="upload-photo"
+        onClick={this.handleFileClick}>
+        <FontAwesomeIcon icon="camera" />
+        Upload image
+        <input type="file"
+          id="file"
+          accept="image/*"
+          onChange={this.handlePhotoFile} 
+        />
+      </button> 
+    : <button className="upload-photo"
+        onClick={this.handleFileClick}>
+        <FontAwesomeIcon icon="camera" />
+        Update image
+        <input type="file"
+          id="file"
+          accept="image/*"
+          onChange={this.handlePhotoFile} 
+        />
+      </button>;
 
     return (
       <>
@@ -139,15 +179,8 @@ class SongShow extends React.Component {
             </div>
 
             <div className="song-banner-photo">
-              <button className="upload-photo"
-                onClick={this.handleFileClick}>
-                <FontAwesomeIcon icon="camera" />
-                  Upload image
-                  <input type="file"
-                    id="file"
-                    accept="image/*"
-                    title="" />
-                </button>
+              {songPhoto}
+              {uploadPhotoButton}
             </div>
           </div>
 
