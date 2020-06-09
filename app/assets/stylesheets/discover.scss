@@ -1,10 +1,85 @@
 .discover {
   min-width: 1240px;
-  width: 1240px;
-  height: 1080px;
+  width: 1180px;
   margin: 0 auto;
   margin-top: 46px;
+  padding: 0 30px;
   font-family: 'Open Sans', sans-serif;
   min-width: 920px;
   background: white;
+  display: flex;
+}
+
+.discover-main {
+  border-right: 1px solid lightgray;
+  padding-top: 32px;
+  padding-right: 30px;
+}
+
+.discover-content {
+  width: 819px;
+  height: 330px;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 34px;
+}
+
+.discover-content:last-of-type {
+  border: 0;
+  margin: 0;
+}
+
+.discover-content h1 {
+  font-size: 22px;
+  height: 29px;
+}
+
+.discover-content p {
+  margin-top: 5px;
+  height: 19px;
+  font-size: 14px;
+  color: gray;
+}
+
+.discover-sidebar {
+  width: 300px;
+  margin-left: 30px;
+  height: 500px;
+  position: relative;
+  padding-top: 32px;
+}
+
+.discover-sidebar-main {
+  width: 300px;
+  height: 400px;
+  position: fixed;
+  background: blue;
+}
+
+.discover-weekly {
+  width: 819px;
+  height: 220px;
+  background: red;
+  margin-top: 21px;
+  display: flex;
+}
+
+.weekly-photo {
+  height: 180px;
+  width: 180px;
+  background: blue;
+  margin: 20px;
+}
+
+.weekly-song-list {
+  margin: 20px 15px 20px 0;
+  width: 593px;
+  overflow-y: scroll;
+}
+
+.discover-new {
+  height: 230px;
+  width: 819px;
+  overflow-x: scroll;
+  margin-top: 23px;
+  background: red;
 }
