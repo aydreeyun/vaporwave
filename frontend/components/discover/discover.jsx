@@ -1,16 +1,18 @@
 import React from 'react';
 import NavbarContainer from '../navbar/navbar_container';
+import PlayButtonContainer from '../music_player/play_button_container';
 import { Link } from 'react-router-dom';
-import MusicPlayerContainer from '../music_player/music_player_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Discover extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   followed: "Follow",
-    // }
+    this.state = {
+      newMusicHover: "",
+      stayHomeHover: "",
+      // followed: "Follow",
+    }
 
     // this.handleFollow = this.handleFollow.bind(this);
   }
@@ -58,13 +60,23 @@ class Discover extends React.Component {
         <div className="song-items" key={i}>
           <li>
             <Link to={`/songs/${song.id}`}>
-              <div className="new-song-photos">
+              <div className="new-song-photos"
+                onMouseEnter={() => this.setState({ newMusicHover: song.title })}
+                onMouseLeave={() => this.setState({ newMusicHover: "" })}>
                 {songPhoto}
               </div>
               <div className="song-item-title">
                 {song.title}
               </div>
             </Link>
+            {this.state.newMusicHover === song.title ? 
+              <div className="discover-play-button"
+                onMouseEnter={() => this.setState({ newMusicHover: song.title })}
+                onMouseLeave={() => this.setState({ newMusicHover: "" })}>
+                <PlayButtonContainer songId={song.id} />
+              </div>
+            : null
+            }
             <Link className="song-item-artist"
               to={`/${users[song.artist_id].display_name}`}>
               {users[song.artist_id].display_name}
@@ -81,13 +93,23 @@ class Discover extends React.Component {
         <div className="song-items" key={i}>
           <li>
             <Link to={`/songs/${song.id}`}>
-              <div className="new-song-photos">
+              <div className="new-song-photos"
+                onMouseEnter={() => this.setState({ stayHomeHover: song.title })}
+                onMouseLeave={() => this.setState({ stayHomeHover: "" })}>
                 {songPhoto}
               </div>
               <div className="song-item-title">
                 {song.title}
               </div>
             </Link>
+            {this.state.stayHomeHover === song.title ? 
+              <div className="discover-play-button"
+                onMouseEnter={() => this.setState({ stayHomeHover: song.title })}
+                onMouseLeave={() => this.setState({ stayHomeHover: "" })}>
+                <PlayButtonContainer songId={song.id} />
+              </div>
+            : null
+            }
             <Link className="song-item-artist"
               to={`/${users[song.artist_id].display_name}`}>
               {users[song.artist_id].display_name}
@@ -132,10 +154,12 @@ class Discover extends React.Component {
     const followUsers = Object.values(users).slice(1, 4).map((user, i) => {
       return (
         <div key={i} className="follow-user">
-          <div className="follow-user-photo">
-            {/* user profile photo */}
-            {/* <img src={} /> */}
-          </div>
+            <Link to={`/${user.display_name}`}>
+              <div className="follow-user-photo">
+                {/* user profile photo */}
+                {/* <img src={} /> */}
+              </div>
+            </Link>
           <div className="follow-user-info">
             <Link to={`/${user.display_name}`}>
               {user.display_name}
@@ -291,8 +315,6 @@ class Discover extends React.Component {
             </div>
           </div>
         </div>
-
-        <MusicPlayerContainer />
       </>
 
     )

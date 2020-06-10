@@ -29,9 +29,3 @@ export const pauseSong = () => {
     type: PAUSE_SONG,
   };
 };
-
-export const restartSong = () => {
-  return {
-    type: RESTART_SONG,
-  };
-};

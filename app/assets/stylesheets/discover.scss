@@ -305,10 +305,25 @@
   height: 173px;
   width: 173px;
   background: linear-gradient(to top right, cyan, rgb(255, 133, 200));
+  filter: none;
+  transition: filter 0.3s;
+}
+
+.new-song-photos:hover {
+  filter: brightness(80%);
 }
 
 .song-items {
   margin-right: 20px;
+  position: relative;
+}
+
+.discover-play-button {
+  height: 55px;
+  width: 55px;
+  position: absolute;
+  top: 59px;
+  left: 59px;
 }
 
 .song-item-title {

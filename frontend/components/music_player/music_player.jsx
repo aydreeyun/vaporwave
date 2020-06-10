@@ -8,14 +8,18 @@ class MusicPlayer extends React.Component {
     super(props);
 
     this.state = {
-      duration: "0:00",
+      duration: 0,
       timeElapsed: 0,
-      volume: 0.5,
+      volume: 0.1,
       volumeHover: false,
     };
 
     this.handleMetadata = this.handleMetadata.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
+    this.handleRestart = this.handleRestart.bind(this);
+    this.handleSkip = this.handleSkip.bind(this);
+    this.handleTimeElapsed = this.handleTimeElapsed.bind(this);
+    this.handleSkipAhead = this.handleSkipAhead.bind(this);
   }
 
   componentDidMount() {
@@ -25,19 +29,60 @@ class MusicPlayer extends React.Component {
 
   handleMetadata() {
     const musicPlayer = document.getElementById("audio");
-    this.setState({ duration: formatSongTime(musicPlayer.duration) })
+    this.setState({ duration: musicPlayer.duration })
   }
 
   handlePlay() {
     const musicPlayer = document.getElementById("audio");
-    // PLAYING NOT FULLY FUNCTIONAL - 
+
     if (this.props.playing) {
+      clearInterval(this.playInterval);
       this.props.pauseSong();
       musicPlayer.pause();
     } else {
       this.props.playSong();
       musicPlayer.play();
     }
+  }
+
+  handleTimeElapsed() {
+    const musicPlayer = document.getElementById("audio");
+    const scrollBar = document.getElementById("scrollbar")
+
+    if (!musicPlayer.paused) {
+      this.playInterval = setInterval(() => {
+        scrollBar.value = musicPlayer.currentTime;
+        this.setState({ timeElapsed: musicPlayer.currentTime })
+      }, 50)
+    }
+  }
+
+  handleRestart() {
+    const musicPlayer = document.getElementById("audio");
+    
+    // if (musicPlayer.currentTime < 4) {
+      // play previous song array
+    // } else {
+      musicPlayer.currentTime = 0;
+      this.props.playSong();
+      musicPlayer.play();
+      this.setState({ timeElapsed: 0 });
+    // }
+  }
+
+  handleSkip() {
+    const musicPlayer = document.getElementById("audio");
+
+    musicPlayer.currentTime = this.state.duration;
+    this.props.pauseSong();
+    this.setState({ timeElapsed: this.state.duration });
+  }
+
+  handleSkipAhead(e) {
+    const musicPlayer = document.getElementById("audio");
+
+    musicPlayer.currentTime = e.target.value;
+    this.setState({ timeElapsed: e.target.value });
   }
 
   handleVolume() {
@@ -52,54 +97,85 @@ class MusicPlayer extends React.Component {
       songUrl = currentSong.songUrl;
     }
 
-    const musicPlayer = currentSong ?
+    const musicPlayer =
     <div className="music-player">
       <div className="music-player-main">
+        <div className="music-player-buttons">
+          <button className="rewind-button"
+            onClick={this.handleRestart}>
+          <FontAwesomeIcon icon="step-backward"/>
+          </button>
 
-          <div className="music-player-buttons">
-            <button className="rewind-button">
-            <FontAwesomeIcon icon="step-backward"/>
-            </button>
+          <button className="player-play-button"
+            onClick={this.handlePlay}>
+            {playing ? <FontAwesomeIcon icon="pause"/> : 
+            <FontAwesomeIcon icon="play" />}
+          </button>
 
-            <button className="player-play-button"
-              onClick={this.handlePlay}>
-              {playing ? <FontAwesomeIcon icon="pause"/> : <FontAwesomeIcon icon="play" />}
-            </button>
+          <button className="skip-button"
+            onClick={this.handleSkip}>
+          <FontAwesomeIcon icon="step-forward"/>
+          </button>
 
-            <button className="skip-button">
-            <FontAwesomeIcon icon="step-forward"/>
-            </button>
+          <button className="shuffle-button">
+          <FontAwesomeIcon icon="random"/>
+          </button>
 
-            <button className="shuffle-button">
-            <FontAwesomeIcon icon="random"/>
-            </button>
-
-            <button className="loop-button">
-            <FontAwesomeIcon icon="redo-alt"/>
-            </button>
-
-            <p className="current-time">0:00</p>
+          <button className="loop-button">
+          <FontAwesomeIcon icon="redo-alt"/>
+          </button>
+          <div className="song-time">
+            <p className="current-time">
+              {formatSongTime(this.state.timeElapsed)}
+            </p>
 
             <input className="scrollbar"
-              type="range"/>
+              id="scrollbar"
+              type="range"
+              min="0"
+              defaultValue="0"
+              max={this.state.duration}
+              onInput={this.handleSkipAhead} />
 
-            <p className="song-length">{this.state.duration}</p>
-
-            <button className="volume">
-            <FontAwesomeIcon icon="volume-up"/>
+            <p className="song-length">
+              {formatSongTime(this.state.duration)}
+            </p>
+          </div>
+          <div className="volume"
+            onMouseEnter={() => this.setState({ volumeHover: true })}
+            onMouseLeave={() => this.setState({ volumeHover: false })}>
+            <button>
+              { this.state.volumeHover ? 
+                <div className="volume-bar"
+                  onMouseEnter={() => this.setState({ volumeHover: true })}>
+                  <input type="range"/>
+                </div> 
+                : null
+              }
+              <FontAwesomeIcon icon="volume-up"/>
             </button>
           </div>
-          <div className="player-song-data">
-            <Link className="player-song-image" to={`/songs/${currentSong.id}`}>
-
+        </div>
+        <div className="player-song-data">
+          <Link className="player-song-image" to={`/songs/${currentSong.id}`}>
+            {currentSong.photoUrl ?
+              <img src={currentSong.photoUrl} />
+            : null
+            }
+          </Link>
+          <div className="player-song-links">
+            <Link className="player-artist"
+              to={`/${artist.display_name}`}>
+              {artist.display_name}
             </Link>
-            <div className="player-song-links">
-              <Link to={`/${artist.display_name}`}>DemoUser</Link>
-              <Link to={`/songs/${currentSong.id}`}>poop</Link>
-            </div>
+            <Link className="player-title"
+              to={`/songs/${currentSong.id}`}>
+              {currentSong.title}
+            </Link>
           </div>
+        </div>
       </div>
-    </div> : null;
+    </div>
 
     return (
       <>
@@ -108,6 +184,7 @@ class MusicPlayer extends React.Component {
           controls
           controlsList="nodownload"
           onLoadedMetadata={this.handleMetadata}
+          onPlaying={this.handleTimeElapsed}
         />
         {musicPlayer}
       </>

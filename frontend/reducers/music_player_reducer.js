@@ -23,8 +23,6 @@ const musicPlayerReducer = (state = defaultState, action) => {
     case PAUSE_SONG:
       newState.playing = false;
       return newState;
-    // case RESTART_SONG:
-
     default:
       return state;
   }

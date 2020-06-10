@@ -1,5 +1,5 @@
 export const formatSongTime = (time) => {
-  let seconds = Math.ceil(parseFloat(time));
+  let seconds = Math.floor(parseFloat(time));
   let minutes = Math.floor(seconds / 60);
   seconds -= minutes * 60;
 
