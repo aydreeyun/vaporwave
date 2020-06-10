@@ -11,6 +11,7 @@ class MusicPlayer extends React.Component {
       duration: 0,
       timeElapsed: 0,
       volume: 0.1,
+      mutedVolume: 0.0,
       volumeHover: false,
     };
 
@@ -20,6 +21,8 @@ class MusicPlayer extends React.Component {
     this.handleSkip = this.handleSkip.bind(this);
     this.handleTimeElapsed = this.handleTimeElapsed.bind(this);
     this.handleSkipAhead = this.handleSkipAhead.bind(this);
+    this.handleVolume = this.handleVolume.bind(this);
+    this.handleMute = this.handleMute.bind(this);
   }
 
   componentDidMount() {
@@ -85,19 +88,54 @@ class MusicPlayer extends React.Component {
     this.setState({ timeElapsed: e.target.value });
   }
 
-  handleVolume() {
+  handleVolume(e) {
+    const musicPlayer = document.getElementById("audio");
 
+    musicPlayer.volume = e.target.value / 1000.0;
+    this.setState({ volume: e.target.value / 1000.0 });
+  }
+
+  handleMute() {
+    const musicPlayer = document.getElementById("audio");
+    const volumeBar = document.getElementById("volume");
+
+    if (musicPlayer.volume > 0) {
+      this.setState({ volume: 0, mutedVolume: musicPlayer.volume });
+      musicPlayer.volume = 0;
+      volumeBar.value = 0;
+    } else {
+      this.setState({ volume: this.state.mutedVolume });
+      musicPlayer.volume = this.state.mutedVolume;
+      volumeBar.value = this.state.mutedVolume * 1000.0;
+    }
   }
 
   render() {
     const { currentSong, artist, playing } = this.props;
     let songUrl;
+    let volumeIcon;
 
     if (currentSong) {
       songUrl = currentSong.songUrl;
-    }
+      const musicPlayer = document.getElementById("audio");
 
-    const musicPlayer =
+      if (musicPlayer.volume > 0.5) {
+        volumeIcon = <FontAwesomeIcon className="volume-up"
+          icon="volume-up"
+          onClick={this.handleMute}/>;
+      } else if (musicPlayer.volume <= 0.5 && musicPlayer.volume !== 0) {
+        volumeIcon = <FontAwesomeIcon className="volume-down"
+          icon="volume-down"
+          onClick={this.handleMute}/>
+      } else {
+        volumeIcon = <FontAwesomeIcon className="volume-mute"
+          icon="volume-mute"
+          onClick={this.handleMute}/>
+      }
+    }
+    
+
+    const musicPlayerComponent = currentSong ?
     <div className="music-player">
       <div className="music-player-main">
         <div className="music-player-buttons">
@@ -148,11 +186,16 @@ class MusicPlayer extends React.Component {
               { this.state.volumeHover ? 
                 <div className="volume-bar"
                   onMouseEnter={() => this.setState({ volumeHover: true })}>
-                  <input type="range"/>
+                  <input type="range"
+                    id="volume"
+                    min="0.0"
+                    defaultValue={this.state.volume * 1000.0}
+                    max="1000.0"
+                    onChange={this.handleVolume}/>
                 </div> 
                 : null
               }
-              <FontAwesomeIcon icon="volume-up"/>
+              {volumeIcon}
             </button>
           </div>
         </div>
@@ -175,7 +218,7 @@ class MusicPlayer extends React.Component {
           </div>
         </div>
       </div>
-    </div>
+    </div> : null;
 
     return (
       <>
@@ -186,7 +229,7 @@ class MusicPlayer extends React.Component {
           onLoadedMetadata={this.handleMetadata}
           onPlaying={this.handleTimeElapsed}
         />
-        {musicPlayer}
+        {musicPlayerComponent}
       </>
     );
   }

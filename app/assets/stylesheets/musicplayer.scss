@@ -91,7 +91,7 @@
 
 .volume {
   font-size: 14px;
-  margin-right: 17px;
+  max-width: 22px;
   position: relative;
   height: 49px;
   display: flex;
@@ -103,7 +103,7 @@
   transform: rotate(-90deg);
   position: absolute;
   top: -85px;
-  left: -62px;
+  left: -65px;
   background: #f2f2f2;
   border: 1px solid lightgray;
   height: 32px;
@@ -124,11 +124,11 @@
 @keyframes fade-in {
   from {
     width: 0;
-    left: 13px;
+    left: 10px;
   }
   to {
     width: 150px;
-    left: -62px;
+    left: -65px;
   }
 }
 
@@ -139,6 +139,7 @@
 }
 
 .player-song-data {
+  margin-left: 17px;
   display: flex;
   align-items: center;
 }
