@@ -90,7 +90,7 @@ class Navbar extends React.Component {
     : null;
 
     const focused = this.props.url === "/discover" ? "focused" : ""
-
+    
     return (
       <div className="navbar" ref={this.ref}>
         <Link className="navbar-logo" to="/discover"></Link>

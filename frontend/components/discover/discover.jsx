@@ -200,7 +200,7 @@ class Discover extends React.Component {
         </div>
       )
     });
-
+    
     return (
       <>
         <NavbarContainer 
