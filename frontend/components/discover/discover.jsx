@@ -97,19 +97,20 @@ class Discover extends React.Component {
       );
     });
 
-    const randomArr = (arr, num) => {
-      let newArr = [];
+    // BREAKS ENTIRE WEBSITE
+    // const randomArr = (arr, num) => {
+    //   let newArr = [];
 
-      while (newArr.length < num) {
-        let randomNum = Math.floor(Math.random() * arr.length);
+    //   while (newArr.length < num) {
+    //     let randomNum = Math.floor(Math.random() * arr.length);
 
-        if (!newArr.includes(arr[randomNum]) && arr[randomNum] !== currentUser) {
-          newArr.push(arr[randomNum]);
-        }
-      }
+    //     if (!newArr.includes(arr[randomNum]) && arr[randomNum] !== currentUser) {
+    //       newArr.push(arr[randomNum]);
+    //     }
+    //   }
 
-      return newArr;
-    }
+    //   return newArr;
+    // }
 
     // const followed = this.state.followed === "Following" ?
     //   "followed" : "";
@@ -128,9 +129,9 @@ class Discover extends React.Component {
         Follow
       </button>;
 
-    const followUsers = randomArr(Object.values(users), 3).map(user => {
+    const followUsers = Object.values(users).slice(1, 4).map((user, i) => {
       return (
-        <div className="follow-user">
+        <div key={i} className="follow-user">
           <div className="follow-user-photo">
             {/* user profile photo */}
             {/* <img src={} /> */}
@@ -159,11 +160,11 @@ class Discover extends React.Component {
       );
     });
 
-    const likedSongs = randomArr(Object.values(songs), 3).map(song => {
+    const likedSongs = Object.values(songs).slice(0, 3).map((song, i) => {
       const likedSongPhoto = song.photoUrl ? 
       <img src={song.photoUrl} /> : null;
       return (
-        <div className="liked-songs">
+        <div key={i} className="liked-songs">
           <div className="liked-song-photo">
             {likedSongPhoto}
           </div>
@@ -200,7 +201,7 @@ class Discover extends React.Component {
         </div>
       )
     });
-    
+
     return (
       <>
         <NavbarContainer 
