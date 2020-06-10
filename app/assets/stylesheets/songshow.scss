@@ -321,6 +321,11 @@
 .artist-stats p {
   margin-right: 15px;
   color: gray;
+  cursor: pointer;
+}
+
+.artist-stats p:hover {
+  color: rgb(255, 133, 200);
 }
 
 .artist-stats svg {

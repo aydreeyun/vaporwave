@@ -47,6 +47,8 @@ class Navbar extends React.Component {
 
   render() {
     const { user, logout } = this.props;
+    const userDisplayName = user.display_name.length > 10 ?
+      user.display_name.slice(0, 10) + "..." : user.display_name;
 
     const userDrop = this.state.userDropdown ? 
     <div className="user-dropdown">
@@ -69,6 +71,12 @@ class Navbar extends React.Component {
             icon={['fab', 'linkedin']} />
           Linkedin
         </a>
+        <a
+          onMouseDown={e => e.preventDefault()}>
+          <FontAwesomeIcon className="navbar-linkedin-icon"
+            icon={['fab', 'angellist']} />
+          AngelList
+        </a>
       </div>
     </div>
     : null
@@ -86,9 +94,18 @@ class Navbar extends React.Component {
     return (
       <div className="navbar" ref={this.ref}>
         <Link className="navbar-logo" to="/discover"></Link>
-        <Link className={`navbar-left-link ${focused}`} to="/discover">Home</Link>
-        <a href="https://github.com/aydreeyun/vaporwave" className="navbar-left-link">GitHub</a>
-        <a href="https://www.linkedin.com/in/adriantaehyunkim/" className="navbar-left-link">Linkedin</a>
+        <Link className={`navbar-left-link ${focused}`} 
+          to="/discover">
+            Home
+        </Link>
+        <a 
+          className="navbar-left-link">
+            AngelList
+        </a>
+        <a href="https://www.linkedin.com/in/adriantaehyunkim/" 
+          className="navbar-left-link">
+            Linkedin
+        </a>
         <div className="navbar-search">
           <input className="navbar-search-input"
             type="text"
@@ -97,7 +114,10 @@ class Navbar extends React.Component {
             <FontAwesomeIcon icon="search" />
           </button>
         </div>
-        <a className="navbar-right-link upgrade">Try Pro</a>
+        <a href="https://github.com/aydreeyun/vaporwave"
+          className="navbar-right-link upgrade">
+            GitHub
+        </a>
         <Link className="navbar-right-link" to="/upload">Upload</Link>
         <a className="navbar-user"
           tabIndex="0"
@@ -108,7 +128,7 @@ class Navbar extends React.Component {
             {/* USER PROFILE PICTURE */}
           </div>
           <p className="navbar-username">
-            {user.display_name}
+            {userDisplayName}
           </p>
           <FontAwesomeIcon icon="angle-down" />
         </a>

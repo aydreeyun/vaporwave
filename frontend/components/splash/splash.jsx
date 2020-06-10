@@ -100,6 +100,10 @@ class Splash extends React.Component {
           <a href="https://github.com/aydreeyun/vaporwave">
             Linkedin
           </a>
+          <p>-</p>
+          <a>
+            AngelList
+          </a>
         </div>
       </div>
     );
