@@ -160,7 +160,7 @@ class Discover extends React.Component {
       );
     });
 
-    const likedSongs = Object.values(songs).slice(0, 3).map((song, i) => {
+    const likedSongs = Object.values(songs).slice(3, 6).map((song, i) => {
       const likedSongPhoto = song.photoUrl ? 
       <img src={song.photoUrl} /> : null;
       return (
