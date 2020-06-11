@@ -62,7 +62,7 @@ class Splash extends React.Component {
           <h3>Hear what's trending for free in the VaporWave community</h3>
           <div className="tracks"></div>
           {/* Link to discover page once protected auth removed */}
-          <Link className="splash-button-orange">Explore trending playlists</Link>
+          <a className="splash-button-orange">Explore trending playlists</a>
         </div>
 
         <div className="splash-mobile">

@@ -4,7 +4,6 @@ import { openModal } from '../../actions/modal_actions';
 import { fetchUsers } from '../../actions/user_actions';
 import { fetchSongs } from '../../actions/song_actions';
 
-
 const mSTP = state => {
   return {
     user: state.entities.users[state.session.id],
