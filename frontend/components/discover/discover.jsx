@@ -12,6 +12,8 @@ class Discover extends React.Component {
       newMusicHover: "",
       stayHomeHover: "",
       likedSongsHover: "",
+      randomUsers: this.randomArr(Object.values(props.users)),
+      randomSongs: this.randomArr(Object.values(props.songs)),
       // followed: "Follow",
     }
 
@@ -19,8 +21,10 @@ class Discover extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUsers();
-    this.props.fetchSongs();
+    this.setState({
+      randomUsers: this.randomArr(Object.values(this.props.users)),
+      randomSongs: this.randomArr(Object.values(this.props.songs)),
+    })
     scrollTo(0, 0);
   }
 
@@ -32,6 +36,15 @@ class Discover extends React.Component {
   //     this.setState({ followed: "Follow" });
   //   }
   // }
+
+  randomArr(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      let randomNum = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[randomNum]] = [arr[randomNum], arr[i]]
+    }
+
+    return arr;
+  }
 
   render() {
     const { songs, users } = this.props;
@@ -120,27 +133,12 @@ class Discover extends React.Component {
       );
     });
 
-    // BREAKS ENTIRE WEBSITE
-    // const randomArr = (arr, num) => {
-    //   let newArr = [];
-
-    //   while (newArr.length < num) {
-    //     let randomNum = Math.floor(Math.random() * arr.length);
-
-    //     if (!newArr.includes(arr[randomNum]) && arr[randomNum] !== currentUser) {
-    //       newArr.push(arr[randomNum]);
-    //     }
-    //   }
-
-    //   return newArr;
-    // }
-
+    // FOR FOLLOW FEATURE
     // const followed = this.state.followed === "Following" ?
     //   "followed" : "";
     // const followedIcon = this.state.followed === "Following" ?
     //   <FontAwesomeIcon icon="user-check" />
     // : <FontAwesomeIcon icon="user-plus" />;
-
     const followButton = 
       <button className="artist-follow"
       // {`artist-follow ${followed}`}
@@ -151,8 +149,9 @@ class Discover extends React.Component {
         {/* {this.state.followed} */}
         Follow
       </button>;
+    // FOR FOLLOW FEATURE
 
-    const followUsers = Object.values(users).slice(1, 4).map((user, i) => {
+    const followUsers = this.state.randomUsers.slice(0, 3).map((user, i) => {
       return (
         <div key={i} className="follow-user">
             <Link to={`/${user.display_name}`}>
@@ -185,7 +184,7 @@ class Discover extends React.Component {
       );
     });
 
-    const likedSongs = Object.values(songs).slice(3, 6).map((song, i) => {
+    const likedSongs = this.state.randomSongs.slice(0, 3).map((song, i) => {
       const likedSongPhoto = song.photoUrl ? 
       <img src={song.photoUrl} /> : null;
       return (
