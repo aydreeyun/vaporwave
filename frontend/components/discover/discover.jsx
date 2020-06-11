@@ -11,6 +11,7 @@ class Discover extends React.Component {
     this.state = {
       newMusicHover: "",
       stayHomeHover: "",
+      likedSongsHover: "",
       // followed: "Follow",
     }
 
@@ -33,7 +34,7 @@ class Discover extends React.Component {
   // }
 
   render() {
-    const { songs, users, receiveCurrentSong, currentUser } = this.props;
+    const { songs, users } = this.props;
     const weeklySongs = songs.map((song, i) => {
       return (
         <Link key={i} to={`/songs/${song.id}`}>
@@ -46,7 +47,7 @@ class Discover extends React.Component {
             </div>
             <div className="weekly-songs-right">
               <FontAwesomeIcon icon="play" />
-              <p>300</p>
+              <p>646</p>
             </div>
           </li>
         </Link>
@@ -188,9 +189,18 @@ class Discover extends React.Component {
       const likedSongPhoto = song.photoUrl ? 
       <img src={song.photoUrl} /> : null;
       return (
-        <div key={i} className="liked-songs">
+        <div key={i} className="liked-songs"
+          onMouseEnter={() => this.setState({ likedSongsHover: song.title })}
+          onMouseLeave={() => this.setState({ likedSongsHover: "" })}>
           <div className="liked-song-photo">
             {likedSongPhoto}
+            {this.state.likedSongsHover === song.title ? 
+              <div className="discover-play-button"
+                onMouseEnter={() => this.setState({ likedSongsHover: song.title })}>
+                <PlayButtonContainer songId={song.id} />
+              </div>
+            : null
+            }
           </div>
           <div className="liked-song-info">
             <div className="liked-song-artist">

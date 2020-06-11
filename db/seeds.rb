@@ -14,6 +14,9 @@ demo_user = User.create(email: "demo@demo.com", password: "password", age: "22",
 chvrches = User.create(email: "chvrches@chvrch.es", password: "chvrches", age: "32", gender: "Female", display_name: "CHVRCHES")
 the_weeknd = User.create(email: "the@week.nd", password: "123456", age: "30", gender: "Male", display_name: "The Weeknd")
 childish_gambino = User.create(email: "donald@glover.com", password: "troybarnes", age: "36", gender: "Male", display_name: "Childish Gambino")
+nujabes = User.create(email: "nujabes@gmail.com", password: "restinpeace", age: "36", gender: "Male", display_name: "Nujabes")
+porter = User.create(email: "porter@robinson.com", password: "robinson", age: "27", gender: "Male", display_name: "Porter Robinson")
+gorillaz = User.create(email: "go@rillaz.com", password: "melancholy", age: "22", gender: "NA", display_name: "Gorillaz")
 test_user = User.create(email: "test@test.com", password: "hunter12", age: "25", gender: "NA", display_name: "TestUser")
 
 demo_song1 = Song.create(title: "test", artist_id: demo_user.id, genre: "", description: "test")
@@ -61,3 +64,21 @@ save_your_tears_photo = open("https://vaporwave-seeds.s3.amazonaws.com/after_hou
 save_your_tears.photo.attach(io: save_your_tears_photo, filename: "after_hours.jpg")
 save_your_tears_song = open("https://vaporwave-seeds.s3.amazonaws.com/save_your_tears.mp3")
 save_your_tears.song.attach(io: save_your_tears_song, filename: "save_your_tears.mp3")
+
+shelter = Song.create(title: "Shelter", artist_id: porter.id, genre: "EDM", description: "(ft. Madeon)")
+shelter_photo = open("https://vaporwave-seeds.s3.amazonaws.com/shelter_cover.jpg")
+shelter.photo.attach(io: shelter_photo, filename: "shelter_cover.jpg")
+shelter_song = open("https://vaporwave-seeds.s3.amazonaws.com/shelter.mp3")
+shelter.song.attach(io: shelter_song, filename: "shelter.mp3")
+
+melancholy_hill = Song.create(title: "Melancholy Hill", artist_id: gorillaz.id, genre: "Alternative", description: "Plastic Beach")
+melancholy_hill_photo = open("https://vaporwave-seeds.s3.amazonaws.com/plastic_beach.jpg")
+melancholy_hill.photo.attach(io: melancholy_hill_photo, filename: "plastic_beach.jpg")
+melancholy_hill_song = open("https://vaporwave-seeds.s3.amazonaws.com/melancholy_hill.mp3")
+melancholy_hill.song.attach(io: melancholy_hill_song, filename: "melancholy_hill.mp3")
+
+aruarian_dance = Song.create(title: "Aruarian Dance", artist_id: nujabes.id, genre: "Lo-Fi", description: "Departure")
+aruarian_dance_photo = open("https://vaporwave-seeds.s3.amazonaws.com/departure.jpg")
+aruarian_dance.photo.attach(io: aruarian_dance_photo, filename: "departure.jpg")
+aruarian_dance_song = open("https://vaporwave-seeds.s3.amazonaws.com/aruarian_dance.mp3")
+aruarian_dance.song.attach(io: aruarian_dance_song, filename: "aruarian_dance.mp3")

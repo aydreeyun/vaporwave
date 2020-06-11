@@ -10,14 +10,14 @@ class MusicPlayer extends React.Component {
     this.state = {
       duration: 0,
       timeElapsed: 0,
-      volume: 0.1,
+      volume: 0.05,
       mutedVolume: 0.0,
       volumeHover: false,
     };
 
     this.handleMetadata = this.handleMetadata.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
-    this.handleRestart = this.handleRestart.bind(this);
+    this.handleRewind = this.handleRewind.bind(this);
     this.handleSkip = this.handleSkip.bind(this);
     this.handleTimeElapsed = this.handleTimeElapsed.bind(this);
     this.handleSkipAhead = this.handleSkipAhead.bind(this);
@@ -27,7 +27,8 @@ class MusicPlayer extends React.Component {
 
   componentDidMount() {
     const musicPlayer = document.getElementById("audio");
-    musicPlayer.volume = 0.1;
+    musicPlayer.volume = 0.05;
+    this.props.receiveQueue(this.props.songs);
   }
 
   handleMetadata() {
@@ -60,25 +61,28 @@ class MusicPlayer extends React.Component {
     }
   }
 
-  handleRestart() {
+  handleRewind() {
     const musicPlayer = document.getElementById("audio");
     
-    // if (musicPlayer.currentTime < 4) {
-      // play previous song array
-    // } else {
+    if (musicPlayer.currentTime < 5 && this.props.played.length > 0) {
+      this.props.receiveNextSong(this.props.currentSong.id);
+      this.props.receiveCurrentSong(this.props.played.pop());
+    } else {
       musicPlayer.currentTime = 0;
       this.props.playSong();
       musicPlayer.play();
       this.setState({ timeElapsed: 0 });
-    // }
+    }
   }
 
   handleSkip() {
     const musicPlayer = document.getElementById("audio");
 
-    musicPlayer.currentTime = this.state.duration;
-    this.props.pauseSong();
-    this.setState({ timeElapsed: this.state.duration });
+    this.props.receivePreviousSong(this.props.currentSong.id);
+    this.props.receiveCurrentSong(this.props.queue.shift());
+    musicPlayer.currentTime = 0;
+    this.props.playSong();
+    this.setState({ timeElapsed: 0 });
   }
 
   handleSkipAhead(e) {
@@ -140,7 +144,7 @@ class MusicPlayer extends React.Component {
       <div className="music-player-main">
         <div className="music-player-buttons">
           <button className="rewind-button"
-            onClick={this.handleRestart}>
+            onClick={this.handleRewind}>
           <FontAwesomeIcon icon="step-backward"/>
           </button>
 
