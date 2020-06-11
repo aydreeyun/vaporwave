@@ -20,6 +20,7 @@ class MusicPlayer extends React.Component {
     this.handleRewind = this.handleRewind.bind(this);
     this.handleSkip = this.handleSkip.bind(this);
     this.handleTimeElapsed = this.handleTimeElapsed.bind(this);
+    this.handleNextSong = this.handleNextSong.bind(this);
     this.handleSkipAhead = this.handleSkipAhead.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
     this.handleMute = this.handleMute.bind(this);
@@ -59,6 +60,13 @@ class MusicPlayer extends React.Component {
         this.setState({ timeElapsed: musicPlayer.currentTime })
       }, 50)
     }
+  }
+
+  handleNextSong() {
+    this.props.receivePreviousSong(this.props.currentSong.id);
+    this.props.receiveCurrentSong(this.props.queue.shift());
+    this.props.playSong();
+    this.setState({ timeElapsed: 0 });
   }
 
   handleRewind() {
@@ -232,6 +240,7 @@ class MusicPlayer extends React.Component {
           controlsList="nodownload"
           onLoadedMetadata={this.handleMetadata}
           onPlaying={this.handleTimeElapsed}
+          onEnded={this.handleNextSong}
         />
         {musicPlayerComponent}
       </>
