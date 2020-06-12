@@ -220,7 +220,7 @@ class MusicPlayer extends React.Component {
           </Link>
           <div className="player-song-links">
             <Link className="player-artist"
-              to={`/${artist.display_name}`}>
+              to={`/users/${artist.id}`}>
               {artist.display_name}
             </Link>
             <Link className="player-title"
