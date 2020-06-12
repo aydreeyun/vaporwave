@@ -1,10 +1,262 @@
 .profile-page {
   min-width: 1240px;
   width: 1240px;
-  height: 952px;
+  min-height: 952px;
   margin: 0 auto;
   margin-top: 46px;
   font-family: 'Open Sans', sans-serif;
   min-width: 920px;
   background: white;
+}
+
+.profile-page button:focus {
+  outline: none;
+}
+
+.profile-page-header {
+  width: 1180px;
+  height: 200px;
+  background: linear-gradient(to top left, cyan, rgb(255, 133, 200));
+  padding: 30px;
+  display: flex;
+}
+
+.profile-header-photo {
+  height: 200px;
+  width: 200px;
+  background: linear-gradient(to bottom right, cyan, rgb(255, 133, 200));
+  border-radius: 50%;
+}
+
+.profile-header-name {
+  font-size: 23px;
+  background: black;
+  color: cyan;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  padding: 4px 7px;
+  cursor: default;
+}
+
+.profile-main {
+  padding: 15px 30px;
+}
+
+.profile-main-header {
+  height: 32px;
+  border-bottom: 1px solid #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-main-header-left {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-main-header-all {
+  color: rgb(255, 133, 200);
+  border-bottom: 1px solid rgb(255, 133, 200);
+}
+
+.profile-main-header-left a {
+  margin-right: 25px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-main-header-left a:not(:first-of-type):hover {
+  border-bottom: 1px solid black;
+}
+
+.profile-main-header-right button {
+  font-size: 14px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  height: 24px;
+  padding: 2px 10px;
+  margin-left: 5px;
+}
+
+.profile-main-header-right button:hover {
+  border: 1px solid #cccccc;
+}
+
+.profile-main-header-right button:first-of-type svg {
+  font-size: 12px;
+  margin-bottom: 1px;
+}
+
+.profile-main-header-right button svg {
+  margin-right: 8px;
+}
+
+.profile-main-content {
+  display: flex;
+  margin-top: 20px;
+}
+
+.profile-main-songs {
+  width: 819px;
+  padding-right: 30px;
+}
+
+.profile-main-songs h1 {
+  height: 29px;
+  font-size: 22px;
+  margin-bottom: 20px;
+  padding-top: 22px;
+}
+
+.profile-song-item {
+  display: flex;
+  margin-bottom: 44px;
+}
+
+.profile-song-image {
+  height: 160px;
+  width: 160px;
+  background: linear-gradient(to top right, cyan, rgb(255, 133, 200));
+}
+
+.profile-song-image img {
+  height: 160px;
+  width: 160px;
+  object-fit: cover;
+}
+
+.profile-song-main {
+  margin-left: 15px;
+  width: 644px;
+}
+
+.profile-song-header {
+  display: flex;
+  height: 43px;
+  margin: 8px 0;
+}
+
+.profile-song-header button {
+  height: 36px;
+  width: 36px;
+  font-size: 12px;
+}
+
+.profile-song-header button .play-icon {
+  margin-left: 2px;
+}
+
+.profile-song-info {
+  margin-left: 5px;
+  width: 608px;
+}
+
+.profile-song-info-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  color: #999;
+}
+
+.profile-song-info-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-song-info-bottom h3 {
+  margin-top: 3px;
+  font-size: 15px;
+}
+
+.profile-song-info-bottom p {
+  background: rgb(255, 133, 200);
+  color: white;
+  font-size: 12px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.profile-song-info-bottom p:hover {
+  background: rgb(255, 182, 222);
+}
+
+.waveform {
+  height: 58px;
+  width: 100%;
+  border: 1px solid cyan;
+}
+
+.profile-song-footer {
+  margin-top: 20px;
+}
+
+.profile-song-footer button {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  height: 22px;
+  padding: 2px 9px;
+  margin-right: 5px;
+  font-size: 11px;
+}
+
+.profile-song-footer button:hover {
+  border: 1px solid #cccccc;
+}
+
+.profile-song-footer button svg {
+  margin-right: 7px;
+}
+
+.profile-user-stats {
+  display: flex;
+}
+
+.profile-main-sidebar {
+  width: 300px;
+  height: 100%;
+  min-height: 600px;
+  padding-left: 30px;
+  border-left: 1px solid #f2f2f2;
+}
+
+.profile-user-stats p {
+  font-size: 12px;
+  padding-bottom: 4px;
+}
+
+.profile-user-stats h2 {
+  font-size: 20px;
+}
+
+.profile-user-stats div {
+  min-width: 100px;
+  padding-top: 5px;
+  color: #999;
+}
+
+.profile-user-stats div:not(:first-of-type) {
+  min-width: 89px;
+  padding-left: 10px;
+}
+
+.profile-user-followers,
+.profile-user-following {
+  border-right: 1px solid #f2f2f2;
+}
+
+.profile-sidebar-bio {
+  font-size: 11px;
+  margin-top: 19px;
 }

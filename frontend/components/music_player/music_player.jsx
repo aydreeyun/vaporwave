@@ -29,7 +29,7 @@ class MusicPlayer extends React.Component {
   componentDidMount() {
     const musicPlayer = document.getElementById("audio");
     musicPlayer.volume = 0.05;
-    setTimeout(() => this.props.receiveQueue(this.props.songs), 1000);
+    setTimeout(() => this.props.receiveQueue(this.props.songs), 500);
   }
 
   handleMetadata() {
@@ -58,7 +58,7 @@ class MusicPlayer extends React.Component {
       this.playInterval = setInterval(() => {
         scrollBar.value = musicPlayer.currentTime;
         this.setState({ timeElapsed: musicPlayer.currentTime })
-      }, 50)
+      }, 50);
     }
   }
 

@@ -52,7 +52,7 @@ class Navbar extends React.Component {
 
     const userDrop = this.state.userDropdown ? 
     <div className="user-dropdown">
-      <Link to={`/${user.display_name}`}
+      <Link to={`/users/${user.id}`}
         onMouseDown={e => e.preventDefault()}>
         <FontAwesomeIcon className="navbar-user-icon"
           icon="user" />

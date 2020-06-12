@@ -154,14 +154,14 @@ class Discover extends React.Component {
     const followUsers = this.state.randomUsers.slice(0, 3).map((user, i) => {
       return (
         <div key={i} className="follow-user">
-            <Link to={`/${user.display_name}`}>
+            <Link to={`/users/${user.id}`}>
               <div className="follow-user-photo">
                 {/* user profile photo */}
                 {/* <img src={} /> */}
               </div>
             </Link>
           <div className="follow-user-info">
-            <Link to={`/${user.display_name}`}>
+            <Link to={`/users/${user.id}`}>
               {user.display_name}
             </Link>
             <div className="follow-user-stats">

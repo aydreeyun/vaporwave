@@ -13,13 +13,13 @@ const App = () => {
   return (
     <>
       <ModalContainer />
-      
+
       <Switch>
         <AuthRoute exact path="/" component={SplashContainer} />
         <ProtectedRoute exact path="/discover" component={DiscoverContainer} />
         <ProtectedRoute exact path="/upload" component={UploadContainer} />
         <ProtectedRoute exact path="/songs/:songId" component={SongShowContainer}/>
-        <ProtectedRoute exact path="/:displayName" component={ProfilePageContainer} />
+        <ProtectedRoute exact path="/users/:userId" component={ProfilePageContainer} />
       </Switch>
 
       <MusicPlayerContainer />
