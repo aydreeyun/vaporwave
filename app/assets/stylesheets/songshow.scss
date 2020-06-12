@@ -339,6 +339,13 @@
   background: linear-gradient(to top left, rgb(255, 133, 200), cyan);
 }
 
+.artist-photo img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .artist-profile {
   font-size: 13.5px;
   height: 18px;
