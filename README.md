@@ -25,31 +25,34 @@ Heroku
 
 ### User Authentication
 #### Users will be able to sign up, log in, and log out
-
-![](app/assets/images/readme/login.gif)
 * VaporWave gives access to a demo account to try out all of the features
 * Errors will be shown when the criteria for authentication is not met
+
+![](app/assets/images/readme/login.gif)
 ![](app/assets/images/readme/autherror.gif)
 
 
 ### Upload
 #### Users will be able to upload songs along with an optional photo
-![](app/assets/images/readme/upload.gif)
 * Files can be drag and dropped for upload
+
+![](app/assets/images/readme/upload.gif)
 ![](app/assets/images/readme/draganddrop.gif)
 
 
 ### Music Player
 #### Users can listen to music via our custom music player
-![](app/assets/images/readme/musicplayer.gif)
 * Users can navigate the website while listening to music without interruption
 * Seek bar, Skip, Rewind, and Volume Bar have full functionality
+
+![](app/assets/images/readme/musicplayer.gif)
 
 
 ### Profile Page
 #### Users will have a profile page
-![](app/assets/images/readme/profile.gif)
 * The profile page will display all of the user's uploaded songs
+
+![](app/assets/images/readme/profile.gif)
 
 
 ## Updates in Progress
