@@ -65,7 +65,7 @@ class ProfilePage extends React.Component {
       return (
         <div key={i} className="profile-song-item">
           <div className="profile-song-image">
-            {/* {song.photoUrl ? <img src={song.photoUrl} /> : null} */}
+            {song.photoUrl ? <img src={song.photoUrl} /> : null}
           </div>
           <div className="profile-song-main">
             <div className="profile-song-header">
