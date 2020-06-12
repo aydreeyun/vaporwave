@@ -127,7 +127,8 @@ class SongShow extends React.Component {
       </button>
     : null;
 
-    const uploadPhotoButton = !song.photoUrl && artist === currentUser ?
+    const uploadPhotoButton = artist !== currentUser ?
+    null : !song.photoUrl && artist === currentUser ?
       <button className="upload-photo"
         onClick={this.handleFileClick}>
         <FontAwesomeIcon icon="camera" />

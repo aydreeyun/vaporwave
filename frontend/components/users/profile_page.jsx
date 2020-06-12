@@ -38,7 +38,8 @@ class ProfilePage extends React.Component {
   render() {
     const { user, songs, currentUser } = this.props;
 
-    const uploadPhotoButton = !user.photoUrl ?
+    const uploadPhotoButton = user !== currentUser ?
+    null : !user.photoUrl && user === currentUser ?
       <button className="upload-photo"
         onClick={this.handleFileClick}>
         <FontAwesomeIcon icon="camera" />
