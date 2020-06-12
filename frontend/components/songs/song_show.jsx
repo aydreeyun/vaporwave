@@ -161,7 +161,7 @@ class SongShow extends React.Component {
             <div className="song-banner-info">
               <div className="song-banner-top">
                 <h2 className="song-banner-artist">
-                  <Link to={`/${artist.display_name}`}>
+                  <Link to={`/users/${artist.id}`}>
                     {artist.display_name}  
                   </Link> 
                 </h2>

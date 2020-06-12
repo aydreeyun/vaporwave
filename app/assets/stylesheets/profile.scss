@@ -26,6 +26,20 @@
   width: 200px;
   background: linear-gradient(to bottom right, cyan, rgb(255, 133, 200));
   border-radius: 50%;
+  position: relative;
+}
+
+.profile-header-photo img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-header-photo button {
+  position: absolute;
+  bottom: 14px;
+  left: 36px;
 }
 
 .profile-header-name {
@@ -161,7 +175,18 @@
   justify-content: space-between;
   width: 100%;
   font-size: 12px;
+}
+
+.profile-song-info-top p {
   color: #999;
+}
+
+.profile-song-artist {
+  cursor: pointer;
+}
+
+.profile-song-artist:hover {
+  color: #333;
 }
 
 .profile-song-info-bottom {
@@ -172,6 +197,11 @@
 .profile-song-info-bottom h3 {
   margin-top: 3px;
   font-size: 15px;
+  color: #333;
+}
+
+.profile-song-info-bottom h3:hover {
+  color: black;
 }
 
 .profile-song-info-bottom p {

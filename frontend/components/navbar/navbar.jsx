@@ -125,7 +125,7 @@ class Navbar extends React.Component {
           onBlur={this.handleUserBlur}
         >
           <div className="navbar-profile-pic">
-            {/* USER PROFILE PICTURE */}
+            {user.photoUrl ? <img src={user.photoUrl} /> : null}
           </div>
           <p className="navbar-username">
             {userDisplayName}

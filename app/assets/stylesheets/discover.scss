@@ -88,6 +88,13 @@
   background: linear-gradient(to bottom right, cyan, rgb(255, 133, 200));
 }
 
+.follow-user-photo img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .follow-user-stats {
   display: flex;
   width: 240px;

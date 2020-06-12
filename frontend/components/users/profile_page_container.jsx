@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import ProfilePage from './profile_page';
+import { updateUser, fetchUser } from '../../actions/user_actions';
 
 const mSTP = (state, ownProps) => {
   const userSongs = Object.values(state.entities.songs)
@@ -12,10 +13,11 @@ const mSTP = (state, ownProps) => {
   };
 };
 
-// const mDTP = dispatch => {
-//   return {
+const mDTP = dispatch => {
+  return {
+    updateUser: (user, id) => dispatch(updateUser(user, id)),
+    fetchUser: userId => dispatch(fetchUser(userId)),
+  };
+};
 
-//   };
-// };
-
-export default connect(mSTP)(ProfilePage);
+export default connect(mSTP, mDTP)(ProfilePage);

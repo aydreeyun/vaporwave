@@ -92,7 +92,7 @@ class Discover extends React.Component {
             : null
             }
             <Link className="song-item-artist"
-              to={`/${users[song.artist_id].display_name}`}>
+              to={`/users/${users[song.artist_id].id}`}>
               {users[song.artist_id].display_name}
             </Link>
           </li>
@@ -125,7 +125,7 @@ class Discover extends React.Component {
             : null
             }
             <Link className="song-item-artist"
-              to={`/${users[song.artist_id].display_name}`}>
+              to={`/users/${users[song.artist_id].id}`}>
               {users[song.artist_id].display_name}
             </Link>
           </li>
@@ -156,8 +156,7 @@ class Discover extends React.Component {
         <div key={i} className="follow-user">
             <Link to={`/users/${user.id}`}>
               <div className="follow-user-photo">
-                {/* user profile photo */}
-                {/* <img src={} /> */}
+                {user.photoUrl ? <img src={user.photoUrl} /> : null}
               </div>
             </Link>
           <div className="follow-user-info">
@@ -203,7 +202,7 @@ class Discover extends React.Component {
           </div>
           <div className="liked-song-info">
             <div className="liked-song-artist">
-              <Link to={`/${users[song.artist_id].display_name}`}>
+              <Link to={`/users/${users[song.artist_id].id}`}>
                 {users[song.artist_id].display_name}
               </Link>
             </div>

@@ -142,6 +142,15 @@
   left: 10px;
 }
 
+.navbar-profile-pic img {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+}
+
 .navbar-username {
   margin-left: 20px;
 }
