@@ -29,7 +29,7 @@ class MusicPlayer extends React.Component {
   componentDidMount() {
     const musicPlayer = document.getElementById("audio");
     musicPlayer.volume = 0.05;
-    setTimeout(() => this.props.receiveQueue(this.props.songs), 500);
+    setTimeout(() => this.props.receiveQueue(this.props.songs), 1000);
   }
 
   handleMetadata() {

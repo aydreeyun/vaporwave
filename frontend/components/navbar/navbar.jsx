@@ -71,7 +71,7 @@ class Navbar extends React.Component {
             icon={['fab', 'linkedin']} />
           Linkedin
         </a>
-        <a
+        <a href="https://angel.co/u/aydreeyun"
           onMouseDown={e => e.preventDefault()}>
           <FontAwesomeIcon className="navbar-linkedin-icon"
             icon={['fab', 'angellist']} />
@@ -98,7 +98,7 @@ class Navbar extends React.Component {
           to="/discover">
             Home
         </Link>
-        <a 
+        <a href="https://angel.co/u/aydreeyun"
           className="navbar-left-link">
             AngelList
         </a>

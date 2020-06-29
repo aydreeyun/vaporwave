@@ -240,7 +240,7 @@ class SongShow extends React.Component {
               {/* artist profile link */}
               <div className="song-comments-index">
                 <div className="song-comments-artist">
-                  <Link to={`/${artist.display_name}`}>
+                  <Link to={`/users/${artist.id}`}>
                     <div className="artist-photo">
                       {artist.photoUrl ? <img src={artist.photoUrl} /> : null}
                     </div>
