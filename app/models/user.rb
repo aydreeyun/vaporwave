@@ -25,6 +25,11 @@ class User < ApplicationRecord
     class_name: :Song,
     dependent: :destroy
 
+  has_many :comments,
+    foreign_key: :author_id,
+    class_name: :Comment,
+    dependent: :destroy
+
   has_one_attached :photo
 
   def self.find_by_credentials(email, password)
