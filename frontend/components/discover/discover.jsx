@@ -319,6 +319,10 @@ class Discover extends React.Component {
                 <a href="https://angel.co/u/aydreeyun">
                   AngelList
                 </a>
+                <p>-</p>
+                <a href="https://aydreeyun.github.io/">
+                  Portfolio
+                </a>
               </div>
             </div>
           </div>

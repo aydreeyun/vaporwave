@@ -33,7 +33,8 @@ import {
   faVolumeMute,
   faRandom,
   faRedoAlt,
-  faPencilAlt
+  faPencilAlt,
+  faFolderOpen
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -66,7 +67,8 @@ library.add(
   faVolumeMute,
   faRandom,
   faRedoAlt,
-  faPencilAlt
+  faPencilAlt,
+  faFolderOpen
 );
 
 document.addEventListener("DOMContentLoaded", () => {

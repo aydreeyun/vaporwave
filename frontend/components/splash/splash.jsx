@@ -37,7 +37,7 @@ class Splash extends React.Component {
           <div className="splash-banner-center">
             <h2 className="splash-header">Discover more with VaporWave Go+</h2>
             <p className="splash-header-p">VaporWave Go+ lets you listen offline, ad-free, with over 150 million tracks ‒ and growing.</p>
-            <a href="https://www.linkedin.com/in/adriantaehyunkim/" 
+            <a href="https://aydreeyun.github.io/" 
               className="large-button-transparent">
                 Meet the creator
             </a>
@@ -105,6 +105,10 @@ class Splash extends React.Component {
           <p>-</p>
           <a href="https://angel.co/u/aydreeyun">
             AngelList
+          </a>
+          <p>-</p>
+          <a href="https://aydreeyun.github.io/">
+            Portfolio
           </a>
         </div>
       </div>

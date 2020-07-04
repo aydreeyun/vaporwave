@@ -59,6 +59,12 @@ class Navbar extends React.Component {
         Profile
       </Link>
       <div className="navbar-credentials">
+        <a href="https://aydreeyun.github.io/"
+          onMouseDown={e => e.preventDefault()}>
+          <FontAwesomeIcon className="navbar-github-icon"
+            icon={['fa', 'folder-open']} />
+          Portfolio
+        </a>
         <a href="https://github.com/aydreeyun/vaporwave"
           onMouseDown={e => e.preventDefault()}>
           <FontAwesomeIcon className="navbar-github-icon"
