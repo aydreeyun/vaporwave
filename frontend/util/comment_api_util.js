@@ -1,7 +1,14 @@
-export const fetchComments = () => {
+export const fetchSongComments = songId => {
   return $.ajax({
     method: "GET",
-    url: `/api/comments`
+    url: `/api/songs/${songId}/comments`
+  });
+};
+
+export const fetchUserComments = userId => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/users/${userId}/comments`
   });
 };
 

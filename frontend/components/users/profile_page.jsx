@@ -16,6 +16,7 @@ class ProfilePage extends React.Component {
   componentDidMount() {
     scrollTo(0, 0);
     this.props.fetchUser(this.props.match.params.userId);
+    this.props.fetchUserComments(this.props.match.params.userId);
   }
 
   handleFileClick() {
@@ -36,7 +37,7 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { user, songs, currentUser } = this.props;
+    const { user, songs, userSongs, currentUser, comments } = this.props;
 
     const uploadPhotoButton = user !== currentUser ?
     null : !user.photoUrl && user === currentUser ?
@@ -62,7 +63,7 @@ class ProfilePage extends React.Component {
       </button>;
 
 
-    const songItems = songs.map((song, i) => {
+    const songItems = userSongs.map((song, i) => {
       return (
         <div key={i} className="profile-song-item">
           <div className="profile-song-image">
@@ -128,7 +129,25 @@ class ProfilePage extends React.Component {
           </div>
         </div>
       );
-    })
+    });
+
+    const lastThreeComments = Object.values(comments).slice(Object.values(comments).length - 3).reverse().map((comment, i) => {
+      return (
+        <div key={i} className="profile-comment-item">
+          <div className="comment-item-header">
+            <div className="comment-item-song">
+              on {songs[comment.song_id].title}
+            </div>
+            <div className="comment-item-time">
+              {formatUploadTime(comment.created_at)}
+            </div>
+          </div>
+          <div className="comment-item-body">
+            "{comment.body}"
+          </div>
+        </div>
+      );
+    });
 
     return (
       <>
@@ -194,13 +213,33 @@ class ProfilePage extends React.Component {
                     </div>
                     <div className="profile-user-tracks">
                       <p>Tracks</p>
-                      <h2>{songs.length}</h2>
+                      <h2>{userSongs.length}</h2>
                     </div>
                   </div>
                   <div className="profile-sidebar-bio">
                     Welcome to {user.display_name}'s page.
                     <br/>
                     User bio will be implemented here.
+                  </div>
+                  <div className="profile-sidebar-comments">
+                    {lastThreeComments}
+                  </div>
+                  <div className="sidebar-footer">
+                    <a href="https://www.linkedin.com/in/adriantaehyunkim/">
+                      GitHub
+                    </a>
+                    <p>-</p>
+                    <a href="https://github.com/aydreeyun/vaporwave">
+                      Linkedin
+                    </a>
+                    <p>-</p>
+                    <a href="https://angel.co/u/aydreeyun">
+                      AngelList
+                    </a>
+                    <p>-</p>
+                    <a href="https://aydreeyun.github.io/">
+                      Portfolio
+                    </a>
                   </div>
                 </div>
               </div>

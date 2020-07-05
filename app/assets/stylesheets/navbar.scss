@@ -186,13 +186,18 @@
   width: 0;
 }
 
-.navbar-user-icon, .navbar-linkedin-icon {
+.navbar-user-icon, .navbar-linkedin-icon, .navbar-angellist-icon {
   margin: 0 10px;
   font-size: 14px;
 }
 
 .navbar-github-icon {
-  margin: 0 9px;
+  margin: 0 8px 0 9px;
+  font-size: 14px;
+}
+
+.navbar-portfolio-icon {
+  margin: 0 7px 0 9px;
   font-size: 14px;
 }
 

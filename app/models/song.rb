@@ -18,7 +18,7 @@ class Song < ApplicationRecord
     class_name: :User
 
   has_many :comments,
-    foreign_key: :author_id,
+    foreign_key: :song_id,
     class_name: :Comment,
     dependent: :destroy
 

@@ -61,7 +61,7 @@ class Navbar extends React.Component {
       <div className="navbar-credentials">
         <a href="https://aydreeyun.github.io/"
           onMouseDown={e => e.preventDefault()}>
-          <FontAwesomeIcon className="navbar-github-icon"
+          <FontAwesomeIcon className="navbar-portfolio-icon"
             icon={['fa', 'folder-open']} />
           Portfolio
         </a>
@@ -79,7 +79,7 @@ class Navbar extends React.Component {
         </a>
         <a href="https://angel.co/u/aydreeyun"
           onMouseDown={e => e.preventDefault()}>
-          <FontAwesomeIcon className="navbar-linkedin-icon"
+          <FontAwesomeIcon className="navbar-angellist-icon"
             icon={['fab', 'angellist']} />
           AngelList
         </a>

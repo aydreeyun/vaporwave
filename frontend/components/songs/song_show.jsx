@@ -22,11 +22,13 @@ class SongShow extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleFileClick = this.handleFileClick.bind(this);
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
   }
 
   componentDidMount() {
     scrollTo(0, 0);
     this.props.fetchSong(this.props.match.params.songId);
+    this.props.fetchSongComments(this.props.match.params.songId);
   }
 
   handleDropdown() {
@@ -81,8 +83,25 @@ class SongShow extends React.Component {
     }
   }
 
+  update(field) {
+    return e => this.setState({ [field]: e.target.value });
+  }
+
+  handleCommentSubmit(e) {
+    e.preventDefault();
+
+    const comment = {
+      author_id: this.props.currentUser.id, 
+      song_id: this.props.song.id, 
+      body: this.state.comment
+    };
+
+    this.props.createComment(comment);
+    this.setState({ comment: "" });
+  }
+
   render() {
-    const { song, artist, currentUser } = this.props;
+    const { song, artist, currentUser, comments } = this.props;
     //  CONDITIONAL SONG DATA
     const genre = song.genre ?
       <h3 className="song-banner-genre">
@@ -98,6 +117,13 @@ class SongShow extends React.Component {
       <img className="song-show-photo"
         src={song.photoUrl} />
     : null;
+    const allComments = Object.values(comments).map((comment, i) => {
+      return (
+        <li key={i}>
+          {comment.body}
+        </li>
+      )
+    });
 
     // CSS CLASS SWITCHES
     const liked = this.state.liked === "Liked" ?
@@ -187,10 +213,14 @@ class SongShow extends React.Component {
 
           <div className="song-comments">
             <div className="song-comments-container">
-              {/* comment form - to be replaced */}
-              <form className="song-comments-form">
-                <input type="text" placeholder="Write a comment"/>
-              </form>
+              <div className="song-comments-form-container">
+                <div className="artist-comment-photo">
+                  {currentUser.photoUrl ? <img src={currentUser.photoUrl} /> : null}
+                </div>
+                <form className="song-comments-form" onSubmit={this.handleCommentSubmit}>
+                  <input type="text" onChange={this.update('comment')} placeholder="Write a comment"/>
+                </form>
+              </div>
 
               <div className="song-comments-stats">
                 <div className="song-stats-buttons">
@@ -260,26 +290,22 @@ class SongShow extends React.Component {
                   </div>
                   {followButton}
                 </div>
-
                 <div className="song-desc-and-comments">
                   {description}
-
                   <div className="comments-section">
                     <div className="comments-header">
-                      {/* REPLACE COMMENT # AFTER CREATED */}
                       <FontAwesomeIcon icon="comment-alt" />
-                      1 comment
+                      {allComments.length} {allComments.length === 1 ? "comment" : "comments"}
                     </div>
-                    {/* comments go here */}
+                    <ul>
+                      {allComments}
+                    </ul>
                   </div>
                 </div>
-                
               </div>
-
             </div>
           </div>
         </div>
-
       </>
     );
   }

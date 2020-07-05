@@ -115,11 +115,15 @@
 .song-comments {
   min-height: 550px;
   background: white;
-  padding: 20px 0 0 30px;
+  padding: 20px 30px 0 30px;
 }
 
 .song-comments-container {
   width: 815px;
+}
+
+.song-comments-form-container {
+  display: flex;
 }
 
 .song-comments-form {
@@ -127,10 +131,21 @@
   height: 38px;
   display: flex;
   align-items: center;
-  padding-left: 45px;
+  padding-left: 5px;
   width: 770px;
   border: 1px solid #e5e5e5;
   transition: background 0.3s, border 0.3s;
+}
+
+.artist-comment-photo {
+  height: 40px;
+  width: 40px;
+  background: linear-gradient(to bottom right, cyan, rgb(255, 133, 200));;
+}
+
+.artist-comment-photo img {
+  height: 40px;
+  width: 40px;
 }
 
 .song-comments-form input {
@@ -140,14 +155,18 @@
   border-radius: 5px;
   height: 27px;
   font-size: 14.5px;
-  padding-left: 10px;
+  padding-left: 9px;
   margin-right: 6px;
   cursor: pointer;
   transition: border 0.3s;
 }
 
+.song-comments-form input:focus {
+  cursor: text;
+}
+
 .song-comments-form input::placeholder {
-  color: rgb(150, 150, 150);
+  color: rgb(60, 60, 60);
 }
 
 .song-comments-form:focus-within {
