@@ -9,7 +9,6 @@ import UploadContainer from './upload/upload_container';
 import ProfilePageContainer from './users/profile_page_container';
 import MusicPlayerContainer from './music_player/music_player_container';
 import CommentsContainer from './comments/comments_container';
-import NavbarContainer from './navbar/navbar_container';
 
 const App = () => {
   return (

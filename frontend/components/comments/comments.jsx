@@ -7,24 +7,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class Comments extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      authorHover: "",
+      commentHover: ""
+    }
   }
 
   componentDidMount() {
+    scrollTo(0, 0);
     this.props.fetchUserComments(this.props.match.params.userId);
   }
 
   render() {
-    const { user, userComments, songs } = this.props;
+    const { user, userComments, songs, currentUser } = this.props;
 
-    const commentList = userComments.reverse().map((comment, i) => {
+    const commentList = userComments.map((comment, i) => {
       return (
-        <div className="comment-page-item" key={i}>
+        <div className="comment-page-item"
+          key={i}
+          onMouseOver={() => this.setState({ authorHover: comment.author_id, commentHover: comment.id })}
+          onMouseLeave={() => this.setState({ authorHover: "", commentHover: "" })}
+        >
           <div className="comment-page-item-header">
             <div className="comment-page-item-title">
               on <Link to={`/songs/${songs[comment.song_id].id}`}>{songs[comment.song_id].title}</Link>
             </div>
             <div className="comment-page-item-time">
-              {formatUploadTime(comment.created_at)}
+              {currentUser.id === this.state.authorHover && comment.id === this.state.commentHover ?
+                <button onClick={() => this.props.deleteComment(comment.id)}>
+                  <FontAwesomeIcon icon="trash" />
+                </button>
+              : formatUploadTime(comment.created_at)}
             </div>
           </div>
           <div className="comment-page-item-main">

@@ -4,7 +4,7 @@ import { fetchUserComments, deleteComment } from '../../actions/comment_actions'
 
 const mSTP = (state, ownProps) => {
   const userComments = Object.values(state.entities.comments)
-    .filter(comment => comment.author_id === parseInt(ownProps.match.params.userId));
+    .filter(comment => comment.author_id === parseInt(ownProps.match.params.userId)).reverse();
 
   return {
     songs: state.entities.songs,
