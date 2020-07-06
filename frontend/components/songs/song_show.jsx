@@ -13,6 +13,7 @@ class SongShow extends React.Component {
       dropdown: false,
       liked: "Like",
       followed: "Follow",
+      comment: "",
       authorHover: "",
       commentHover: "",
     };
@@ -98,8 +99,8 @@ class SongShow extends React.Component {
       body: this.state.comment
     };
 
-    this.props.createComment(comment);
     this.setState({ comment: "" });
+    this.props.createComment(comment);
   }
 
   render() {
@@ -123,13 +124,15 @@ class SongShow extends React.Component {
       return (
         <div className="comment-item"
           key={i}
-          onMouseEnter={() => this.setState({ authorHover: comment.author_id, commentHover: comment.id })}
+          onMouseOver={() => this.setState({ authorHover: comment.author_id, commentHover: comment.id })}
           onMouseLeave={() => this.setState({ authorHover: "", commentHover: "" })}
         >
           <div className="comment-item-photo">
-            <div>
-              {users[comment.author_id].photoUrl ? <img src={users[comment.author_id].photoUrl} /> : null}
-            </div>
+            <Link to={`/users/${comment.author_id}`}>
+              <div>
+                {users[comment.author_id].photoUrl ? <img src={users[comment.author_id].photoUrl} /> : null}
+              </div>
+            </Link>
           </div>
           <div className="comment-item-content">
             <div className="comment-item-header">
@@ -141,7 +144,9 @@ class SongShow extends React.Component {
               </div>
             </div>
             <div className="comment-item-body">
-              {comment.body}
+              <div>
+                {comment.body}
+              </div>
               {currentUser.id === this.state.authorHover && comment.id === this.state.commentHover ?
                 <button onClick={() => this.props.deleteComment(comment.id)}>
                   <FontAwesomeIcon icon="trash" />
@@ -258,7 +263,11 @@ class SongShow extends React.Component {
                   {currentUser.photoUrl ? <img src={currentUser.photoUrl} /> : null}
                 </div>
                 <form className="song-comments-form" onSubmit={this.handleCommentSubmit}>
-                  <input type="text" onChange={this.update('comment')} placeholder="Write a comment"/>
+                  <input type="text"
+                    value={this.state.comment}
+                    onChange={this.update('comment')}
+                    placeholder="Write a comment"
+                  />
                 </form>
               </div>
 

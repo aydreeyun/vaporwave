@@ -195,7 +195,7 @@
 .song-stats-buttons button {
   background: white;
   outline: none;
-  border: 1px solid lightgray;
+  border: 1px solid #e5e5e5;
   border-radius: 3px;
   margin-right: 5px;
   cursor: pointer;
@@ -209,7 +209,7 @@
 }
 
 .song-stats-buttons button:hover {
-  border: 1px solid gray;
+  border: 1px solid #999;
 }
 
 .song-stats-buttons button:not(:first-of-type):focus {
@@ -339,7 +339,7 @@
 
 .artist-stats p {
   margin-right: 15px;
-  color: gray;
+  color: #999;
   cursor: pointer;
 }
 
@@ -424,7 +424,7 @@
 }
 
 .comment-item {
-  font-size: 12px;
+  font-size: 11px;
   padding: 10px 10px 10px 0;
   min-height: 40px;
   display: flex;
@@ -457,17 +457,42 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 11px;
   color: #999;
   height: 17px;
 }
 
 .comment-item-body {
   display: flex;
-  align-items: center;
-  min-height: 17px;
-  max-width: 503px;
+  min-height: 23px;
   color: #333;
+  justify-content: space-between;
+  position: relative;
+}
+
+.comment-item-body div {
+  max-width: 503px;
+  position: absolute;
+  top: 3px;
+}
+
+.comment-item-body button {
+  outline: none;
+  border: 1px solid #e5e5e5;
+  padding: 2px 9px;
+  max-width: 25px;
+  max-height: 22px;
+  background: white;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.comment-item-body button:hover {
+  border: 1px solid #ccc;
 }
 
 .song-show-play {
