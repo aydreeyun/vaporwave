@@ -292,7 +292,7 @@
 }
 
 .profile-sidebar-comments {
-  margin-top: 70px;
+  margin-top: 60px;
 }
 
 .profile-comment-item {
@@ -301,7 +301,20 @@
   padding: 10px 0;
 }
 
-.comment-item-header {
+.profile-comment-item-header {
   display: flex;
   justify-content: space-between;
+}
+
+.profile-sidebar-comments-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  font-size: 14px;
+  color: #999;
+}
+
+.profile-comments-link-left svg {
+  margin-right: 7px;
 }

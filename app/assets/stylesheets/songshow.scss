@@ -405,18 +405,69 @@
 
 .song-desc-and-comments {
   width: 670px;
-  margin-left: 27px;
+  margin-left: 30px;
 }
 
 .comments-header {
   margin-top: 29px;
-  color: gray;
-  font-size: 13px;
+  color: #999;
+  font-size: 14px;
   margin-left: 7px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #f2f2f2;
+  height: 21px;
+  line-height: 1.3;
 }
 
 .comments-header svg {
   margin-right: 5px;
+}
+
+.comment-item {
+  font-size: 12px;
+  padding: 10px 10px 10px 0;
+  min-height: 40px;
+  display: flex;
+}
+
+.comment-item-content {
+  width: 100%;
+}
+
+.comment-item-photo {
+  margin-right: 10px;
+}
+
+.comment-item-photo div {
+  height: 40px;
+  width: 40px;
+  max-height: 40px;
+  max-width: 40px;
+  border-radius: 50%;
+  background: linear-gradient(to top left, rgb(255, 133, 200), cyan);
+}
+
+.comment-item-photo img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.comment-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #999;
+  height: 17px;
+}
+
+.comment-item-body {
+  display: flex;
+  align-items: center;
+  min-height: 17px;
+  max-width: 503px;
+  color: #333;
 }
 
 .song-show-play {

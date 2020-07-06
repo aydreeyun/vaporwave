@@ -134,20 +134,22 @@ class ProfilePage extends React.Component {
     const lastThreeComments = Object.values(comments).slice(Object.values(comments).length - 3).reverse().map((comment, i) => {
       return (
         <div key={i} className="profile-comment-item">
-          <div className="comment-item-header">
+          <div className="profile-comment-item-header">
             <div className="comment-item-song">
               on {songs[comment.song_id].title}
             </div>
-            <div className="comment-item-time">
+            <div className="profile-comment-item-time">
               {formatUploadTime(comment.created_at)}
             </div>
           </div>
-          <div className="comment-item-body">
+          <div className="profile-comment-item-body">
             "{comment.body}"
           </div>
         </div>
       );
     });
+
+    const numComments = Object.values(comments).length
 
     return (
       <>
@@ -222,6 +224,13 @@ class ProfilePage extends React.Component {
                     User bio will be implemented here.
                   </div>
                   <div className="profile-sidebar-comments">
+                    <Link className="profile-sidebar-comments-link">
+                      <div className="profile-comments-link-left">
+                        <FontAwesomeIcon icon="comment-alt" />
+                        {numComments} {numComments === 1 ? "comment" : "comments"}
+                      </div>
+                      <div className="profile-comments-link-right">View all</div>
+                    </Link>
                     {lastThreeComments}
                   </div>
                   <div className="sidebar-footer">

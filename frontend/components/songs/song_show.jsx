@@ -12,7 +12,9 @@ class SongShow extends React.Component {
     this.state = {
       dropdown: false,
       liked: "Like",
-      followed: "Follow"
+      followed: "Follow",
+      authorHover: "",
+      commentHover: "",
     };
 
     this.handleDropdown = this.handleDropdown.bind(this);
@@ -101,7 +103,7 @@ class SongShow extends React.Component {
   }
 
   render() {
-    const { song, artist, currentUser, comments } = this.props;
+    const { users, song, artist, currentUser, comments } = this.props;
     //  CONDITIONAL SONG DATA
     const genre = song.genre ?
       <h3 className="song-banner-genre">
@@ -117,13 +119,51 @@ class SongShow extends React.Component {
       <img className="song-show-photo"
         src={song.photoUrl} />
     : null;
-    const allComments = Object.values(comments).map((comment, i) => {
+    const allComments = Object.values(comments).reverse().map((comment, i) => {
       return (
-        <li key={i}>
-          {comment.body}
-        </li>
+        <div className="comment-item"
+          key={i}
+          onMouseEnter={() => this.setState({ authorHover: comment.author_id, commentHover: comment.id })}
+          onMouseLeave={() => this.setState({ authorHover: "", commentHover: "" })}
+        >
+          <div className="comment-item-photo">
+            <div>
+              {users[comment.author_id].photoUrl ? <img src={users[comment.author_id].photoUrl} /> : null}
+            </div>
+          </div>
+          <div className="comment-item-content">
+            <div className="comment-item-header">
+              <div>
+                {users[comment.author_id].display_name}
+              </div>
+              <div>
+                {formatUploadTime(comment.created_at)}
+              </div>
+            </div>
+            <div className="comment-item-body">
+              {comment.body}
+              {currentUser.id === this.state.authorHover && comment.id === this.state.commentHover ?
+                <button onClick={() => this.props.deleteComment(comment.id)}>
+                  <FontAwesomeIcon icon="trash" />
+                </button>
+              : null
+              }
+            </div>
+          </div>
+        </div>
       )
     });
+    const commentSection = Object.values(comments).length > 0 ?
+      <div className="comments-section">
+        <div className="comments-header">
+          <FontAwesomeIcon icon="comment-alt" />
+          {allComments.length} {allComments.length === 1 ? "comment" : "comments"}
+        </div>
+        <div>
+          {allComments}
+        </div>
+      </div>
+    : null;
 
     // CSS CLASS SWITCHES
     const liked = this.state.liked === "Liked" ?
@@ -175,7 +215,7 @@ class SongShow extends React.Component {
           onChange={this.handlePhotoFile} 
         />
       </button>;
-
+    
     return (
       <>
         <NavbarContainer />
@@ -292,15 +332,7 @@ class SongShow extends React.Component {
                 </div>
                 <div className="song-desc-and-comments">
                   {description}
-                  <div className="comments-section">
-                    <div className="comments-header">
-                      <FontAwesomeIcon icon="comment-alt" />
-                      {allComments.length} {allComments.length === 1 ? "comment" : "comments"}
-                    </div>
-                    <ul>
-                      {allComments}
-                    </ul>
-                  </div>
+                  {commentSection}
                 </div>
               </div>
             </div>
