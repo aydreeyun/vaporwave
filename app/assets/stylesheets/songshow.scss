@@ -486,6 +486,8 @@
   padding: 2px 9px;
   max-width: 25px;
   max-height: 22px;
+  height: 22px;
+  width: 25px;
   background: white;
   font-size: 11px;
   display: flex;
@@ -494,6 +496,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
+  border-radius: 3px;
 }
 
 .comment-item-body button:hover {

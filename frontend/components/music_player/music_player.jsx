@@ -195,7 +195,8 @@ class MusicPlayer extends React.Component {
             onMouseEnter={() => this.setState({ volumeHover: true })}
             onMouseLeave={() => this.setState({ volumeHover: false })}>
             <button>
-              { this.state.volumeHover ? 
+              {
+              this.state.volumeHover ? 
                 <div className="volume-bar"
                   onMouseEnter={() => this.setState({ volumeHover: true })}>
                   <input type="range"
@@ -205,7 +206,7 @@ class MusicPlayer extends React.Component {
                     max="1000.0"
                     onChange={this.handleVolume}/>
                 </div> 
-                : null
+              : null
               }
               {volumeIcon}
             </button>
@@ -213,7 +214,8 @@ class MusicPlayer extends React.Component {
         </div>
         <div className="player-song-data">
           <Link className="player-song-image" to={`/songs/${currentSong.id}`}>
-            {currentSong.photoUrl ?
+            {
+            currentSong.photoUrl ?
               <img src={currentSong.photoUrl} />
             : null
             }

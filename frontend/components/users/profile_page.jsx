@@ -131,12 +131,12 @@ class ProfilePage extends React.Component {
       );
     });
 
-    const lastThreeComments = Object.values(comments).slice(Object.values(comments).length - 3).reverse().map((comment, i) => {
+    const lastThreeComments = Object.values(comments).slice(-3).reverse().map((comment, i) => {
       return (
         <div key={i} className="profile-comment-item">
           <div className="profile-comment-item-header">
             <div className="comment-item-song">
-              on {songs[comment.song_id].title}
+              on <Link to={`/songs/${songs[comment.song_id].id}`}>{songs[comment.song_id].title}</Link>
             </div>
             <div className="profile-comment-item-time">
               {formatUploadTime(comment.created_at)}
@@ -167,24 +167,12 @@ class ProfilePage extends React.Component {
           <div className="profile-main">
             <div className="profile-main-header">
               <div className="profile-main-header-left">
-                <a className="profile-main-header-all">
-                  All
-                </a>
-                <a>
-                  Popular tracks
-                </a>
-                <a>
-                  Tracks
-                </a>
-                <a>
-                  Albums
-                </a>
-                <a>
-                  Playlists
-                </a>
-                <a>
-                  Reposts
-                </a>
+                <a className="profile-main-header-all">All</a>
+                <a>Popular tracks</a>
+                <a>Tracks</a>
+                <a>Albums</a>
+                <a>Playlists</a>
+                <a>Reposts</a>
               </div>
               <div className="profile-main-header-right">
                 <button>
@@ -223,8 +211,8 @@ class ProfilePage extends React.Component {
                     <br/>
                     User bio will be implemented here.
                   </div>
-                  {/* <div className="profile-sidebar-comments">
-                    <Link className="profile-sidebar-comments-link">
+                  <div className="profile-sidebar-comments">
+                    <Link to={`/users/${user.id}/comments`} className="profile-sidebar-comments-link">
                       <div className="profile-comments-link-left">
                         <FontAwesomeIcon icon="comment-alt" />
                         {numComments} {numComments === 1 ? "comment" : "comments"}
@@ -232,7 +220,7 @@ class ProfilePage extends React.Component {
                       <div className="profile-comments-link-right">View all</div>
                     </Link>
                     {lastThreeComments}
-                  </div> */}
+                  </div>
                   <div className="sidebar-footer">
                     <a href="https://www.linkedin.com/in/adriantaehyunkim/">
                       GitHub

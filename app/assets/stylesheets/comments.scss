@@ -1,0 +1,152 @@
+.comments-page {
+  min-width: 1240px;
+  width: 1180px;
+  min-height: 100vh;
+  margin: 0 auto;
+  margin-top: 46px;
+  padding: 0 30px;
+  font-family: 'Open Sans', sans-serif;
+  min-width: 920px;
+  background: white;
+}
+
+.comments-page-header {
+  padding-top: 31px;
+  position: fixed;
+  background: white;
+  width: 1180px;
+}
+
+.comments-header-user {
+  display: flex;
+}
+
+.comments-header-user > a {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin: 0 20px 10px 0;
+}
+
+.comments-user-photo {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, cyan, rgb(255, 133, 200));
+}
+
+.comments-user-photo img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.comments-user-name {
+  font-size: 30px;
+  height: 39px;
+  display: flex;
+  align-items: center;
+}
+
+.comments-user-name a {
+  color: black;
+}
+
+.comments-header-links {
+  width: 100%;
+  border-bottom: 1px solid #f2f2f2;
+  font-size: 18px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+}
+
+.comments-header-links a {
+  margin-right: 24px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+}
+
+.comments-header-links a:not(:last-of-type) {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.comments-header-links a:not(:last-of-type):hover {
+  border-bottom: 1px solid black;
+}
+
+.comment-current {
+  color: rgb(255, 133, 200);
+  border-bottom: 1px solid rgb(255, 133, 200);
+  cursor: default;
+}
+
+.comments-main {
+  padding-top: 186px;
+  color: #333;
+}
+
+.comment-page-item {
+  height: 40px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.comment-page-item-header {
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 18px;
+}
+
+.comment-page-item-title {
+  display: flex;
+}
+
+.comment-page-item-title a {
+  color: #999;
+  margin-left: 4px;
+}
+
+.comment-page-item:hover {
+  .comment-page-item-title a {
+    color: #333;
+  }
+}
+
+.comment-page-item-time {
+  color: #ccc;
+}
+
+.comment-page-item-main {
+  font-size: 14px;
+  height: 19px;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.comments-page-footer {
+  // border-top: 1px solid #f2f2f2;
+  padding-top: 15px;
+  height: 47px;
+  width: 100%;
+  font-size: 12px;
+  display: flex;
+  color: rgb(0, 207, 207);
+}
+
+.comments-page-footer p {
+  margin: 0 5px;
+}
+
+.comments-page-footer a {
+  color: rgb(0, 207, 207);
+  height: 20px;
+}
+
+.comments-page-footer a:hover {
+  color: rgb(0, 150, 150);
+}

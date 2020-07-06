@@ -81,6 +81,7 @@
   width: 512px;
   height: 1px;
   margin-top: 8px;
+  cursor: pointer;
 }
 
 .song-length {
@@ -139,7 +140,7 @@
 }
 
 .player-song-data {
-  margin-left: 17px;
+  margin-left: 22px;
   display: flex;
   align-items: center;
 }

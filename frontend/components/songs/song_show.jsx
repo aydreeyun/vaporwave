@@ -319,8 +319,7 @@ class SongShow extends React.Component {
                   </div>
                 </div>
               </div>
-
-              {/* artist profile link */}
+              
               <div className="song-comments-index">
                 <div className="song-comments-artist">
                   <Link to={`/users/${artist.id}`}>
