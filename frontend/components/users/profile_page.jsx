@@ -223,7 +223,7 @@ class ProfilePage extends React.Component {
                     <br/>
                     User bio will be implemented here.
                   </div>
-                  <div className="profile-sidebar-comments">
+                  {/* <div className="profile-sidebar-comments">
                     <Link className="profile-sidebar-comments-link">
                       <div className="profile-comments-link-left">
                         <FontAwesomeIcon icon="comment-alt" />
@@ -232,7 +232,7 @@ class ProfilePage extends React.Component {
                       <div className="profile-comments-link-right">View all</div>
                     </Link>
                     {lastThreeComments}
-                  </div>
+                  </div> */}
                   <div className="sidebar-footer">
                     <a href="https://www.linkedin.com/in/adriantaehyunkim/">
                       GitHub

@@ -425,7 +425,7 @@
 
 .comment-item {
   font-size: 11px;
-  padding: 10px 10px 10px 0;
+  padding: 10px;
   min-height: 40px;
   display: flex;
 }
@@ -453,12 +453,16 @@
   border-radius: 50%;
 }
 
-.comment-item-header {
+.comment-item-header, .comment-item-header a {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #999;
   height: 17px;
+}
+
+.comment-item-header a:hover {
+  color: #333;
 }
 
 .comment-item-body {
@@ -473,6 +477,7 @@
   max-width: 503px;
   position: absolute;
   top: 3px;
+  font-size: 12px;
 }
 
 .comment-item-body button {
@@ -493,6 +498,10 @@
 
 .comment-item-body button:hover {
   border: 1px solid #ccc;
+}
+
+.artist-comment {
+  background: #f2f2f2;
 }
 
 .song-show-play {

@@ -122,7 +122,7 @@ class SongShow extends React.Component {
     : null;
     const allComments = Object.values(comments).reverse().map((comment, i) => {
       return (
-        <div className="comment-item"
+        <div className={`comment-item ${song.artist_id === comment.author_id ? "artist-comment" : ""}`}
           key={i}
           onMouseOver={() => this.setState({ authorHover: comment.author_id, commentHover: comment.id })}
           onMouseLeave={() => this.setState({ authorHover: "", commentHover: "" })}
@@ -137,7 +137,11 @@ class SongShow extends React.Component {
           <div className="comment-item-content">
             <div className="comment-item-header">
               <div>
-                {users[comment.author_id].display_name}
+                {currentUser.id === comment.author_id ?
+                  "You" :
+                  <Link to={`/users/${comment.author_id}`}>
+                    {users[comment.author_id].display_name}
+                  </Link>}
               </div>
               <div>
                 {formatUploadTime(comment.created_at)}
