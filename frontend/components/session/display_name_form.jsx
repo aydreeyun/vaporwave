@@ -15,7 +15,7 @@ class DisplayNameForm extends React.Component {
         <div className="display-name-form">
           <h2>Tell us a bit about yourself</h2>
           <h3>Choose your display name</h3>
-          <input type="input" onChange={this.props.update("display_name")}/>
+          <input type="input" onChange={this.props.update("display_name")} autoFocus/>
           {errors}
           <p className="disclaimer-text">Your display name can be anything you like. Your name or artist name are good choices.</p>
           {this.props.getStartedButton}

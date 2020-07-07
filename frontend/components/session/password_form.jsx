@@ -19,7 +19,8 @@ class PasswordForm extends React.Component {
           <label>
             <input type="password"
               onChange={this.props.update("password")}
-              placeholder="Your password"/>
+              placeholder="Your password"
+              autoFocus/>
           </label>
           {errors}
           <button className="auth-form-button">Sign In</button>

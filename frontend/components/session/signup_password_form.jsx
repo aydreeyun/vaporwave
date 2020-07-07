@@ -16,7 +16,7 @@ class SignupPasswordForm extends React.Component {
           <h2>Create your VaporWave account</h2>
           {this.props.prevButton}
           <p>Choose a password</p> 
-          <input type="password" onChange={this.props.update("password")}/>
+          <input type="password" onChange={this.props.update("password")} autoFocus/>
           {errors}
           <div className="disclaimer-text">
             <p>By signing up I accept the Terms of Use. I have read and understood the Privacy Policy and Cookies Policy.</p>

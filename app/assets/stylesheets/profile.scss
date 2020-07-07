@@ -1,7 +1,7 @@
 .profile-page {
   min-width: 1240px;
   width: 1240px;
-  min-height: 952px;
+  min-height: 100vh;
   margin: 0 auto;
   margin-top: 46px;
   font-family: 'Open Sans', sans-serif;
@@ -299,7 +299,8 @@
 }
 
 .profile-comment-item div {
-  height: 16px;
+  min-height: 16px;
+  line-height: 1.2;
 }
 
 .profile-comment-item-header {

@@ -29,7 +29,7 @@ class AgeGenderForm extends React.Component {
         <div className="age-gender-form">
           <h2>Create your VaporWave account</h2>
           <p>Tell us your age</p> 
-          <input type="number" onChange={update("age")}/>
+          <input type="number" onChange={update("age")} autoFocus/>
           {ageError}
           <p>Gender</p>
           <select onChange={update("gender")}>

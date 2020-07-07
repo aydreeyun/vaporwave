@@ -89,7 +89,7 @@
 }
 
 .comment-page-item {
-  height: 40px;
+  min-height: 40px;
   padding: 10px 0;
   border-bottom: 1px solid #f2f2f2;
 }
@@ -147,10 +147,11 @@
 
 .comment-page-item-main {
   font-size: 14px;
-  height: 19px;
+  min-height: 19px;
   margin-top: 1px;
   display: flex;
   align-items: center;
+  line-height: 1.2;
 }
 
 .comments-page-footer {

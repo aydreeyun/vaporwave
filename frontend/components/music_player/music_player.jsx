@@ -214,11 +214,7 @@ class MusicPlayer extends React.Component {
         </div>
         <div className="player-song-data">
           <Link className="player-song-image" to={`/songs/${currentSong.id}`}>
-            {
-            currentSong.photoUrl ?
-              <img src={currentSong.photoUrl} />
-            : null
-            }
+            {currentSong.photoUrl ? <img src={currentSong.photoUrl} /> : null}
           </Link>
           <div className="player-song-links">
             <Link className="player-artist"
