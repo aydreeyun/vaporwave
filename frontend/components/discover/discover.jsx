@@ -12,7 +12,7 @@ class Discover extends React.Component {
       newMusicHover: "",
       stayHomeHover: "",
       likedSongsHover: "",
-      randomUsers: this.randomArr(Object.values(props.users)),
+      randomUsers: this.randomArr(Object.values(props.users).filter(user => user.id !== props.currentUser.id)),
       randomSongs: this.randomArr(Object.values(props.songs)),
       // followed: "Follow",
     }
@@ -21,10 +21,6 @@ class Discover extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      randomUsers: this.randomArr(Object.values(this.props.users)),
-      randomSongs: this.randomArr(Object.values(this.props.songs)),
-    })
     scrollTo(0, 0);
   }
 

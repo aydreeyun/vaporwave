@@ -5,6 +5,7 @@ const mSTP = state => {
   return {
     users: state.entities.users,
     songs: Object.values(state.entities.songs),
+    currentUser: state.entities.users[state.session.id]
   };
 };
 
