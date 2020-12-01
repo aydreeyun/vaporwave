@@ -9,9 +9,9 @@ class Discover extends React.Component {
     super(props);
 
     this.state = {
-      newMusicHover: "",
-      stayHomeHover: "",
-      likedSongsHover: "",
+      newMusicHover: null,
+      stayHomeHover: null,
+      likedSongsHover: null,
       randomUsers: this.randomArr(Object.values(props.users).filter(user => user.id !== props.currentUser.id)),
       randomSongs: this.randomArr(Object.values(props.songs)),
       // followed: "Follow",
@@ -71,18 +71,18 @@ class Discover extends React.Component {
           <li>
             <Link to={`/songs/${song.id}`}>
               <div className="new-song-photos"
-                onMouseEnter={() => this.setState({ newMusicHover: song.title })}
-                onMouseLeave={() => this.setState({ newMusicHover: "" })}>
+                onMouseEnter={() => this.setState({ newMusicHover: song.id })}
+                onMouseLeave={() => this.setState({ newMusicHover: null })}>
                 {songPhoto}
               </div>
               <div className="song-item-title">
                 {song.title}
               </div>
             </Link>
-            {this.state.newMusicHover === song.title ? 
+            {this.state.newMusicHover === song.id ? 
               <div className="discover-play-button"
-                onMouseEnter={() => this.setState({ newMusicHover: song.title })}
-                onMouseLeave={() => this.setState({ newMusicHover: "" })}>
+                onMouseEnter={() => this.setState({ newMusicHover: song.id })}
+                onMouseLeave={() => this.setState({ newMusicHover: null })}>
                 <PlayButtonContainer songId={song.id} />
               </div>
             : null
@@ -104,18 +104,18 @@ class Discover extends React.Component {
           <li>
             <Link to={`/songs/${song.id}`}>
               <div className="new-song-photos"
-                onMouseEnter={() => this.setState({ stayHomeHover: song.title })}
-                onMouseLeave={() => this.setState({ stayHomeHover: "" })}>
+                onMouseEnter={() => this.setState({ stayHomeHover: song.id })}
+                onMouseLeave={() => this.setState({ stayHomeHover: null })}>
                 {songPhoto}
               </div>
               <div className="song-item-title">
                 {song.title}
               </div>
             </Link>
-            {this.state.stayHomeHover === song.title ? 
+            {this.state.stayHomeHover === song.id ? 
               <div className="discover-play-button"
-                onMouseEnter={() => this.setState({ stayHomeHover: song.title })}
-                onMouseLeave={() => this.setState({ stayHomeHover: "" })}>
+                onMouseEnter={() => this.setState({ stayHomeHover: song.id })}
+                onMouseLeave={() => this.setState({ stayHomeHover: null })}>
                 <PlayButtonContainer songId={song.id} />
               </div>
             : null
@@ -184,13 +184,13 @@ class Discover extends React.Component {
       <img src={song.photoUrl} /> : null;
       return (
         <div key={i} className="liked-songs"
-          onMouseEnter={() => this.setState({ likedSongsHover: song.title })}
-          onMouseLeave={() => this.setState({ likedSongsHover: "" })}>
+          onMouseEnter={() => this.setState({ likedSongsHover: song.id })}
+          onMouseLeave={() => this.setState({ likedSongsHover: null })}>
           <div className="liked-song-photo">
             {likedSongPhoto}
-            {this.state.likedSongsHover === song.title ? 
+            {this.state.likedSongsHover === song.id ? 
               <div className="discover-play-button"
-                onMouseEnter={() => this.setState({ likedSongsHover: song.title })}>
+                onMouseEnter={() => this.setState({ likedSongsHover: song.id })}>
                 <PlayButtonContainer songId={song.id} />
               </div>
             : null

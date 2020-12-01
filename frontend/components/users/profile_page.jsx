@@ -19,6 +19,13 @@ class ProfilePage extends React.Component {
     this.props.fetchUserComments(this.props.match.params.userId);
   }
 
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.userId !== this.props.match.params.userId) {
+  //     this.props.fetchUser(this.props.match.params.userId);
+  //     this.props.fetchUserComments(this.props.match.params.userId);
+  //   }
+  // }
+
   handleFileClick() {
     document.getElementById("file").click();
   }
